@@ -13,8 +13,8 @@
     <ul class="menu-list">
       <li><a href="#">Manage Users</a></li>
       <li>
-        <a href="#">Roles &amp; Permissions</a>
-        <ul>
+        <a class="has-submenu">Roles &amp; Permissions</a>
+        <ul class="submenu">
           <li><a>Roles</a></li>
           <li><a>Permissions</a></li>
         </ul>

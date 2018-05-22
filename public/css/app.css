@@ -14558,6 +14558,18 @@ label.panel-block:hover {
   overflow-y: scroll;
 }
 
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.menu-list li ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
