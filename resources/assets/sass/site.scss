@@ -1,4 +1,3 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
@@ -13,7 +12,7 @@
 // Custom SASS pages
 @import 'overrides';
 @import 'helpers';
-@import 'cms/styles';
+@import 'site/styles';
 
 .navbar-laravel {
   background-color: #fff;

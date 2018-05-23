@@ -6,7 +6,6 @@
  */
 
 require('./bootstrap');
-require('./cms/navbar');
 
 window.Vue = require('vue');
 import Buefy from 'buefy';
@@ -24,5 +23,3 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
-
-require('./cms/manage');

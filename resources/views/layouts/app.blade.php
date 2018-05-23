@@ -27,8 +27,12 @@
 </head>
 <body>
   <div id="app">
-    @include('_includes.nav.main')
-    @include('_includes.nav.sidenav')
+    @guest
+      @include('_includes.nav.main')
+    @else
+      @include('_includes.nav.main')
+      @include('_includes.nav.sidenav')
+    @endguest
     <main class="py-4">
       @yield('content')
     </main>

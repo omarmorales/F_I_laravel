@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -43419,16 +43419,18 @@ if (false) {
 
 /***/ }),
 /* 42 */,
-/* 43 */
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(44);
-__webpack_require__(45);
-module.exports = __webpack_require__(46);
+module.exports = __webpack_require__(48);
 
 
 /***/ }),
-/* 44 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43443,7 +43445,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 __webpack_require__(9);
-__webpack_require__(54);
 
 window.Vue = __webpack_require__(34);
 
@@ -43461,92 +43462,6 @@ Vue.component('example-component', __webpack_require__(38));
 var app = new Vue({
   el: '#app'
 });
-
-__webpack_require__(55);
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */
-/***/ (function(module, exports) {
-
-document.addEventListener('DOMContentLoaded', function () {
-
-  // Get all "navbar-burger" elements
-  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-  // Check if there are any navbar burgers
-  if ($navbarBurgers.length > 0) {
-
-    // Add a click event on each of them
-    $navbarBurgers.forEach(function ($el) {
-      $el.addEventListener('click', function () {
-
-        // Get the target from the "data-target" attribute
-        var target = $el.dataset.target;
-        var $target = document.getElementById(target);
-
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-        $el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-      });
-    });
-  }
-});
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports) {
-
-var accordions = document.getElementsByClassName('has-submenu');
-var adminSlideoutButton = document.getElementById('admin-slideout-button');
-
-adminSlideoutButton.onclick = function () {
-  this.classList.toggle('is-active');
-  document.getElementById('admin-side-menu').classList.toggle('is-active');
-};
-
-for (var i = 0; i < accordions.length; i++) {
-  if (accordions[i].classList.contains('is-active')) {
-    var submenu = accordions[i].nextElementSibling;
-    submenu.style.maxHeight = submenu.scrollHeight + "px";
-    submenu.style.marginTop = "0.75em";
-    submenu.style.marginBottom = "0.75em";
-  }
-  accordions[i].onclick = function () {
-    this.classList.toggle('is-active');
-
-    var submenu = this.nextElementSibling;
-    if (submenu.style.maxHeight) {
-      //menu is open, we need to close it
-      submenu.style.maxHeight = null;
-      submenu.style.marginTop = null;
-      submenu.style.marginBottom = null;
-    } else {
-      // menu is close, so we need to open it
-      submenu.style.maxHeight = submenu.scrollHeight + "px";
-      submenu.style.marginTop = "0.75em";
-      submenu.style.marginBottom = "0.75em";
-    }
-  };
-}
 
 /***/ })
 /******/ ]);
