@@ -3,6 +3,11 @@
     <a class="navbar-item" href="{{ url('/') }}">
       <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
     </a>
+    @if (Request::segment(1) == "manage")
+      <a class="navbar-item is-hidden-desktop" id="admin-slideout-button">
+        <span class="icon"><i class="fas fa-angle-right"></i></span>
+      </a>
+    @endif
     <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
       <span></span>
       <span></span>
@@ -12,7 +17,6 @@
 
   <div id="navbarExampleTransparentExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="{{ url('/') }}">Home</a>
     </div>
 
     <div class="navbar-end">

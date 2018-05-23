@@ -27,8 +27,6 @@
 </head>
 <body>
   <div id="app">
-    @include('_includes.nav.main')
-    @include('_includes.nav.sidenav')
     <main class="py-4">
       @yield('content')
     </main>
