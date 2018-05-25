@@ -12,6 +12,7 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
+  @include('_includes.notifications.toast')
   @yield('scripts')
 
   <!-- Icons -->
@@ -26,16 +27,18 @@
   @yield('styles')
 </head>
 <body>
+  @guest
+    @include('_includes.nav.main')
+  @else
+    @include('_includes.nav.main')
+    @include('_includes.nav.sidenav')
+  @endguest
+
   <div id="app">
-    @guest
-      @include('_includes.nav.main')
-    @else
-      @include('_includes.nav.main')
-      @include('_includes.nav.sidenav')
-    @endguest
-    <main class="py-4">
+    <main class="management-area">
       @yield('content')
     </main>
   </div>
+
 </body>
 </html>

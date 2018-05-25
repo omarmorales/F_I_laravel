@@ -1,7 +1,7 @@
-<nav class="navbar is-primary">
+<nav class="navbar is-light">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ url('/') }}">
-      <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+      <img src="{{ asset('storage/logo_dark.png') }}" alt="C230 Consultores logo">
     </a>
     @if (Request::segment(1) == "manage")
       <a class="navbar-item is-hidden-desktop" id="admin-slideout-button">

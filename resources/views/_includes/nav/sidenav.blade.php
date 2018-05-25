@@ -11,7 +11,7 @@
     </ul>
     <p class="menu-label">Administration</p>
     <ul class="menu-list">
-      <li><a href="#" class="">Manage Users</a></li>
+      <li><a href="{{ route('users.index') }}" class="{{ Nav::isResource('users') }}">Manage Users</a></li>
       <li>
         <a class="has-submenu">Roles &amp; Permissions</a>
         <ul class="submenu">

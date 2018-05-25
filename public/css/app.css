@@ -14560,6 +14560,7 @@ label.panel-block:hover {
   overflow-y: scroll;
   -webkit-transition: left 0.3s ease-in-out;
   transition: left 0.3s ease-in-out;
+  z-index: 1;
 }
 
 #admin-side-menu.is-active {
@@ -14596,6 +14597,22 @@ label.panel-block:hover {
 .menu-list li ul {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.management-area {
+  position: absolute;
+  top: 4rem;
+}
+
+@media screen and (min-width: 1088px) {
+  .management-area {
+    left: 200px;
+    right: 0;
+  }
+}
+
+.flex-container {
+  margin-left: 10px 25px;
 }
 
 .navbar-laravel {

@@ -11,8 +11,9 @@
   <title>{{ config('app.name', 'Laravel') }}</title>
 
   <!-- Scripts -->
-  <script src="{{ asset('js/site.js') }}" defer></script>
   @yield('scripts')
+  @include('_includes.notifications.toast')
+  <script src="{{ asset('js/site.js') }}" defer></script>
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -26,8 +27,10 @@
   @yield('styles')
 </head>
 <body>
+  @include('_includes.nav.main_site')
+  @include('_includes.nav.sidenav_site')
   <div id="app">
-    <main class="py-4">
+    <main class="site-area">
       @yield('content')
     </main>
   </div>

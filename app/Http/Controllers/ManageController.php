@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use LaraFlash;
 
 class ManageController extends Controller
 {
@@ -13,6 +14,8 @@ class ManageController extends Controller
 
   public function dashboard()
   {
+    LaraFlash::success('yay it worked');
+
     return view('manage.dashboard');
   }
 }

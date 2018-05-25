@@ -1,0 +1,70 @@
+.site-area {
+  position: absolute;
+  @include desktop {
+    left: 200px;
+    right: 0;
+  }
+}
+
+.fullheight {
+  min-height: 100vh;
+}
+
+.orange-gradient {
+  background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+}
+
+.navbar{
+  p{
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+  }
+}
+
+.center-ver-hor {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.center-vert{
+  position: relative;
+  div {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+#admin-side-menu {
+  position: fixed;
+  top: 3rem;
+  left: -200px;
+  bottom: 0;
+  width: 200px;
+  background-color: #f2f2f2;
+  transition: left 0.3s ease-in-out;
+  z-index: 1;
+  &:hover {
+    color: #ff7900;
+  }
+  &.is-active {
+    transition: left 0.3s ease-in-out;
+    left: 0;
+  }
+
+  @include desktop {
+    left: 0;
+    a {
+      text-transform: uppercase;
+      img {
+        width: 75%;
+      }
+    }
+  }
+}
+
+.separator {
+  background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+  height: 10px;
+}
