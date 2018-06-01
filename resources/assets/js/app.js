@@ -1,16 +1,20 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import Vue from 'vue'; 
 
 import Buefy from 'buefy';
 Vue.use(Buefy);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('vacancies', require('./components/Vacancies.vue'));
 
-// const app = new Vue({
-//     el: '#app'
-// });
+const app = new Vue({
+    el: '#app',
+    data: {
+      auto_password: true,
+      password_options: 'keep'
+    }
+});
 
 require('./cms/navbar');
 require('./cms/manage');
+require('./cms/modal');

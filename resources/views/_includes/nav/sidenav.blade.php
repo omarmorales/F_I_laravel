@@ -13,10 +13,10 @@
     <ul class="menu-list">
       <li><a href="{{ route('users.index') }}" class="{{ Nav::isResource('users') }}">Manage Users</a></li>
       <li>
-        <a class="has-submenu">Roles &amp; Permissions</a>
+        <a class="has-submenu ">Roles &amp; Permissions</a>
         <ul class="submenu">
-          <li><a href="#" class="">Roles</a></li>
-          <li><a href="#" class="">Permissions</a></li>
+          <li><a href="{{ route('roles.index') }}" class="{{ Nav::isResource('roles') }}">Roles</a></li>
+          <li><a href="{{ route('permissions.index') }}" class="{{ Nav::isResource('permissions') }}">Permissions</a></li>
         </ul>
       </li>
     </ul>

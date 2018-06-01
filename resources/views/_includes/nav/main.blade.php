@@ -1,4 +1,4 @@
-<nav class="navbar is-light">
+<nav class="navbar is-light is-fixed-top">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ url('/') }}">
       <img src="{{ asset('storage/logo_dark.png') }}" alt="C230 Consultores logo">

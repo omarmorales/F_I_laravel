@@ -12,7 +12,6 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
-  @include('_includes.notifications.toast')
   @yield('scripts')
 
   <!-- Icons -->
@@ -36,9 +35,9 @@
 
   <div id="app">
     <main class="management-area">
+      @include('_includes.notifications.messages')
       @yield('content')
     </main>
   </div>
-
 </body>
 </html>

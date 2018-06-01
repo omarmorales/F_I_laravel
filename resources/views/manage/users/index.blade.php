@@ -4,7 +4,7 @@
   <div class="flex-container m-t-10">
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
-        <li><a href="">Content</a></li>
+        <li><a href="">Administration</a></li>
         <li class="is-active"><a href="#" aria-current="page">Manage Users</a></li>
       </ul>
     </nav>
@@ -29,11 +29,15 @@
             <td>{{ $user->email }}</td>
             <td>{{ $user->created_at }}</td>
             <td>
-              <a href="" class="button">view</a>
+              <a href="{{ route('users.show', $user->id) }}" class="button">view</a>
+              <a href="{{ route('users.edit', $user->id) }}" class="button">edit</a>
             </td>
           </tr>
         @endforeach
       </tbody>
     </table>
+
+    {{ $users->links() }}
+    <a href="{{ route('users.create') }}" class="button button-float"><i class="fas fa-plus"></i></a>
   </div>
 @endsection
