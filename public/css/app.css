@@ -14621,6 +14621,15 @@ label.panel-block:hover {
   bottom: 15px;
 }
 
+.table_wrapper {
+  overflow-x: auto;
+}
+
+.responsive_table {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
