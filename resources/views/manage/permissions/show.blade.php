@@ -16,7 +16,7 @@
     </div>
 
     <div class="field">
-      <label for="name" class="label">Name</label>
+      <label for="name" class="label">Slug <small>(Cannot be changed)</small></label>
       <pre>{{$permission->name}}</pre>
     </div>
 
