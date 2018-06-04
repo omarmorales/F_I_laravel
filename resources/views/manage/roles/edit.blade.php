@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="flex-container m-t-10">
+  <div class="flex-container m-t-10 m-l-20 m-r-20">
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
         <li><a href="">Administration</a></li>
