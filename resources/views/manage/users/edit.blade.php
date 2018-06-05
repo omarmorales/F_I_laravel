@@ -41,7 +41,7 @@
           </div>
           <div class="field">
             <b-radio name="password_options" v-model="password_options" native-value="manual">Manually Set New Password</b-radio>
-            <p class="control">
+            <p class="control m-t-15">
               <input type="text" class="input" name="password" id="password" v-if="password_options == 'manual'" placeholder="Manually give a password to this user">
             </p>
           </div>
@@ -55,4 +55,18 @@
       </div>
     </form>
   </div>
+@endsection
+
+@section('scripts')
+  <script type="text/javascript">
+  window.onload = function() {
+    const app = new Vue({
+      el: '#app',
+      data: {
+        password_options: 'keep',
+        rolesSelected: {!! $user->roles->pluck('id') !!}
+      }
+    });
+  }
+  </script>
 @endsection

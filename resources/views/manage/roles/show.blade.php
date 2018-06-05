@@ -10,20 +10,32 @@
       </ul>
     </nav>
 
-    <div class="field">
-      <label for="display_name" class="label">Display Name</label>
-      <pre>{{$role->display_name}}</pre>
-    </div>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label for="display_name" class="label">Display Name</label>
+          <pre>{{$role->display_name}}</pre>
+        </div>
 
-    <div class="field">
-      <label for="name" class="label">Name</label>
-      <pre>{{$role->name}}</pre>
-    </div>
+        <div class="field">
+          <label for="name" class="label">Name</label>
+          <pre>{{$role->name}}</pre>
+        </div>
 
-    <div class="field">
-      <label for="description" class="label">Description</label>
-      <pre>{{$role->description}}</pre>
-    </div>
+        <div class="field">
+          <label for="description" class="label">Description</label>
+          <pre>{{$role->description}}</pre>
+        </div>
+      </div>
 
+      <div class="column">
+        <div class="field">
+          <label for="permissions" class="label">{{$role->display_name}}'s Permissions</label>
+        </div>
+        @foreach ($role->permissions as $permission)
+          <pre><i class="fas fa-angle-right"></i> {{ $permission->display_name }} <em class="m-l-15">{{ $permission->description }}</em></pre>
+        @endforeach
+      </div>
+    </div>
   </div>
 @endsection

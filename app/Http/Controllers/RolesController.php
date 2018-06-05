@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Role;
+use App\Permission;
 use Session;
 
 class RolesController extends Controller
@@ -28,7 +29,8 @@ class RolesController extends Controller
     public function create()
     {
         //
-        return view('manage.roles.create');
+        $permissions = Permission::all();
+        return view('manage.roles.create')->withPermissions($permissions);
     }
 
     /**
@@ -51,6 +53,10 @@ class RolesController extends Controller
         $role->name = $request->name;
         $role->description = $request->description;
         $role->save();
+
+        if ($request->permissions) {
+          $role->syncPermissions(explode(',', $request->permissions));
+        }
 
         return redirect()->route('roles.index')->with('success', 'Role created succesfully');
     }
@@ -77,8 +83,9 @@ class RolesController extends Controller
     public function edit($id)
     {
         //
-        $role = Role::where('id', $id)->first();
-        return view('manage.roles.edit')->withRole($role);
+        $role = Role::where('id', $id)->with('permissions')->first();
+        $permissions = Permission::all();
+        return view('manage.roles.edit')->withRole($role)->withPermissions($permissions);
     }
 
     /**
@@ -100,6 +107,10 @@ class RolesController extends Controller
         $role->display_name = $request->display_name;
         $role->description = $request->description;
         $role->save();
+
+        if ($request->permissions) {
+          $role->syncPermissions(explode(',', $request->permissions));
+        }
 
         return redirect()->route('roles.index')->with('success', 'Role updated succesfully');
     }
