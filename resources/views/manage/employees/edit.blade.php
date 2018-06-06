@@ -10,7 +10,7 @@
       </ul>
     </nav>
 
-    <h1 class="title">Create Staff Member</h1>
+    <h1 class="title">Edit Staff Member</h1>
     <form action="{{ route('employees.update', $employee->id) }}" method="POST" enctype="multipart/form-data">
       {{csrf_field()}}
       {{ method_field('PUT') }}

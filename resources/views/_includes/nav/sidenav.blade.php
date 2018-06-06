@@ -7,7 +7,7 @@
     <p class="menu-label">Content</p>
     <ul class="menu-list">
       <li><a href="{{route('employees.index')}}" class="{{ Nav::isResource('employees') }}">Manage Staff</a></li>
-      <li><a href="#" class="">Manage Vacancies</a></li>
+      <li><a href="{{route('vacancies.index')}}" class="{{ Nav::isResource('vacancies') }}">Manage Vacancies</a></li>
     </ul>
     <p class="menu-label">Administration</p>
     <ul class="menu-list">

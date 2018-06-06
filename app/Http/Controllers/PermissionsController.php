@@ -53,7 +53,7 @@ class PermissionsController extends Controller
           $permission->description = $request->description;
           $permission->save();
 
-          return redirect()->route('permissions.index')->with('success', 'Permission succesfully created');
+          return redirect()->route('permissions.index')->with('success', 'Permission successfully created');
         } elseif ($request->permission_type == 'crud') {
           $this->validateWith([
             'resource' => 'required|min:3|max:100|alpha'

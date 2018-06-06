@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Vacancy;
-use App\Http\Resources\Vacancy as VacancyResource;
+use Illuminate\Http\Request;
 
 class VacanciesController extends Controller
 {
@@ -17,10 +15,9 @@ class VacanciesController extends Controller
   public function index()
   {
     //get vacancies
-    $vacancies = Vacancy::paginate(5);
-
-    // return the collection of vacancies as a resource
-    return VacancyResource::collection($vacancies);
+    $vacancies = Vacancy::orderBy('id', 'desc')->paginate(10);
+    // return vacancies in index view
+    return view('manage.vacancies.index')->withVacancies($vacancies);
   }
 
   /**
@@ -31,6 +28,7 @@ class VacanciesController extends Controller
   public function create()
   {
     //
+    return view('manage.vacancies.create');
   }
 
   /**
@@ -42,19 +40,25 @@ class VacanciesController extends Controller
   public function store(Request $request)
   {
     //
-    $vacancy = $request->isMethod('put') ? Vacancy::findOrFail($request->vacancy_id) : new Vacancy;
+    $this->validateWith([
+      'name' => 'required|max:255',
+      'requirements' => 'required|max:255',
+      'description' => 'sometimes|max:255'
+    ]);
 
-    $vacancy->id = $request->input('vacancy_id');
-    $vacancy->name = $request->input('name');
-    $vacancy->requirements = $request->input('requirements');
-    $vacancy->description = $request->input('description');
-    $vacancy->name_es = $request->input('name_es');
-    $vacancy->requirements_es = $request->input('requirements_es');
-    $vacancy->description_es = $request->input('description_es');
+    $vacancy = new Vacancy();
 
-    if ($vacancy->save()) {
-      return new VacancyResource($vacancy);
-    }
+    $vacancy->name = $request->name;
+    $vacancy->requirements = $request->requirements;
+    $vacancy->description = $request->description;
+
+    $vacancy->name_es = $request->name_es;
+    $vacancy->requirements_es = $request->requirements_es;
+    $vacancy->description_es = $request->description_es;
+
+    $vacancy->save();
+
+    return redirect()->route('vacancies.index')->with('success', 'Vacancy created successfully');
   }
 
   /**
@@ -63,13 +67,10 @@ class VacanciesController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function show($id)
+  public function show(Vacancy $vacancy)
   {
-    // get Vacancy
-    $vacancy = Vacancy::findOrFail($id);
-
     //return the sigle vacancy as resource
-    return new VacancyResource($vacancy);
+    return view('manage.vacancies.show')->withVacancy($vacancy);
   }
 
   /**
@@ -78,9 +79,10 @@ class VacanciesController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function edit($id)
+  public function edit(Vacancy $vacancy)
   {
     //
+    return view('manage.vacancies.edit')->withVacancy($vacancy);
   }
 
   /**
@@ -90,9 +92,26 @@ class VacanciesController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function update(Request $request, $id)
+  public function update(Request $request, Vacancy $vacancy)
   {
     //
+    $this->validateWith([
+      'name' => 'required|max:255',
+      'requirements' => 'required|max:255',
+      'description' => 'sometimes|max:255'
+    ]);
+
+    $vacancy->name = $request->name;
+    $vacancy->requirements = $request->requirements;
+    $vacancy->description = $request->description;
+
+    $vacancy->name_es = $request->name_es;
+    $vacancy->requirements_es = $request->requirements_es;
+    $vacancy->description_es = $request->description_es;
+
+    $vacancy->save();
+
+    return redirect()->route('vacancies.index')->with('success', 'Vacancy updated successfully');
   }
 
   /**
