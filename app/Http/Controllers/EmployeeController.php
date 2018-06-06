@@ -15,6 +15,8 @@ class EmployeeController extends Controller
     public function index()
     {
         //
+        $employees = Employee::orderBy('id', 'desc')->paginate(10);
+        return view('manage.employees.index')->withEmployees($employees);
     }
 
     /**
@@ -25,6 +27,7 @@ class EmployeeController extends Controller
     public function create()
     {
         //
+        return view('manage.employees.create');
     }
 
     /**
@@ -36,6 +39,43 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validateWith([
+          'name' => 'required|max:255',
+          'job_title' => 'required|max:255',
+          'description' => 'sometimes|max:255'
+        ]);
+
+        //handle file uopz_overload
+        if ($request->hasFile('thumbnail')) {
+          //get filename with the extension
+          $fileNameWithExt = $request->file('thumbnail')->getClientOriginalName();
+          //get just fileName
+          $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+          //get just ext
+          $extension = $request->file('thumbnail')->getClientOriginalExtension();
+          //file name to Store
+          $fileNameToStore=$filename.'_'.time().'.'.$extension;
+          //upload
+          $path = $request->file('thumbnail')->storeAs('public/thumbnails', $fileNameToStore);
+        } else {
+          $fileNameToStore = 'noimage.jpg';
+        }
+
+        $employee = new Employee();
+
+        $employee->name = $request->name;
+        $employee->job_title = $request->job_title;
+        $employee->description = $request->description;
+
+        $employee->puesto = $request->puesto;
+        $employee->descripcion = $request->descripcion;
+
+        $employee->thumbnail = $fileNameToStore;
+        $employee->public = $request->public;
+
+        $employee->save();
+
+        return redirect()->route('employees.index')->with('success', 'Employee created succesfully');
     }
 
     /**
@@ -47,6 +87,7 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         //
+        return view('manage.employees.show')->withEmployee($employee);
     }
 
     /**
@@ -58,6 +99,7 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         //
+        return view('manage.employees.edit')->withEmployee($employee);
     }
 
     /**
@@ -70,6 +112,43 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         //
+        $this->validateWith([
+          'name' => 'required|max:255',
+          'job_title' => 'required|max:255',
+          'description' => 'sometimes|max:255'
+        ]);
+
+        //handle file uopz_overload
+        if ($request->hasFile('thumbnail')) {
+          //get filename with the extension
+          $fileNameWithExt = $request->file('thumbnail')->getClientOriginalName();
+          //get just fileName
+          $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+          //get just ext
+          $extension = $request->file('thumbnail')->getClientOriginalExtension();
+          //file name to Store
+          $fileNameToStore=$filename.'_'.time().'.'.$extension;
+          //upload
+          $path = $request->file('thumbnail')->storeAs('public/thumbnails', $fileNameToStore);
+        } else {
+          $fileNameToStore = 'noimage.jpg';
+        }
+
+        $employee->name = $request->name;
+        $employee->job_title = $request->job_title;
+        $employee->description = $request->description;
+
+        $employee->puesto = $request->puesto;
+        $employee->descripcion = $request->descripcion;
+
+        if ($request->hasFile('thumbnail')) {
+          $employee->thumbnail = $fileNameToStore;
+        }
+        $employee->public = $request->public;
+
+        $employee->save();
+
+        return redirect()->route('employees.index')->with('success', 'Employee updated succesfully');
     }
 
     /**

@@ -11,7 +11,7 @@
     </nav>
 
     <h1 class="title">Edit Role</h1>
-    <form action="{{ route('roles.update', $role->id) }}" method="POST" id="myform">
+    <form action="{{ route('roles.update', $role->id) }}" method="POST">
       {{csrf_field()}}
       {{ method_field('PUT') }}
 

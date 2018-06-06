@@ -16,35 +16,50 @@
       {{method_field('PUT')}}
       {{csrf_field()}}
 
-      <div class="field">
-        <label for="name" class="label">Name</label>
-        <div class="control">
-         <input class="input" type="text" name="name" id="name" value="{{$user->name}}">
-       </div>
-      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label for="name" class="label">Name</label>
+            <div class="control">
+             <input class="input" type="text" name="name" id="name" value="{{$user->name}}">
+           </div>
+          </div>
 
-      <div class="field">
-        <label for="email" class="label">Email</label>
-        <div class="control">
-         <input class="input" type="email" name="email" id="email" value="{{$user->email}}">
-       </div>
-      </div>
+          <div class="field">
+            <label for="email" class="label">Email</label>
+            <div class="control">
+             <input class="input" type="email" name="email" id="email" value="{{$user->email}}">
+           </div>
+          </div>
 
-      <div class="field">
-        <label for="password" class="label">Password</label>
-        <div class="block">
           <div class="field">
-            <b-radio name="password_options" v-model="password_options" native-value="keep">Do Not Change Password</b-radio>
+            <label for="password" class="label">Password</label>
+            <div class="block">
+              <div class="field">
+                <b-radio name="password_options" v-model="password_options" native-value="keep">Do Not Change Password</b-radio>
+              </div>
+              <div class="field">
+                <b-radio name="password_options" v-model="password_options" native-value="auto">Auto-Generate New Password</b-radio>
+              </div>
+              <div class="field">
+                <b-radio name="password_options" v-model="password_options" native-value="manual">Manually Set New Password</b-radio>
+                <p class="control m-t-15">
+                  <input type="text" class="input" name="password" id="password" v-if="password_options == 'manual'" placeholder="Manually give a password to this user">
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="field">
-            <b-radio name="password_options" v-model="password_options" native-value="auto">Auto-Generate New Password</b-radio>
-          </div>
-          <div class="field">
-            <b-radio name="password_options" v-model="password_options" native-value="manual">Manually Set New Password</b-radio>
-            <p class="control m-t-15">
-              <input type="text" class="input" name="password" id="password" v-if="password_options == 'manual'" placeholder="Manually give a password to this user">
-            </p>
-          </div>
+        </div>
+
+        <div class="column">
+          <label for="roles" class="label">{{ $user->name }}'s Roles</label>
+          <section>
+            @foreach ($roles as $role)
+              <div class="field">
+                  <b-checkbox v-model="rolesSelected" :native-value="{{$role->id}}">{{$role->display_name}}</b-checkbox>
+              </div>
+            @endforeach
+          </section>
         </div>
       </div>
 

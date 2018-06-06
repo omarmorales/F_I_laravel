@@ -41,7 +41,14 @@
         </div>
 
         <div class="column">
-          ola q ace
+          <label for="roles" class="label">User's Roles</label>
+          <section>
+            @foreach ($roles as $role)
+              <div class="field">
+                  <b-checkbox v-model="rolesSelected" :native-value="{{$role->id}}">{{$role->display_name}}</b-checkbox>
+              </div>
+            @endforeach
+          </section>
         </div>
       </div>
 

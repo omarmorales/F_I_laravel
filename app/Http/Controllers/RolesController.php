@@ -48,6 +48,7 @@ class RolesController extends Controller
           'description' => 'sometimes|max:255'
         ]);
 
+
         $role = new Role();
         $role->display_name = $request->display_name;
         $role->name = $request->name;
