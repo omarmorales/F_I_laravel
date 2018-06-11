@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Vacancy extends Model
 {
     //
+    public function applications()
+    {
+      return $this->hasMany('App\Application');
+    }
 }

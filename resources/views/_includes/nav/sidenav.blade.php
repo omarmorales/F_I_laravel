@@ -7,18 +7,25 @@
     <p class="menu-label">Content</p>
     <ul class="menu-list">
       <li><a href="{{route('employees.index')}}" class="{{ Nav::isResource('employees') }}">Manage Staff</a></li>
-      <li><a href="{{route('vacancies.index')}}" class="{{ Nav::isResource('vacancies') }}">Manage Vacancies</a></li>
+      <li>
+        <a class="has-submenu {{Nav::hasSegment(['vacancies', 'applications'],2)}}">Manage Vacancies</a>
+        <ul class="submenu">
+          <li><a href="{{route('vacancies.index')}}" class="{{Nav::isResource('vacancies')}}">Vacancies</a></li>
+          <li><a href="" class="">Applications</a></li>
+        </ul>
+      </li>
+      <li><a href="" class="">Manage Media</a></li>
     </ul>
     <p class="menu-label">Administration</p>
     <ul class="menu-list">
       <li><a href="{{ route('users.index') }}" class="{{ Nav::isResource('users') }}">Manage Users</a></li>
       <li>
-         <a class="has-submenu {{Nav::hasSegment(['roles', 'permissions'],2)}}">Roles &amp; Permissions</a>
-         <ul class="submenu">
-           <li><a href="{{route('roles.index')}}" class="{{Nav::isResource('roles')}}">Roles</a></li>
-           <li><a href="{{route('permissions.index')}}" class="{{Nav::isResource('permissions')}}">Permissions</a></li>
-         </ul>
-       </li>
+        <a class="has-submenu {{Nav::hasSegment(['roles', 'permissions'],2)}}">Roles &amp; Permissions</a>
+        <ul class="submenu">
+          <li><a href="{{route('roles.index')}}" class="{{Nav::isResource('roles')}}">Roles</a></li>
+          <li><a href="{{route('permissions.index')}}" class="{{Nav::isResource('permissions')}}">Permissions</a></li>
+        </ul>
+      </li>
     </ul>
   </aside>
 </div>

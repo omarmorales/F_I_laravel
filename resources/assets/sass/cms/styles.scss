@@ -1,9 +1,13 @@
+html,body {
+  font-family: $font-family-sans-serif;
+}
+
 #admin-side-menu {
   position: fixed;
   top: 3rem;
-  left: -200px;
+  left: -220px;
   bottom: 0;
-  width: 200px;
+  width: 220px;
   background-color: white;
   overflow-y: scroll;
   transition: left 0.3s ease-in-out;
@@ -41,7 +45,7 @@
   position: absolute;
   top: 4rem;
   @include desktop {
-    left: 200px;
+    left: 220px;
     right: 0;
   }
 }
@@ -52,8 +56,30 @@
 
 .button-float {
   position: fixed;
-  right: 15px;
-  bottom: 15px;
+  right: 20px;
+  bottom: 20px;
+}
+
+.button-round {
+  background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+  border-radius: 999em;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  line-height: 1;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+
+  span {
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: #FFF;
+  }
 }
 
 .table_wrapper {

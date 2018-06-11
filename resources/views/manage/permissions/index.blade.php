@@ -42,6 +42,23 @@
     </div>
 
     {{ $permissions->links() }}
-    <a href="{{ route('permissions.create') }}" class="button button-float"><i class="fas fa-plus"></i></a>
+
+    <b-tooltip label="create new permission" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">
+      <a href="{{ route('permissions.create') }}" class="button-float button-round">
+        <span class="fas fa-plus"></span>
+      </a>
+    </b-tooltip>
   </div>
+@endsection
+
+@section('scripts')
+  <script type="text/javascript">
+    window.onload = function() {
+      const app = new Vue({
+        el: '#app',
+        data: {
+        }
+      });
+    }
+  </script>
 @endsection

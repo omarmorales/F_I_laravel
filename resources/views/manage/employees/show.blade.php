@@ -13,19 +13,19 @@
     <b-dropdown v-model="isPublic" class="m-b-10">
       <button class="button is-primary" type="button" slot="trigger">
         <template v-if="isPublic">
-          <i class="fas fa-globe m-r-10"></i>
-          <span class="m-r-10">Public</span>
+          <i class="fas fa-globe m-r-5"></i>
+          <span class="m-r-5">Public</span>
         </template>
         <template v-else>
-          <i class="fas fa-lock m-r-10"></i>
-          <span class="m-r-10">Private</span>
+          <i class="fas fa-lock m-r-5"></i>
+          <span class="m-r-5">Private</span>
         </template>
         <i class="fas fa-caret-down"></i>
       </button>
 
       <b-dropdown-item :value="true">
         <div class="media">
-          <i class="fas fa-globe m-r-10 m-t-5"></i>
+          <i class="fas fa-globe m-r-5 m-t-5"></i>
           <div class="media-content">
             <h3>Public</h3>
             <small>Everyone can see</small>
@@ -35,7 +35,7 @@
 
       <b-dropdown-item :value="false">
         <div class="media">
-          <i class="fas fa-lock m-r-10 m-t-5"></i>
+          <i class="fas fa-lock m-r-5 m-t-5"></i>
           <div class="media-content">
             <h3>Private</h3>
             <small>Only visible for admins</small>

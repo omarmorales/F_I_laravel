@@ -43324,29 +43324,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a);
 
 Vue.component('vacancies', __webpack_require__(40));
 
-// const app = new Vue({
-//     el: '#app',
-//     data: {
-//       auto_password: true,
-//       password_options: 'keep',
-//       permissionType: 'basic',
-//       resource: '',
-//       permissionsSelected: [],
-//       crudSelected: ['create', 'read', 'update', 'delete']
-//     },
-//     methods: {
-//       crudName: function(item) {
-//         return item.substr(0,1).toUpperCase() + item.substr(1) + " " + app.resource.substr(0,1).toUpperCase() + app.resource.substr(1);
-//       },
-//       crudSlug: function(item) {
-//         return item.toLowerCase() + "-" + app.resource.toLowerCase();
-//       },
-//       crudDescription: function(item) {
-//         return "Allow a User to " + item.toUpperCase() + " a " + app.resource.substr(0,1).toUpperCase() + app.resource.substr(1);
-//       }
-//     }
-// });
-
 __webpack_require__(48);
 __webpack_require__(49);
 __webpack_require__(50);
@@ -44452,9 +44429,15 @@ document.addEventListener('DOMContentLoaded', function () {
 /***/ (function(module, exports) {
 
 var accordions = document.getElementsByClassName('has-submenu');
-var adminSlideoutButton = document.getElementById('admin-slideout-button');
+var adminSlideButton = document.getElementById('admin-slideout-button');
 
-adminSlideoutButton.onclick = function () {
+function setSubmenuStyles(submenu, maxHeight, margins) {
+  submenu.style.maxHeight = maxHeight;
+  submenu.style.marginTop = margins;
+  submenu.style.marginBottom = margins;
+}
+
+adminSlideButton.onclick = function () {
   this.classList.toggle('is-active');
   document.getElementById('admin-side-menu').classList.toggle('is-active');
 };
@@ -44462,24 +44445,19 @@ adminSlideoutButton.onclick = function () {
 for (var i = 0; i < accordions.length; i++) {
   if (accordions[i].classList.contains('is-active')) {
     var submenu = accordions[i].nextElementSibling;
-    submenu.style.maxHeight = submenu.scrollHeight + "px";
-    submenu.style.marginTop = "0.75em";
-    submenu.style.marginBottom = "0.75em";
+    setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
   }
+
   accordions[i].onclick = function () {
     this.classList.toggle('is-active');
 
     var submenu = this.nextElementSibling;
     if (submenu.style.maxHeight) {
-      //menu is open, we need to close it
-      submenu.style.maxHeight = null;
-      submenu.style.marginTop = null;
-      submenu.style.marginBottom = null;
+      // menu is open, we need to close it now
+      setSubmenuStyles(submenu, null, null);
     } else {
-      // menu is close, so we need to open it
-      submenu.style.maxHeight = submenu.scrollHeight + "px";
-      submenu.style.marginTop = "0.75em";
-      submenu.style.marginBottom = "0.75em";
+      // meny is close, so we need to open it
+      setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
     }
   };
 }

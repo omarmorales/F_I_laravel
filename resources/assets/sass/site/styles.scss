@@ -1,3 +1,7 @@
+html,body {
+  font-family: $font-family-sans-serif;
+}
+
 .site-area {
   position: absolute;
   @include desktop {

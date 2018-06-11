@@ -14871,12 +14871,17 @@ label.panel-block:hover {
   padding-right: 100px !important;
 }
 
+html,
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
 #admin-side-menu {
   position: fixed;
   top: 3rem;
-  left: -200px;
+  left: -220px;
   bottom: 0;
-  width: 200px;
+  width: 220px;
   background-color: white;
   overflow-y: scroll;
   -webkit-transition: left 0.3s ease-in-out;
@@ -14927,7 +14932,7 @@ label.panel-block:hover {
 
 @media screen and (min-width: 1088px) {
   .management-area {
-    left: 200px;
+    left: 220px;
     right: 0;
   }
 }
@@ -14938,8 +14943,32 @@ label.panel-block:hover {
 
 .button-float {
   position: fixed;
-  right: 15px;
-  bottom: 15px;
+  right: 20px;
+  bottom: 20px;
+}
+
+.button-round {
+  background: -webkit-gradient(linear, left top, right top, from(#f15a24), color-stop(#ff7900), to(#ff9c27));
+  background: linear-gradient(to right, #f15a24, #ff7900, #ff9c27);
+  border-radius: 999em;
+  width: 40px;
+  height: 40px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  line-height: 1;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.button-round span {
+  position: absolute;
+  left: 0;
+  top: 25%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  color: #FFF;
 }
 
 .table_wrapper {
