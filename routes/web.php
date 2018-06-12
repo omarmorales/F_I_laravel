@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::get('/aboutus', 'PagesController@aboutus');
 
 Auth::routes();
 
