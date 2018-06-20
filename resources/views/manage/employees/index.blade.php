@@ -12,7 +12,7 @@
     <h1 class="title">Manage Staff</h1>
     <div class="columns is-multiline">
       @foreach ($employees as $employee)
-        <div class="column is-one-half">
+        <div class="column is-half">
           <div class="box">
             <article class="media">
               <div class="media-left">

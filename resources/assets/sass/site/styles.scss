@@ -113,7 +113,7 @@ html,body {
   overflow: hidden;
   width: 100%;
   height: 0;
-  transition: .5s ease;
+  transition: .8s ease;
 }
 
 .container:hover .overlay {
@@ -122,4 +122,8 @@ html,body {
 
 .text {
   color: white;
+}
+
+.no-padding {
+  padding: 0;
 }

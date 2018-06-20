@@ -14916,8 +14916,8 @@ body {
 .submenu {
   max-height: 0;
   overflow: hidden;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .menu-list li ul {
@@ -14983,10 +14983,6 @@ body {
 .remove_link_styles {
   text-decoration: none;
 }
-
-/* Action Button */
-
-/* Action Button ends */
 
 .navbar-laravel {
   background-color: #fff;

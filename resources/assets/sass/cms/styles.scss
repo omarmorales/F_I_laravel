@@ -33,7 +33,7 @@ html,body {
 .submenu {
   max-height: 0;
   overflow: hidden;
-  transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in-out;
 }
 
 .menu-list li ul {
@@ -94,7 +94,3 @@ html,body {
 .remove_link_styles {
   text-decoration: none;
 }
-
-/* Action Button */
-
-/* Action Button ends */

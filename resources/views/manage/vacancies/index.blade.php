@@ -20,7 +20,7 @@
                   <p>
                     <strong>{{ $vacancy->name }}</strong> <small>(Created {{ $vacancy->created_at->diffForHumans() }})</small>
                     <br>
-                    {{ str_limit($vacancy->description,200) }}
+                    {{ str_limit($vacancy->requirements,200) }}
                   </p>
                 </div>
                 <nav class="level is-mobile">

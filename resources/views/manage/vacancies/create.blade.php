@@ -68,7 +68,7 @@
                  <textarea class="textarea" name="requirements_es" id="requirements_es">{{old('requirements_es')}}</textarea>
                </div>
               </div>
-
+              
               <div class="field">
                 <p class="control">
                   <label for="description_es" class="label">Descripción</label>

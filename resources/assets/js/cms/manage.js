@@ -16,6 +16,7 @@ for (var i = 0; i < accordions.length; i++) {
   if (accordions[i].classList.contains('is-active')) {
     const submenu = accordions[i].nextElementSibling
     setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em")
+    setSubmenuStyles(submenu, submenu.style.maxHeight = "75px")
   }
 
   accordions[i].onclick = function () {
@@ -27,7 +28,7 @@ for (var i = 0; i < accordions.length; i++) {
       setSubmenuStyles(submenu, null, null)
     } else {
       // meny is close, so we need to open it
-      setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em")
+      setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.85em")
     }
   }
 }

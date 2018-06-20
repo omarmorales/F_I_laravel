@@ -130,4 +130,16 @@ class VacanciesController extends Controller
       return new VacancyResource($vacancy);
     }
   }
+
+  /**
+  * Show the form for editing the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function public(Vacancy $vacancy)
+  {
+    //
+    return view('pages.vacancy')->withVacancy($vacancy);
+  }
 }

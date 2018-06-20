@@ -13,6 +13,7 @@
 
 Route::get('/', 'PagesController@index');
 Route::get('/aboutus', 'PagesController@aboutus');
+Route::get('/vacancies/{vacancy}', 'VacanciesController@public')->name('vacancies.public');
 
 Auth::routes();
 
@@ -24,6 +25,7 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|user'
   Route::resource('/permissions', 'PermissionsController');
   Route::resource('/employees', 'EmployeeController');
   Route::resource('/vacancies', 'VacanciesController');
+  Route::resource('/applications', 'ApplicationController');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

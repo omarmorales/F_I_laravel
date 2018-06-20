@@ -11,7 +11,7 @@
         <a class="has-submenu {{Nav::hasSegment(['vacancies', 'applications'],2)}}">Manage Vacancies</a>
         <ul class="submenu">
           <li><a href="{{route('vacancies.index')}}" class="{{Nav::isResource('vacancies')}}">Vacancies</a></li>
-          <li><a href="" class="">Applications</a></li>
+          <li><a href="{{route('applications.index')}}" class="{{Nav::isResource('applications')}}">Applications</a></li>
         </ul>
       </li>
       <li><a href="" class="">Manage Media</a></li>
