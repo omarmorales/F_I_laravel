@@ -4,13 +4,13 @@
   <div class="flex-container m-t-10 m-l-20 m-r-20">
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
-        <li><a href="">Content</a></li>
-        <li><a href="{{ route('employees.index') }}">Manage Staff</a></li>
-        <li class="is-active"><a href="#" aria-current="page">Edit</a></li>
+        <li><a href="">@lang('employees.SectionTitle')</a></li>
+        <li><a href="{{ route('employees.index') }}">@lang('employees.IndexTitle')</a></li>
+        <li class="is-active"><a href="#" aria-current="page">@lang('employees.EditTitle')</a></li>
       </ul>
     </nav>
 
-    <h1 class="title">Edit Staff Member</h1>
+    <h1 class="title">@lang('employees.editTxt')</h1>
     <form action="{{ route('employees.update', $employee->id) }}" method="POST" enctype="multipart/form-data">
       {{csrf_field()}}
       {{ method_field('PUT') }}
@@ -19,7 +19,7 @@
         <div class="column is-12">
           <div class="field">
             <p class="control">
-              <label for="name" class="label">Name</label>
+              <label for="name" class="label">@lang('employees.name')</label>
               <input type="text" class="input" name="name" value="{{ $employee->name }}" id="name">
             </p>
           </div>
@@ -75,12 +75,12 @@
         </div>
 
         <div class="column is-6">
-          <label class="label">Change thumbnail?</label>
+          <label class="label">@lang('employees.editThumbnail')</label>
           <div class="columns">
             <div class="column is-4">
               <div class="block">
-                    <b-radio v-model="change_thumbnail" name="change_thumbnail" native-value="yes">Yes</b-radio>
-                    <b-radio v-model="change_thumbnail" name="change_thumbnail" native-value="no">No</b-radio>
+                    <b-radio v-model="change_thumbnail" name="change_thumbnail" native-value="yes">@lang('employees.yes')</b-radio>
+                    <b-radio v-model="change_thumbnail" name="change_thumbnail" native-value="no">@lang('employees.no')</b-radio>
               </div>
             </div>
             <div class="column">
@@ -94,18 +94,48 @@
 
         <div class="column">
           <div class="field">
-              <label class="label">Show Staff Member as public?</label>
-              <input type="hidden" :value="isSwitched" name="public">
-              <b-switch v-model="isSwitched">
-                  @{{ isSwitched }}
-              </b-switch>
+            <label class="label">@lang('employees.public')</label>
+            <input type="hidden" :value="isPublic" name="public">
+            <b-dropdown v-model="isPublic" class="m-b-10">
+              <button class="button is-info" type="button" slot="trigger">
+                <template v-if="isPublic">
+                  <i class="fas fa-globe m-r-5"></i>
+                  <span class="m-r-5">@lang('employees.public_txt')</span>
+                </template>
+                <template v-else>
+                  <i class="fas fa-lock m-r-5"></i>
+                  <span class="m-r-5">@lang('employees.private')</span>
+                </template>
+                <i class="fas fa-caret-down"></i>
+              </button>
+
+              <b-dropdown-item :value="true">
+                <div class="media">
+                  <i class="fas fa-globe m-r-5 m-t-5"></i>
+                  <div class="media-content">
+                    <h3>@lang('employees.public_txt')</h3>
+                    <small>@lang('employees.public_desc')</small>
+                  </div>
+                </div>
+              </b-dropdown-item>
+
+              <b-dropdown-item :value="false">
+                <div class="media">
+                  <i class="fas fa-lock m-r-5 m-t-5"></i>
+                  <div class="media-content">
+                    <h3>@lang('employees.private')</h3>
+                    <small>@lang('employees.private_desc')</small>
+                  </div>
+                </div>
+              </b-dropdown-item>
+            </b-dropdown>
           </div>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <button class="button is-link">Submit</button>
+          <button class="button is-link">@lang('employees.submit')</button>
         </div>
       </div>
     </form>
@@ -118,9 +148,21 @@
     const app = new Vue({
       el: '#app',
       data: {
-        isSwitched: {{ $employee->public }},
+        isPublic: {{ $employee->public }},
         change_thumbnail: 'no'
       }
+    });
+
+    $('#descripcion').summernote({
+      placeholder: 'Add description for staff member',
+      tabsize: 2,
+      height: 100
+    });
+
+    $('#description').summernote({
+      placeholder: 'Agrega una descripción para este miembro del personal',
+      tabsize: 2,
+      height: 100
     });
   }
   </script>

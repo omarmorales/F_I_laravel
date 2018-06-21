@@ -52,7 +52,7 @@
                         <i class="far fa-edit" aria-hidden="true"></i>
                       </span>
                     </a>
-                    <a class="level-item" aria-label="delete">
+                    <a class="level-item toggle-modal" aria-label="delete" v-on:click="isActive{{ $employee->id }} = !isActive{{ $employee->id }}">
                       <span class="icon is-small has-text-danger">
                         <i class="fas fa-trash" aria-hidden="true"></i>
                       </span>
@@ -69,6 +69,49 @@
               </div>
             </article>
           </div>
+        </div>
+        <div id="modal" class="modal" v-bind:class="{ 'is-active': isActive{{ $employee->id }} }">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="box">
+              <article class="media">
+                <div class="media-left">
+                  <figure class="image is-64x64">
+                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong>{{ $employee->name }}</strong> <small>@johnsmith</small> <small>31m</small>
+                      <br>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                    </p>
+                  </div>
+                  <nav class="level is-mobile">
+                    <div class="level-left">
+                      <a class="level-item" aria-label="reply">
+                        <span class="icon is-small">
+                          <i class="fas fa-reply" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                      <a class="level-item" aria-label="retweet">
+                        <span class="icon is-small">
+                          <i class="fas fa-retweet" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                      <a class="level-item" aria-label="like">
+                        <span class="icon is-small">
+                          <i class="fas fa-heart" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </div>
+                  </nav>
+                </div>
+              </article>
+            </div>
+          </div>
+          <button class="modal-close is-large" aria-label="close" v-on:click="isActive{{ $employee->id }} = !isActive{{ $employee->id }}"></button>
         </div>
       @endforeach
     </div>
@@ -89,6 +132,9 @@
       const app = new Vue({
         el: '#app',
         data: {
+          @foreach ($employees as $employee)
+            isActive{{ $employee->id }}: false,
+          @endforeach
         },
       });
     }

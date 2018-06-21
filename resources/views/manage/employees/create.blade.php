@@ -80,41 +80,41 @@
 
         <div class="column">
           <div class="field">
-              <label class="label">@lang('employees.public')</label>
-              <input type="hidden" :value="isPublic" name="public">
-              <b-dropdown v-model="isPublic" class="m-b-10">
-                <button class="button is-info" type="button" slot="trigger">
-                  <template v-if="isPublic">
-                    <i class="fas fa-globe m-r-5"></i>
-                    <span class="m-r-5">@lang('employees.public_txt')</span>
-                  </template>
-                  <template v-else>
-                    <i class="fas fa-lock m-r-5"></i>
-                    <span class="m-r-5">@lang('employees.private')</span>
-                  </template>
-                  <i class="fas fa-caret-down"></i>
-                </button>
+            <label class="label">@lang('employees.public')</label>
+            <input type="hidden" :value="isPublic" name="public">
+            <b-dropdown v-model="isPublic" class="m-b-10">
+              <button class="button is-info" type="button" slot="trigger">
+                <template v-if="isPublic">
+                  <i class="fas fa-globe m-r-5"></i>
+                  <span class="m-r-5">@lang('employees.public_txt')</span>
+                </template>
+                <template v-else>
+                  <i class="fas fa-lock m-r-5"></i>
+                  <span class="m-r-5">@lang('employees.private')</span>
+                </template>
+                <i class="fas fa-caret-down"></i>
+              </button>
 
-                <b-dropdown-item :value="true">
-                  <div class="media">
-                    <i class="fas fa-globe m-r-5 m-t-5"></i>
-                    <div class="media-content">
-                      <h3>@lang('employees.public_txt')</h3>
-                      <small>@lang('employees.public_desc')</small>
-                    </div>
+              <b-dropdown-item :value="true">
+                <div class="media">
+                  <i class="fas fa-globe m-r-5 m-t-5"></i>
+                  <div class="media-content">
+                    <h3>@lang('employees.public_txt')</h3>
+                    <small>@lang('employees.public_desc')</small>
                   </div>
-                </b-dropdown-item>
+                </div>
+              </b-dropdown-item>
 
-                <b-dropdown-item :value="false">
-                  <div class="media">
-                    <i class="fas fa-lock m-r-5 m-t-5"></i>
-                    <div class="media-content">
-                      <h3>@lang('employees.private')</h3>
-                      <small>@lang('employees.private_desc')</small>
-                    </div>
+              <b-dropdown-item :value="false">
+                <div class="media">
+                  <i class="fas fa-lock m-r-5 m-t-5"></i>
+                  <div class="media-content">
+                    <h3>@lang('employees.private')</h3>
+                    <small>@lang('employees.private_desc')</small>
                   </div>
-                </b-dropdown-item>
-              </b-dropdown>
+                </div>
+              </b-dropdown-item>
+            </b-dropdown>
           </div>
         </div>
       </div>
