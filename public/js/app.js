@@ -43269,7 +43269,7 @@ for (var i = 0; i < accordions.length; i++) {
   if (accordions[i].classList.contains('is-active')) {
     var submenu = accordions[i].nextElementSibling;
     setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
-    setSubmenuStyles(submenu, submenu.style.maxHeight = "75px");
+    setSubmenuStyles(submenu, submenu.style.maxHeight = "108px");
   }
 
   accordions[i].onclick = function () {

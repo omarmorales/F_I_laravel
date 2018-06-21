@@ -17,6 +17,21 @@
 
   <div id="navbarExampleTransparentExample" class="navbar-menu">
     <div class="navbar-start">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          {{ config('languages')[app()->getLocale()] }}
+        </a>
+
+        <div class="navbar-dropdown">
+          @foreach (config('languages') as $lang => $language)
+              @if ($lang !== app()->getLocale())
+                <a href="{{ route('lang.switch', $lang) }}" class="navbar-item">
+                  {{$language}}
+                </a>
+              @endif
+          @endforeach
+        </div>
+      </div>
     </div>
 
     <div class="navbar-end">

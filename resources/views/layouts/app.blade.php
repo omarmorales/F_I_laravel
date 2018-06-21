@@ -12,6 +12,7 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js" defer></script>
   @yield('scripts')
 
   <!-- Icons -->
@@ -23,6 +24,7 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
   @yield('styles')
 </head>
 <body>

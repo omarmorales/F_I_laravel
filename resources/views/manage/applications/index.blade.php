@@ -27,9 +27,11 @@
                 </div>
                 <nav class="level is-mobile">
                   <div class="level-left">
-                    <a class="level-item" aria-label="reply">
-                      <span class="icon is-small">
-                        <i class="fas fa-reply" aria-hidden="true"></i>
+                    <a href="{{asset('storage/ml/'.$application->motivation_letter)}}" class="level-item" aria-label="reply">
+                      <span class="icon is-small has-text-info">
+                        <b-tooltip label="Motivation letter" position="is-top" type="is-dark">
+                          <i class="fas fa-file-alt" aria-hidden="true"></i>
+                        </b-tooltip>
                       </span>
                     </a>
                     <a class="level-item" aria-label="retweet">

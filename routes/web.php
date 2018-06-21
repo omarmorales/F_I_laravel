@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'PagesController@index');
 Route::get('/aboutus', 'PagesController@aboutus');
 Route::get('/vacancies/{vacancy}', 'VacanciesController@public')->name('vacancies.public');
@@ -29,3 +28,4 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|user'
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('lang/{lang}', 'LanguageController@switchLang')->name('lang.switch');

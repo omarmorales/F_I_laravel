@@ -60,6 +60,15 @@
             </div>
           </div>
         </div>
+
+        <div class="column">
+          <div class="field">
+            <div class="control">
+              <label for="cv" class="label">Curriculum vitae</label>
+              <input type="file" class="input" name="cv" value="{{old('cv')}}" id="cv">
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="field">
