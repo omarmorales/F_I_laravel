@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Employee;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,7 @@ class EmployeeController extends Controller
     $this->validateWith([
       'name' => 'required|max:255',
       'job_title' => 'required|max:255',
-      'description' => 'sometimes|max:255'
+      'description' => 'sometimes'
     ]);
 
     //handle file uopz_overload
@@ -119,7 +120,7 @@ class EmployeeController extends Controller
     $this->validateWith([
       'name' => 'required|max:255',
       'job_title' => 'required|max:255',
-      'description' => 'sometimes|max:255'
+      'description' => 'sometimes'
     ]);
 
     //handle file uopz_overload
@@ -163,6 +164,13 @@ class EmployeeController extends Controller
   */
   public function destroy(Employee $employee)
   {
-    //
+    if ($employee->thumbnail != 'noimage.jpg') {
+      //delete de image
+      Storage::delete('public/thumbnails/'.$employee->thumbnail);
+    }
+
+    $employee->delete();
+
+    return redirect()->route('employees.index')->with('success', 'Staff member deleted successfully');
   }
 }

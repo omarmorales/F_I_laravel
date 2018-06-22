@@ -28,7 +28,7 @@
                     <p>
                       <strong>{{ $employee->name }}</strong> <small>{{ $employee->job_title }}</small>
                       <br>
-                      {{ str_limit($employee->description,120) }}
+                      {!! str_limit($employee->description,120) !!}
                     </p>
                   </div>
                 @elseif (App::isLocale('es'))
@@ -36,7 +36,7 @@
                     <p>
                       <strong>{{ $employee->name }}</strong> <small>{{ $employee->puesto }}</small>
                       <br>
-                      {{ str_limit($employee->descripcion,120) }}
+                      {!! str_limit($employee->descripcion,120) !!}
                     </p>
                   </div>
                 @endif
@@ -73,43 +73,29 @@
         <div id="modal" class="modal" v-bind:class="{ 'is-active': isActive{{ $employee->id }} }">
           <div class="modal-background"></div>
           <div class="modal-content">
-            <div class="box">
-              <article class="media">
-                <div class="media-left">
-                  <figure class="image is-64x64">
-                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <div class="content">
-                    <p>
-                      <strong>{{ $employee->name }}</strong> <small>@johnsmith</small> <small>31m</small>
-                      <br>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                    </p>
+            <form action="{{ route('employees.destroy', $employee->id) }}" method="POST">
+              {{csrf_field()}}
+              {{ method_field('DELETE') }}
+
+              <div class="notification">
+                <div class="columns">
+                  <div class="column is-2 has-text-centered">
+                    <i class="fas fa-trash has-text-danger is-size-1"></i>
                   </div>
-                  <nav class="level is-mobile">
-                    <div class="level-left">
-                      <a class="level-item" aria-label="reply">
-                        <span class="icon is-small">
-                          <i class="fas fa-reply" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                      <a class="level-item" aria-label="retweet">
-                        <span class="icon is-small">
-                          <i class="fas fa-retweet" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                      <a class="level-item" aria-label="like">
-                        <span class="icon is-small">
-                          <i class="fas fa-heart" aria-hidden="true"></i>
-                        </span>
-                      </a>
-                    </div>
-                  </nav>
+                  <div class="column is-10">
+                    <p class="is-size-5">Are you sure you want to delete <strong>{{ $employee->name }}</strong> from the database? <small>This action cannot be undone.</small></p>
+                  </div>
                 </div>
-              </article>
-            </div>
+                <div class="field is-grouped is-grouped-right">
+                  <div class="control">
+                    <a class="button is-light" v-on:click="isActive{{ $employee->id }} = !isActive{{ $employee->id }}">Cancel</a>
+                  </div>
+                  <div class="control">
+                    <button class="button is-danger">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
           <button class="modal-close is-large" aria-label="close" v-on:click="isActive{{ $employee->id }} = !isActive{{ $employee->id }}"></button>
         </div>
