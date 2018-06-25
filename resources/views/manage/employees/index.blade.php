@@ -18,7 +18,7 @@
               <div class="media-left">
                 <a href="{{ route('employees.show', $employee->id) }}">
                   <figure class="image is-64x64">
-                    <img src="{{ asset('storage/thumbnails/'.$employee->thumbnail) }}" alt="{{ $employee->name }}">
+                    <img src="https://website-c230-consultores.nyc3.digitaloceanspaces.com/thumbnails/{{ $employee->thumbnail }}" alt="{{ $employee->name }}">
                   </figure>
                 </a>
               </div>

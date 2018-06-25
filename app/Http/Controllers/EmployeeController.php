@@ -61,7 +61,7 @@ class EmployeeController extends Controller
       //file name to Store
       $fileNameToStore=$filename.'_'.time().'.'.$extension;
       //upload
-      $path = $request->file('thumbnail')->storeAs('public/thumbnails', $fileNameToStore);
+      $path = Storage::disk('spaces')->putFileAs('thumbnails', $request->file('thumbnail'), $fileNameToStore, 'public');
     } else {
       $fileNameToStore = 'noimage.jpg';
     }
@@ -134,7 +134,7 @@ class EmployeeController extends Controller
       //file name to Store
       $fileNameToStore=$filename.'_'.time().'.'.$extension;
       //upload
-      $path = $request->file('thumbnail')->storeAs('public/thumbnails', $fileNameToStore);
+      $path = Storage::disk('spaces')->putFileAs('thumbnails', $request->file('thumbnail'), $fileNameToStore, 'public');
     } else {
       $fileNameToStore = 'noimage.jpg';
     }
