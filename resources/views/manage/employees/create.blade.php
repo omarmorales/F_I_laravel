@@ -139,13 +139,13 @@
     });
 
     $('#descripcion').summernote({
-      placeholder: 'Add description for staff member',
+      placeholder: 'Agrega una descripción para este miembro del personal',
       tabsize: 2,
       height: 100
     });
 
     $('#description').summernote({
-      placeholder: 'Agrega una descripción para este miembro del personal',
+      placeholder: 'Add description for staff member',
       tabsize: 2,
       height: 100
     });

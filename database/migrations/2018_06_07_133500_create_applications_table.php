@@ -22,7 +22,7 @@ class CreateApplicationsTable extends Migration
             $table->string('motivation_letter')->nullable();
             $table->string('cv')->nullable();
 
-            $table->integer('vacancy_id');
+            $table->unsignedInteger('vacancy_id');
 
             $table->timestamps();
         });

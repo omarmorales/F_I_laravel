@@ -4,13 +4,13 @@
   <div class="flex-container m-t-10 m-l-20 m-r-20">
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
-        <li><a href="">Content</a></li>
-        <li><a href="{{ route('vacancies.index') }}">Manage Vacancies</a></li>
-        <li class="is-active"><a href="#" aria-current="page">Create</a></li>
+        <li><a href="">@lang('vacancies.SectionTitle')</a></li>
+        <li><a href="{{ route('vacancies.index') }}">@lang('vacancies.IndexTitle')</a></li>
+        <li class="is-active"><a href="#" aria-current="page">@lang('vacancies.CreateTitle')</a></li>
       </ul>
     </nav>
 
-    <h1 class="title">Create Vacancy</h1>
+    <h1 class="title">@lang('vacancies.createTxt')</h1>
     <form action="{{ route('vacancies.store') }}" method="POST">
       {{csrf_field()}}
 
@@ -68,7 +68,7 @@
                  <textarea class="textarea" name="requirements_es" id="requirements_es">{{old('requirements_es')}}</textarea>
                </div>
               </div>
-              
+
               <div class="field">
                 <p class="control">
                   <label for="description_es" class="label">Descripción</label>
@@ -81,18 +81,48 @@
 
         <div class="column">
           <div class="field">
-              <label class="label">Show Vacancy as public?</label>
-              <input type="hidden" :value="isSwitched" name="public">
-              <b-switch v-model="isSwitched">
-                  @{{ isSwitched }}
-              </b-switch>
+              <label class="label">@lang('vacancies.public')</label>
+              <input type="hidden" :value="isPublic" name="public">
+              <b-dropdown v-model="isPublic" class="m-b-10">
+                <button class="button is-info" type="button" slot="trigger">
+                  <template v-if="isPublic">
+                    <i class="fas fa-globe m-r-5"></i>
+                    <span class="m-r-5">@lang('vacancies.public_txt')</span>
+                  </template>
+                  <template v-else>
+                    <i class="fas fa-lock m-r-5"></i>
+                    <span class="m-r-5">@lang('vacancies.private')</span>
+                  </template>
+                  <i class="fas fa-caret-down"></i>
+                </button>
+
+                <b-dropdown-item :value="true">
+                  <div class="media">
+                    <i class="fas fa-globe m-r-5 m-t-5"></i>
+                    <div class="media-content">
+                      <h3>@lang('vacancies.public_txt')</h3>
+                      <small>@lang('vacancies.public_desc')</small>
+                    </div>
+                  </div>
+                </b-dropdown-item>
+
+                <b-dropdown-item :value="false">
+                  <div class="media">
+                    <i class="fas fa-lock m-r-5 m-t-5"></i>
+                    <div class="media-content">
+                      <h3>@lang('vacancies.private')</h3>
+                      <small>@lang('vacancies.private_desc')</small>
+                    </div>
+                  </div>
+                </b-dropdown-item>
+              </b-dropdown>
           </div>
         </div>
       </div>
 
       <div class="field">
         <div class="control">
-          <button class="button is-link">Submit</button>
+          <button class="button is-link">@lang('vacancies.submit')</button>
         </div>
       </div>
     </form>
@@ -105,8 +135,32 @@
     const app = new Vue({
       el: '#app',
       data: {
-        isSwitched: false
+        isPublic: true
       }
+    });
+
+    $('#requirements').summernote({
+      placeholder: 'Add requirements for this vacancy',
+      tabsize: 2,
+      height: 100
+    });
+
+    $('#description').summernote({
+      placeholder: 'Add description for this vacancy',
+      tabsize: 2,
+      height: 100
+    });
+
+    $('#requirements_es').summernote({
+      placeholder: 'Agrega una descripción para este miembro del personal',
+      tabsize: 2,
+      height: 100
+    });
+
+    $('#description_es').summernote({
+      placeholder: 'Agrega una descripción para este miembro del personal',
+      tabsize: 2,
+      height: 100
     });
   }
   </script>

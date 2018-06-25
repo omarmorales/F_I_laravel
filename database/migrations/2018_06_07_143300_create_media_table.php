@@ -21,7 +21,7 @@ class CreateMediaTable extends Migration
             $table->longText('abstract')->nullable();
             $table->date('publication_date')->nullable();
 
-            $table->integer('media_type_id');
+            $table->unsignedInteger('media_type_id');
 
             $table->timestamps();
         });

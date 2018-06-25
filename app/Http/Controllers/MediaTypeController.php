@@ -24,7 +24,9 @@ class MediaTypeController extends Controller
      */
     public function create()
     {
-        //
+      $this->validateWith([
+        'name' => 'required|max:255',
+      ]);
     }
 
     /**

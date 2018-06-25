@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-    <section id="staff" class="m-t-50 m-l-100 m-r-100 m-b-50">
+    <section id="staff" class="m-t-50 m-l-20 m-b-50">
       <div class="columns">
         <div class="column">
           <h2 class="is-size-1 has-text-weight-light">Staff</h2>
@@ -16,13 +16,13 @@
                 <img src="{{ asset('storage/thumbnails/'.$employee->thumbnail) }}" alt="Avatar" class="image">
                 <div class="content-img">
                   <p class="is-uppercase">{{ $employee->name }}</p>
-                  <small>{{ $employee->job_title }}</small>
+                  <small>{!! $employee->job_title !!}</small>
                 </div>
                 <div class="overlay">
                   <div class="text m-l-20 m-t-20 m-r-20">
                     <p class="is-uppercase">{{ $employee->name }}</p>
                     <small>{{ $employee->job_title }}</small>
-                    <p class="m-t-30">{{ $employee->description }}</p>
+                    <p class="m-t-30">{!! $employee->description !!}</p>
                   </div>
                 </div>
               </div>
@@ -33,7 +33,7 @@
     </section>
 
     <section id="vacancies" class="has-background-grey-light">
-      <div class="columns m-t-50 m-l-100 m-r-100">
+      <div class="columns m-t-20 m-l-40 m-r-100">
         <div class="column">
           <h2 class="is-size-1 has-text-weight-light">Vacantes</h2>
           <hr class="small-separator">
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="content">
-                      {{ str_limit($vacancy->requirements,200) }}
+                      {!! str_limit($vacancy->requirements,999) !!}
                       <div class="control m-t-10">
                         <a href="{{ route('vacancies.public', $vacancy->id) }}" class="has-text-orange">Leer más <i class="fas fa-angle-right m-l-5"></i></a>
                       </div>

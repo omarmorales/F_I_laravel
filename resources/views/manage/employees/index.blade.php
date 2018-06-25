@@ -25,19 +25,17 @@
               <div class="media-content">
                 @if (App::isLocale('en'))
                   <div class="content">
-                    <p>
+                    <p class="m-b-5">
                       <strong>{{ $employee->name }}</strong> <small>{{ $employee->job_title }}</small>
-                      <br>
-                      {!! str_limit($employee->description,120) !!}
                     </p>
+                    {!! str_limit($employee->description,120) !!}
                   </div>
                 @elseif (App::isLocale('es'))
                   <div class="content">
-                    <p>
+                    <p class="m-b-5">
                       <strong>{{ $employee->name }}</strong> <small>{{ $employee->puesto }}</small>
-                      <br>
-                      {!! str_limit($employee->descripcion,120) !!}
                     </p>
+                    {!! str_limit($employee->descripcion,120) !!}
                   </div>
                 @endif
                 <nav class="level is-mobile">

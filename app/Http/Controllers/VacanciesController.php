@@ -42,8 +42,8 @@ class VacanciesController extends Controller
     //
     $this->validateWith([
       'name' => 'required|max:255',
-      'requirements' => 'required|max:255',
-      'description' => 'sometimes|max:255'
+      'requirements' => 'required',
+      'description' => 'sometimes'
     ]);
 
     $vacancy = new Vacancy();
@@ -55,6 +55,8 @@ class VacanciesController extends Controller
     $vacancy->name_es = $request->name_es;
     $vacancy->requirements_es = $request->requirements_es;
     $vacancy->description_es = $request->description_es;
+
+    $vacancy->public = $request->public;
 
     $vacancy->save();
 
@@ -97,8 +99,8 @@ class VacanciesController extends Controller
     //
     $this->validateWith([
       'name' => 'required|max:255',
-      'requirements' => 'required|max:255',
-      'description' => 'sometimes|max:255'
+      'requirements' => 'required',
+      'description' => 'sometimes'
     ]);
 
     $vacancy->name = $request->name;
@@ -108,6 +110,8 @@ class VacanciesController extends Controller
     $vacancy->name_es = $request->name_es;
     $vacancy->requirements_es = $request->requirements_es;
     $vacancy->description_es = $request->description_es;
+
+    $vacancy->public = $request->public;
 
     $vacancy->save();
 
@@ -120,26 +124,10 @@ class VacanciesController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function destroy($id)
+  public function destroy(Vacancy $vacancy)
   {
-    // get Vacancy
-    $vacancy = Vacancy::findOrFail($id);
+    $employee->delete();
 
-    //return the sigle vacancy as resource
-    if ($vacancy->delete()) {
-      return new VacancyResource($vacancy);
-    }
-  }
-
-  /**
-  * Show the form for editing the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function public(Vacancy $vacancy)
-  {
-    //
-    return view('pages.vacancy')->withVacancy($vacancy);
+    return redirect()->route('vacancies.index')->with('success', 'Vacancy deleted successfully');
   }
 }
