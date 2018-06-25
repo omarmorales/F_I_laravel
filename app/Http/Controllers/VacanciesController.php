@@ -126,7 +126,7 @@ class VacanciesController extends Controller
   */
   public function destroy(Vacancy $vacancy)
   {
-    $employee->delete();
+    $vacancy->delete();
 
     return redirect()->route('vacancies.index')->with('success', 'Vacancy deleted successfully');
   }

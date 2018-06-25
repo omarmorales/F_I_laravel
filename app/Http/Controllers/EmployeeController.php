@@ -166,7 +166,7 @@ class EmployeeController extends Controller
   {
     if ($employee->thumbnail != 'noimage.jpg') {
       //delete de image
-      Storage::delete('public/thumbnails/'.$employee->thumbnail);
+      Storage::disk('spaces')->delete('public/thumbnails/'.$employee->thumbnail);
     }
 
     $employee->delete();
