@@ -28,7 +28,7 @@
             <b-tab-item>
               <template slot="header">
                 <span>
-                  <img src="{{ asset('storage/flags/4x3/us.svg') }}" style="max-width:20px;">
+                  <img src="{{ Storage::disk('spaces')->url('website_images/flags/4x3/us.svg') }}" style="max-width:20px;">
                 </span>
                 <span> English </span>
               </template>
@@ -51,7 +51,7 @@
             <b-tab-item>
               <template slot="header">
                 <span>
-                  <img src="{{ asset('storage/flags/4x3/mx.svg') }}" style="max-width:20px;">
+                  <img src="{{ Storage::disk('spaces')->url('website_images/flags/4x3/mx.svg') }}" style="max-width:20px;">
                 </span>
                 <span> Español</span>
               </template>
@@ -86,7 +86,7 @@
             <div class="column">
               <input class="input" type="file" name="thumbnail" id="thumbnail" value="{{old('descripcion')}}" v-if="change_thumbnail == 'yes'">
               <figure class="image is-96x96" v-if="change_thumbnail == 'no'">
-                <img src="{{ asset('storage/thumbnails/'.$employee->thumbnail) }}" alt="">
+                <img src="{{ Storage::disk('spaces')->url('thumbnails/'.$employee->thumbnail) }}" alt="{{ $employee->name }}">
               </figure>
             </div>
           </div>

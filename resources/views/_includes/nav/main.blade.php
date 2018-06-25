@@ -1,7 +1,7 @@
 <nav class="navbar is-light is-fixed-top">
   <div class="navbar-brand">
     <a class="navbar-item" href="{{ url('/') }}">
-      <img src="{{ asset('storage/logo_dark.png') }}" alt="C230 Consultores logo">
+      <img src="{{ Storage::disk('spaces')->url('website_images/logo_dark.png') }}" alt="C230 Consultores logo">
     </a>
     @if (Request::segment(1) == "manage")
       <a class="navbar-item is-hidden-desktop" id="admin-slideout-button">
