@@ -18,7 +18,7 @@
       @endif
       <span class="tag">
         @if ($vacancy->public == "true")
-          @lang('vacancies.public')
+          @lang('vacancies.public_txt')
         @else
           @lang('vacancies.private')
         @endif

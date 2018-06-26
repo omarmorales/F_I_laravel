@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Application;
 use App\Vacancy;
 use Illuminate\Http\Request;
@@ -64,9 +65,25 @@ class ApplicationController extends Controller
       //file name to Store
       $fileNameToStore=$filename.'_'.time().'.'.$extension;
       //upload
-      $path = $request->file('motivation_letter')->storeAs('public/ml', $fileNameToStore);
+      $path = Storage::disk('spaces')->putFileAs('motivation-letters', $request->file('motivation_letter'), $fileNameToStore, 'public');
     } else {
       $fileNameToStore = 'noimage.jpg';
+    }
+
+    //handle file uopz_overload
+    if ($request->hasFile('cv')) {
+      //get filename with the extension
+      $cvNameWithExt = $request->file('cv')->getClientOriginalName();
+      //get just fileName
+      $cvName = pathinfo($cvNameWithExt, PATHINFO_FILENAME);
+      //get just ext
+      $cvExtension = $request->file('cv')->getClientOriginalExtension();
+      //file name to Store
+      $cvNameToStore=$cvName.'_'.time().'.'.$cvExtension;
+      //upload
+      $cvPath = Storage::disk('spaces')->putFileAs('cvs', $request->file('cv'), $cvNameToStore, 'public');
+    } else {
+      $cvNameToStore = 'noimage.jpg';
     }
 
     $application = new Application();
@@ -76,6 +93,7 @@ class ApplicationController extends Controller
     $application->school = $request->school;
 
     $application->motivation_letter = $fileNameToStore;
+    $application->cv = $cvNameToStore;
 
     $application->vacancy_id = $request->vacancy_id;
 
@@ -126,6 +144,17 @@ class ApplicationController extends Controller
   */
   public function destroy(Application $application)
   {
-    //
+    if ($application->motivation_letter != 'noimage.jpg') {
+      //delete de image
+      Storage::disk('spaces')->delete('public/motivation-letters/'.$application->motivation_letter);
+    }
+
+    if ($application->cv != 'noimage.jpg') {
+      Storage::disk('spaces')->delete('public/cvs/'.$application->cv);
+    }
+
+    $application->delete();
+
+    return redirect()->route('applications.index')->with('success', 'Vacancy application deleted successfully');
   }
 }

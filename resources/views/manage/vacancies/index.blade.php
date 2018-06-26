@@ -12,7 +12,7 @@
     <h1 class="title">@lang('vacancies.IndexTitle')</h1>
     <div class="columns is-multiline">
       @foreach ($vacancies as $vacancy)
-        <div class="column is-one-half">
+        <div class="column is-half">
           <div class="box">
             <article class="media">
               <div class="media-content">
