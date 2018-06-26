@@ -8,4 +8,5 @@ return [
   'createTxt' => 'Crear nueva aplicación',
   'editTxt' => 'Editar aplicación',
   'submit' => 'Guardar',
+  'no_applications' => 'Aún no hay aplicaciones.',
 ];

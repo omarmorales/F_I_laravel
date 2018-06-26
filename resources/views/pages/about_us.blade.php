@@ -1,19 +1,19 @@
 @extends('layouts.site')
 
 @section('content')
-    <section id="staff" class="m-t-50 m-l-20 m-b-50">
+    <section id="staff" class="m-t-50 m-l-20 m-r-20 m-b-50">
       <div class="columns">
         <div class="column">
           <h2 class="is-size-1 has-text-weight-light">Staff</h2>
           <hr class="small-separator">
         </div>
       </div>
-      <div class="columns">
+      <div class="columns is-multiline">
         @foreach ($employees as $employee)
           @if ($employee->public == "true")
             <div class="column is-one-third">
               <div class="container">
-                <img src="{{ asset('storage/thumbnails/'.$employee->thumbnail) }}" alt="Avatar" class="image">
+                <img src="{{ Storage::disk('spaces')->url('thumbnails/'.$employee->thumbnail) }}" alt="{{ $employee->name }}" class="image">
                 <div class="content-img">
                   <p class="is-uppercase">{{ $employee->name }}</p>
                   <small>{!! $employee->job_title !!}</small>
@@ -33,20 +33,20 @@
     </section>
 
     <section id="vacancies" class="has-background-grey-light">
-      <div class="columns m-t-20 m-l-40 m-r-100">
+      <div class="columns m-t-20 m-l-20 m-r-20">
         <div class="column">
           <h2 class="is-size-1 has-text-weight-light">Vacantes</h2>
           <hr class="small-separator">
         </div>
       </div>
-      <div class="columns is-multiline">
+      <div class="columns is-multiline m-t-20 m-l-20 m-r-20">
         @foreach ($vacancies as $vacancy)
-          <div class="column is-10 is-offset-1">
+          <div class="column">
             <div class="card">
               <div class="card-content">
                 <div class="columns">
                   <div class="column is-one-quarter no-padding">
-                    <img src="{{ asset('storage/noimage.png') }}" alt="{{ $vacancy->name }}">
+                    <img src="{{ Storage::disk('spaces')->url('website_images/thumbnail_vacancy.jpg') }}" alt="{{ $vacancy->name }}">
                   </div>
                   <div class="column">
                     <div class="media">
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="content">
-                      {!! str_limit($vacancy->requirements,999) !!}
+                      <span>{!! str_limit($vacancy->requirements,600) !!}</span>
                       <div class="control m-t-10">
                         <a href="{{ route('vacancies.public', $vacancy->id) }}" class="has-text-orange">Leer más <i class="fas fa-angle-right m-l-5"></i></a>
                       </div>
