@@ -49,6 +49,8 @@
               </div>
             </div>
           </div>
+
+          <input type="hidden" :value="rolesSelected" name="roles">
         </div>
 
         <div class="column">

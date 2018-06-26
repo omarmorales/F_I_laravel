@@ -38,6 +38,8 @@
              <b-checkbox name="auto_generate" class="m-t-15" v-model="auto_password">Auto Generate Password</b-checkbox>
            </div>
           </div>
+
+          <input type="hidden" :value="rolesSelected" name="roles">
         </div>
 
         <div class="column">
