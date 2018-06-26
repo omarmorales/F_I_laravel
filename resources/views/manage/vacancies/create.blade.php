@@ -20,7 +20,7 @@
             <b-tab-item>
               <template slot="header">
                 <span>
-                  <img src="{{ asset('storage/flags/4x3/us.svg') }}" style="max-width:20px;">
+                  <img src="{{ Storage::disk('spaces')->url('website_images/flags/4x3/us.svg') }}" style="max-width:20px;">
                 </span>
                 <span> English </span>
               </template>
@@ -50,7 +50,7 @@
             <b-tab-item>
               <template slot="header">
                 <span>
-                  <img src="{{ asset('storage/flags/4x3/mx.svg') }}" style="max-width:20px;">
+                  <img src="{{ Storage::disk('spaces')->url('website_images/flags/4x3/mx.svg') }}" style="max-width:20px;">
                 </span>
                 <span> Español</span>
               </template>

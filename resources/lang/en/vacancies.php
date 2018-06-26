@@ -13,4 +13,6 @@ return [
   'public_desc' => 'Everyone can see',
   'private_desc' => 'Only visible for admins',
   'submit' => 'Submit',
+  'requirements' => 'Requirements',
+  'description' => 'Description',
 ];

@@ -13,4 +13,6 @@ return [
   'public_desc' => 'Cualquiera puede verlo',
   'private_desc' => 'Solo visible para administradores',
   'submit' => 'Guardar',
+  'requirements' => 'Requisitos',
+  'description' => 'Descripción',
 ];
