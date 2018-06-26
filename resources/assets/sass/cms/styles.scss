@@ -94,3 +94,110 @@ html,body {
 .remove_link_styles {
   text-decoration: none;
 }
+
+.profile {
+  @include desktop {
+    width:1080px;
+    left:50%;
+
+    float:left;
+    position:relative;
+    margin:50px 0px 50px 0px;
+     margin-left:-540px;
+    cursor:pointer;
+
+    .imageHolder {
+      float:left;
+      width:30%;
+      position:relative;
+      left:5%;
+
+      .profilePic {
+        width:100%;
+        float:left;
+        border-radius: 50%;
+        position:relative;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        transition:all 0.5s ease;
+        -webkit-transition:all 0.5s ease;
+        -webkit-box-shadow: 0px 0px 31px -1px   rgba(71,71,71,1);
+        -moz-box-shadow: 0px 0px 31px -1px rgba(71,71,71,1);
+        box-shadow: 0px 0px 31px -1px rgba(71,71,71,1);
+      }
+    }
+
+    h1 {
+      position:absolute;
+      width:100%;
+      padding:0px 0px 0px 32%;
+      margin-top:-50px;
+      margin-bottom:0px;
+      font-size:5vw;
+      letter-spacing:1vw;
+      z-index:1;
+      font-weight:400;
+      text-transform:uppercase;
+      pointer-events:none;
+      transition:all .5s ease;
+       -webkit-transition:all .5s ease;
+
+      &:after {
+        content:'';
+        float:left;
+        position:absolute;
+        left:50%;
+        bottom:-10vw;
+
+        width:5px;
+        height:10vw;
+      }
+    }
+
+    &:hover h1 {
+      transform: translateY(10vw);
+    }
+
+    &:hover .profilePic{
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+        transform:scale(1.1);
+      }
+    &:hover .imageHolder:after{
+      opacity:1;
+      animation-play-state: running;
+
+    }
+
+    .infoHolder {
+      width:60%;
+      float:right;
+      right:1%;
+      position:absolute;
+      overflow-x:hidden;
+
+      h2 {
+        letter-spacing:3px;
+        margin-top:0px;
+        float:left;
+        width:100%;
+        transform: translateX(102%);
+         transition:all .5s ease;
+        -webkit-transition:all .5s ease;
+      }
+
+      p {
+        float:left;
+        margin-top:0px;
+        width:100%;
+        transform: translateX(102%);
+         transition:all .62s ease;
+        -webkit-transition:all .62s ease;
+      }
+    }
+
+    &:hover .infoHolder h2, &:hover .infoHolder p {
+      transform: translateX(0%);
+    }
+  }
+}
