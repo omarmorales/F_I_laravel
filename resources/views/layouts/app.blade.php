@@ -10,6 +10,14 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ Storage::disk('spaces')->url('website_images/logos/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ Storage::disk('spaces')->url('website_images/logos/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ Storage::disk('spaces')->url('website_images/logos/favicon-16x16.png') }}">
+  <link rel="manifest" href="{{ Storage::disk('spaces')->url('website_images/logos/site.webmanifest') }}">
+  <link rel="mask-icon" href="{{ Storage::disk('spaces')->url('website_images/logos/safari-pinned-tab.svg') }}" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js" defer></script>
