@@ -11,12 +11,16 @@
     </nav>
 
     <h1 class="title">
-      {{ $vacancy->name }}
+      @if (App::isLocale('en'))
+        {{ $vacancy->name }}
+      @else
+        {{ $vacancy->name_es }}
+      @endif
       <span class="tag">
         @if ($vacancy->public == "true")
-          public
+          @lang('vacancies.public')
         @else
-          private
+          @lang('vacancies.private')
         @endif
       </span>
     </h1>
