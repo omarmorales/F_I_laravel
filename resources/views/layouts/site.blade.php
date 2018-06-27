@@ -10,6 +10,14 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ Storage::disk('spaces')->url('website_images/logos/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ Storage::disk('spaces')->url('website_images/logos/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ Storage::disk('spaces')->url('website_images/logos/favicon-16x16.png') }}">
+  <link rel="manifest" href="{{ Storage::disk('spaces')->url('website_images/logos/site.webmanifest') }}">
+  <link rel="mask-icon" href="{{ Storage::disk('spaces')->url('website_images/logos/safari-pinned-tab.svg') }}" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
   <!-- Scripts -->
   <script src="{{ asset('js/site.js') }}" defer></script>
   @yield('scripts')
@@ -26,12 +34,24 @@
   @yield('styles')
 </head>
 <body>
+  <div id="overlay">
+    <div class="spinner"></div>
+  </div>
   @include('_includes.nav.main_site')
   @include('_includes.nav.sidenav_site')
   <div id="app">
     <main class="site-area">
+      @include('_includes.notifications.messages')
       @yield('content')
+      @include('_includes.nav.footer_site')
     </main>
   </div>
+  <script type="text/javascript" defer>
+    var overlay = document.getElementById("overlay");
+
+    window.addEventListener('load', function(){
+      overlay.style.display = 'none';
+    })
+  </script>
 </body>
 </html>

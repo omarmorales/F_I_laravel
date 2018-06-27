@@ -33,7 +33,7 @@
 
                 <div class="field">
                   <div class="control">
-                    <button type="submit" class="button is-primary">{{ __('Send Password Reset Link') }}</button>
+                    <button type="submit" class="button is-link">{{ __('Send Password Reset Link') }}</button>
                   </div>
                 </div>
 

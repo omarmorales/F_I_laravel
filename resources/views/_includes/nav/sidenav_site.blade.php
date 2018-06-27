@@ -8,7 +8,7 @@
       </li>
       <li><a href="{{route('aboutus')}}" class="{{ Nav::isRoute('aboutus') }}">Quiénes Somos</a></li>
       <li><a href="#" class="">Qué Hacemos</a></li>
-      <li><a href="#" class="">Medios</a></li>
+      <li><a href="#" class="">Vacantes</a></li>
     </ul>
   </aside>
 </div>

@@ -48,7 +48,7 @@
 
               <div class="field is-grouped">
                 <div class="control">
-                  <button type="submit" class="button is-primary">{{ __('Login') }}</button>
+                  <button type="submit" class="button is-link">{{ __('Login') }}</button>
                 </div>
                 <div class="control">
                   <a class="button is-text" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>

@@ -48,7 +48,7 @@
 
                 <div class="field">
                   <div class="control">
-                    <button type="submit" class="button is-primary">{{ __('Reset Password') }}</button>
+                    <button type="submit" class="button is-link">{{ __('Reset Password') }}</button>
                   </div>
                 </div>
 

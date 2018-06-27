@@ -58,7 +58,7 @@
 
                 <div class="field">
                   <div class="control">
-                    <button type="submit" class="button is-primary">{{ __('Register') }}</button>
+                    <button type="submit" class="button is-link">{{ __('Register') }}</button>
                   </div>
                 </div>
 

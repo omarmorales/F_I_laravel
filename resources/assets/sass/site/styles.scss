@@ -1,5 +1,6 @@
 html,body {
   font-family: $font-family-sans-serif;
+  background-color: #f2f2f2;;
 }
 
 .site-area {
@@ -10,33 +11,21 @@ html,body {
   }
 }
 
-.fullheight {
-  min-height: 100vh;
-}
-
 .orange-gradient {
   background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
 }
 
+.has-text-orange {
+  color: #ff7900;
+}
+
 .navbar{
-  p{
-    margin: auto;
-    top: 0; left: 0; bottom: 0; right: 0;
-  }
-}
-
-.center-ver-hor {
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-}
-
-.center-vert{
-  position: relative;
-  div {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  @include desktop {
+    background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+    p{
+      margin: auto;
+      top: 0; left: 0; bottom: 0; right: 0;
+    }
   }
 }
 
@@ -69,8 +58,13 @@ html,body {
 }
 
 .separator {
+  margin-top: 10px;
   background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
-  height: 10px;
+  height: 5px;
+  @include desktop {
+    background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+    height: 8px;
+  }
 }
 
 .small-separator {
@@ -127,3 +121,107 @@ html,body {
 .no-padding {
   padding: 0;
 }
+
+.is-size-0-desktop {
+  @include desktop{
+    font-size: 4rem !important;
+  }
+}
+
+.fw_card {
+  @include desktop {
+    position: relative;
+    top: 10%;
+    width: 50%;
+    left: 40%;
+  }
+  padding: 2rem;
+  border-style: solid;
+  border-width: thin;
+  border-color: $link;
+}
+
+.fw_image {
+  width: 90%;
+  @include desktop {
+    position: relative;
+    left: 10%;
+    width: 50% !important;
+  }
+}
+
+.ww_card {
+  padding: 2rem;
+  border-style: solid;
+  border-width: thin;
+  border-color: $link;
+}
+
+.ww_image {
+  padding: 2rem;
+}
+
+.spinner{
+    width: 80px;
+    height: 80px;
+
+    border: 2px solid orange;
+    border-top:3px solid white;
+    border-radius: 100%;
+
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right: 0;
+    margin: auto;
+
+    animation: spin 1s infinite linear;
+    z-index: 201;
+}
+
+@keyframes spin {
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+}
+
+#overlay{
+  height:100%;
+  width:100%;
+  background:grey;
+  position:fixed;
+  left:0;
+  top:0;
+  z-index: 100;
+ }
+
+ .button-float {
+   position: fixed;
+   right: 20px;
+   bottom: 20px;
+ }
+
+ .button-round {
+   background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+   border-radius: 999em;
+   width: 40px;
+   height: 40px;
+   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+   line-height: 1;
+   font-size: 20px;
+   cursor: pointer;
+   display: inline-block;
+
+   span {
+     position: absolute;
+     left: 0;
+     top: 25%;
+     height: 100%;
+     width: 100%;
+     text-align: center;
+     color: #FFF;
+   }
+ }
