@@ -10,8 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'PagesController@index');
-Route::get('/aboutus', 'PagesController@aboutus');
+Route::get('/', 'PagesController@index')->name('index');
+Route::get('/aboutus', 'PagesController@aboutus')->name('aboutus');
 Route::get('/vacancies/{vacancy}', 'VacanciesController@public')->name('vacancies.public');
 
 Auth::routes();
