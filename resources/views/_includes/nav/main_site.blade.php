@@ -4,7 +4,7 @@
       <img src="{{ Storage::disk('spaces')->url('website_images/logo_dark.png') }}">
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+    <a role="button" class="navbar-burger navbar_menu" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>

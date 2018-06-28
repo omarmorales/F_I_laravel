@@ -12,7 +12,7 @@
 */
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/aboutus', 'PagesController@aboutus')->name('aboutus');
-Route::get('/vacancies/{vacancy}', 'VacanciesController@public')->name('vacancies.public');
+Route::get('/vacancy/{vacancy}', 'VacanciesController@showSite')->name('vacancy.show');
 
 Auth::routes();
 

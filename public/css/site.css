@@ -14593,7 +14593,7 @@ body {
 
 .container {
   position: relative;
-  width: 100%;
+  width: 80%;
 }
 
 .container .content-img {
@@ -14762,6 +14762,110 @@ body {
   text-align: center;
   color: #FFF;
 }
+
+/* menu screen */
+
+.menu-screen {
+  background: -webkit-gradient(linear, left top, right top, from(#f15a24), color-stop(#ff7900), to(#ff9c27));
+  background: linear-gradient(to right, #f15a24, #ff7900, #ff9c27);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 100;
+  top: -101vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+}
+
+.menu-screen .logo {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+}
+
+.menu-screen .logo img {
+  height: 80px;
+}
+
+.menu-screen .close {
+  position: absolute;
+  top: 2em;
+}
+
+.menu-screen .close img {
+  height: 30px;
+}
+
+.menu-screen.active {
+  top: 0;
+}
+
+.menu-screen a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  margin-top: 1.2em;
+}
+
+.menu-screen a:first-of-type {
+  margin-top: 0;
+}
+
+.menu-screen a .main {
+  display: block;
+  font-size: 2em;
+  color: white;
+}
+
+.menu-screen a span:not(.main) {
+  color: white;
+  opacity: 0;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+}
+
+.menu-screen a::after {
+  content: '';
+  position: absolute;
+  top: 1.1em;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.menu-screen a:hover::after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.menu-screen a:hover span.main {
+  color: white;
+}
+
+.menu-screen a:hover span:not(.main) {
+  opacity: 1;
+}
+
+/* menu screen ends */
 
 .m-t-5 {
   margin-top: 5px !important;

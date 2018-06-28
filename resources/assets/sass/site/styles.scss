@@ -82,7 +82,7 @@ html,body {
 
 .container {
   position: relative;
-  width: 100%;
+  width: 80%;
   .content-img {
     bottom: 0;
      background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
@@ -225,3 +225,77 @@ html,body {
      color: #FFF;
    }
  }
+
+/* menu screen */
+.menu-screen {
+  background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 100;
+  top: -101vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease-out;
+  .logo{
+    position: absolute;
+    top: 2em;
+    left: 2em;
+    img{
+      height: 80px;
+    }
+  }
+  .close{
+    position: absolute;
+    top: 2em;
+    //right: 2em;
+    img{
+      height: 30px;
+    }
+  }
+  &.active{
+    top: 0;
+  }
+  a {
+    display: block;
+    text-decoration: none;
+    text-align:center;
+    position: relative;
+    margin-top: 1.2em;
+    &:first-of-type{ margin-top: 0;}
+    .main{
+      display: block;
+      font-size: 2em;
+      color: white;
+    }
+    span:not(.main){
+      color: white;
+      opacity: 0;
+      transition: 0.5s ease-out;
+      transition-duration: 0.2s;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      top: 1.1em;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      transition: 0.5s ease-out;
+      transition-duration: 0.2s;
+      transform: scale(0);
+    }
+    &:hover::after{
+      transform: scale(1);
+    }
+    &:hover span.main{
+      color: white;
+    }
+    &:hover span:not(.main){
+      opacity: 1;
+    }
+  }
+}
+/* menu screen ends */

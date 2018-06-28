@@ -43237,6 +43237,8 @@ Vue.component('example-component', __webpack_require__(46));
 //     el: '#app'
 // });
 
+__webpack_require__(50);
+
 /***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -43464,6 +43466,18 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-0ca92eac", module.exports)
   }
 }
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports) {
+
+document.querySelector(".navbar_menu").addEventListener("click", function () {
+  document.querySelector(".menu-screen").classList.add("active");
+});
+
+document.querySelector(".close").addEventListener("click", function () {
+  document.querySelector(".menu-screen").classList.remove("active");
+});
 
 /***/ })
 /******/ ]);

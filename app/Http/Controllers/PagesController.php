@@ -14,8 +14,20 @@ class PagesController extends Controller
 
   public function aboutus()
   {
-    $employees = Employee::all();
-    $vacancies = Vacancy::all();
+    $employees = Employee::orderBy('id', 'asc')->paginate(9);
+    $vacancies = Vacancy::orderBy('id', 'asc')->paginate(3);
     return view('pages.about_us')->withEmployees($employees)->withVacancies($vacancies);
+  }
+
+  /**
+  * Display the specified resource.
+  *
+  * @param  int  $id
+  * @return \Illuminate\Http\Response
+  */
+  public function show(Vacancy $vacancy)
+  {
+    //return the sigle vacancy as resource
+    return view('pages.vacancy')->withVacancy($vacancy);
   }
 }

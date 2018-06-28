@@ -37,6 +37,7 @@
   <div id="overlay">
     <div class="spinner"></div>
   </div>
+  @include('_includes.nav.menu_screen')
   @include('_includes.nav.main_site')
   @include('_includes.nav.sidenav_site')
   <div id="app">
