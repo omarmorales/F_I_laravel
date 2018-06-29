@@ -299,3 +299,11 @@ html,body {
   }
 }
 /* menu screen ends */
+
+.description {
+  p {
+    @include desktop {
+      font-size: 1.25rem;
+    }
+  }
+}

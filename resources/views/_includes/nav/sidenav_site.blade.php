@@ -8,7 +8,7 @@
       </li>
       <li><a href="{{route('aboutus')}}" class="{{ Nav::isRoute('aboutus') }}">Quiénes Somos</a></li>
       <li><a href="#" class="">Qué Hacemos</a></li>
-      <li><a href="#" class="">Vacantes</a></li>
+      <li><a href="{{route('sitevacancies')}}" class="{{ Nav::isRoute('sitevacancies') }}">Vacantes</a></li>
     </ul>
   </aside>
 </div>

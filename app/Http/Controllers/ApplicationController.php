@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Application;
 use App\Vacancy;
+use Session;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
   public function __construct()
   {
-    $this->middleware('role:superadministrator|administrator');
+    $this->middleware('role:superadministrator|administrator')->except(['store']);
   }
   /**
   * Display a listing of the resource.
@@ -99,7 +100,7 @@ class ApplicationController extends Controller
 
     $application->save();
 
-    return redirect()->route('applications.index')->with('success', 'Your application has been successful');
+    return redirect()->back()->with('success', "Your application to ". $application->vacancy->name .  "has been posted successfully");
   }
 
   /**

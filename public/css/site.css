@@ -14867,6 +14867,12 @@ body {
 
 /* menu screen ends */
 
+@media screen and (min-width: 1088px) {
+  .description p {
+    font-size: 1.25rem;
+  }
+}
+
 .m-t-5 {
   margin-top: 5px !important;
 }

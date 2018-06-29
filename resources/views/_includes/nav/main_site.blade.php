@@ -1,6 +1,6 @@
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="navbar-brand is-hidden-desktop">
-    <a class="navbar-item" href="https://bulma.io">
+    <a class="navbar-item" href="{{ url('/') }}">
       <img src="{{ Storage::disk('spaces')->url('website_images/logo_dark.png') }}">
     </a>
 

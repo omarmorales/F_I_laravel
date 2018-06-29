@@ -30,4 +30,10 @@ class PagesController extends Controller
     //return the sigle vacancy as resource
     return view('pages.vacancy')->withVacancy($vacancy);
   }
+
+  public function vacancies()
+  {
+    $vacancies = Vacancy::orderBy('id', 'asc')->paginate(5);
+    return view('pages.vacancies')->withVacancies($vacancies);
+  }
 }

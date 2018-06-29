@@ -1,26 +1,19 @@
 <div class="menu-screen">
-  <a href="#home" class="logo">
-    <!-- <img src="./public/images/logo_dark.png" alt=""> -->
-  </a>
-  <a href="#" class="close">
+  <a class="close">
     <i class="fas fa-times has-text-white is-size-2"></i>
   </a>
   <nav>
-    <a href="#about">
+    <a href="{{route('aboutus')}}">
       <span class="main">Quiénes somos</span>
       <span>Entrerate de nuestra trayectoria</span>
     </a>
-    <a href="#wdwd">
+    <a href="">
       <span class="main">Qué hacemos</span>
       <span>Enterate de nuestro servicios</span>
     </a>
-    <!-- <a href="#joinus">
-      <span class="main">Contacto</span>
-      <span>nos encantaría saber de ti</span>
+    <a href="{{route('sitevacancies')}}">
+      <span class="main">Vacantes</span>
+      <span>Explora nuestra vacantes</span>
     </a>
-    <a href=".footer">
-      <span class="main">Medios</span>
-      <span>Encuentranos en redes sociales</span>
-    </a> -->
   </nav>
 </div> <!-- menu screen ends-->

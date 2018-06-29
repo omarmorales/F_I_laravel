@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class VacanciesController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('role:superadministrator|administrator')->except(['showSite']);
+  }
   /**
   * Display a listing of the resource.
   *

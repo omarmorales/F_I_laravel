@@ -42,7 +42,7 @@
   @include('_includes.nav.sidenav_site')
   <div id="app">
     <main class="site-area">
-      @include('_includes.notifications.messages')
+      @include('_includes.notifications.messages_site')
       @yield('content')
       @include('_includes.nav.footer_site')
     </main>
