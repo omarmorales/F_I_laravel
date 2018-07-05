@@ -97,12 +97,6 @@
     </div>
 
     {{ $applications->links() }}
-
-    <b-tooltip label="create new application" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">
-      <a href="{{ route('applications.create') }}" class="button-float button-round">
-        <span class="fas fa-plus"></span>
-      </a>
-    </b-tooltip>
   </div>
 @endsection
 

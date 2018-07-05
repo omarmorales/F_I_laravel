@@ -16,6 +16,46 @@
       {{ method_field('PUT') }}
 
       <div class="columns is-multiline">
+        <div class="column">
+          <div class="field">
+              <label class="label">@lang('vacancies.public')</label>
+              <input type="hidden" :value="isPublic" name="public">
+              <b-dropdown v-model="isPublic" class="m-b-10">
+                <button class="button is-info" type="button" slot="trigger">
+                  <template v-if="isPublic">
+                    <i class="fas fa-globe m-r-5"></i>
+                    <span class="m-r-5">@lang('vacancies.public_txt')</span>
+                  </template>
+                  <template v-else>
+                    <i class="fas fa-lock m-r-5"></i>
+                    <span class="m-r-5">@lang('vacancies.private')</span>
+                  </template>
+                  <i class="fas fa-caret-down"></i>
+                </button>
+
+                <b-dropdown-item :value="true">
+                  <div class="media">
+                    <i class="fas fa-globe m-r-5 m-t-5"></i>
+                    <div class="media-content">
+                      <h3>@lang('vacancies.public_txt')</h3>
+                      <small>@lang('vacancies.public_desc')</small>
+                    </div>
+                  </div>
+                </b-dropdown-item>
+
+                <b-dropdown-item :value="false">
+                  <div class="media">
+                    <i class="fas fa-lock m-r-5 m-t-5"></i>
+                    <div class="media-content">
+                      <h3>@lang('vacancies.private')</h3>
+                      <small>@lang('vacancies.private_desc')</small>
+                    </div>
+                  </div>
+                </b-dropdown-item>
+              </b-dropdown>
+          </div>
+        </div>
+
         <div class="column is-12">
           <b-tabs type="is-boxed">
             <b-tab-item>
@@ -79,53 +119,13 @@
             </b-tab-item>
           </b-tabs>
         </div>
-
-        <div class="column">
-          <div class="field">
-              <label class="label">@lang('vacancies.public')</label>
-              <input type="hidden" :value="isPublic" name="public">
-              <b-dropdown v-model="isPublic" class="m-b-10">
-                <button class="button is-info" type="button" slot="trigger">
-                  <template v-if="isPublic">
-                    <i class="fas fa-globe m-r-5"></i>
-                    <span class="m-r-5">@lang('vacancies.public_txt')</span>
-                  </template>
-                  <template v-else>
-                    <i class="fas fa-lock m-r-5"></i>
-                    <span class="m-r-5">@lang('vacancies.private')</span>
-                  </template>
-                  <i class="fas fa-caret-down"></i>
-                </button>
-
-                <b-dropdown-item :value="true">
-                  <div class="media">
-                    <i class="fas fa-globe m-r-5 m-t-5"></i>
-                    <div class="media-content">
-                      <h3>@lang('vacancies.public_txt')</h3>
-                      <small>@lang('vacancies.public_desc')</small>
-                    </div>
-                  </div>
-                </b-dropdown-item>
-
-                <b-dropdown-item :value="false">
-                  <div class="media">
-                    <i class="fas fa-lock m-r-5 m-t-5"></i>
-                    <div class="media-content">
-                      <h3>@lang('vacancies.private')</h3>
-                      <small>@lang('vacancies.private_desc')</small>
-                    </div>
-                  </div>
-                </b-dropdown-item>
-              </b-dropdown>
-          </div>
-        </div>
       </div>
 
-      <div class="field">
-        <div class="control">
-          <button class="button is-link">@lang('vacancies.submit')</button>
-        </div>
-      </div>
+      <b-tooltip label="@lang('vacancies.submit')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">
+        <button href="{{ route('applications.create') }}" class="button-float button-round" style="border-width:0px; border-style:none;">
+          <span class="fas fa-edit"></span>
+        </button>
+      </b-tooltip>
     </form>
   </div>
 @endsection

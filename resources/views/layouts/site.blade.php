@@ -41,11 +41,11 @@
   @include('_includes.nav.main_site')
   @include('_includes.nav.sidenav_site')
   <div id="app">
-    <main class="site-area">
+    <main class="">
       @include('_includes.notifications.messages_site')
       @yield('content')
-      @include('_includes.nav.footer_site')
     </main>
+    @include('_includes.nav.footer_site')
   </div>
   <script type="text/javascript" defer>
     var overlay = document.getElementById("overlay");

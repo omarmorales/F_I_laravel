@@ -10,7 +10,7 @@ class EmployeeController extends Controller
 {
   public function __construct()
   {
-    $this->middleware('role:superadministrator|administrator');
+    $this->middleware('permission:delete-employee|update-employee|read-employee|create-employee');
   }
   /**
   * Display a listing of the resource.

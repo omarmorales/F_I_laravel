@@ -9,7 +9,7 @@ class VacanciesController extends Controller
 {
   public function __construct()
   {
-    $this->middleware('role:superadministrator|administrator')->except(['showSite']);
+    $this->middleware('permission:delete-vacancy|update-vacancy|read-vacancy|create-vacancy')->except(['showSite']);
   }
   /**
   * Display a listing of the resource.

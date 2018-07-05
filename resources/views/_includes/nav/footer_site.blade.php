@@ -14,8 +14,12 @@
 
       <div class="column is-one-third">
         <p class="is-size-4-desktop is-size-5-touch is-uppercase has-text-weight-normal has-text-orange">Medios</p>
-        <p class="m-b-5"><i class="fab fa-linkedin-in m-r-10"></i>LinkedIn</p>
-        <p><i class="fab fa-twitter m-r-10"></i>Twitter</p>
+        <a href="https://www.linkedin.com/company/c230-consultores" target="_blank">
+          <p class="m-b-5 has-text-white"><i class="fab fa-linkedin-in m-r-10"></i>LinkedIn</p>
+        </a>
+        <a href="https://twitter.com/C230Consultores" target="_blank">
+          <p class="has-text-white"><i class="fab fa-twitter m-r-10"></i>Twitter</p>
+        </a>
       </div>
     </div>
   </div>

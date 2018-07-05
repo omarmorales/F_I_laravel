@@ -118,12 +118,11 @@
           </div>
         </div>
       </div>
-
-      <div class="field">
-        <div class="control">
-          <button class="button is-link">@lang('employees.submit')</button>
-        </div>
-      </div>
+      <b-tooltip label="@lang('employees.submit')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">
+        <button href="{{ route('applications.create') }}" class="button-float button-round" style="border-width:0px; border-style:none;">
+          <span class="fas fa-save"></span>
+        </button>
+      </b-tooltip>
     </form>
   </div>
 @endsection

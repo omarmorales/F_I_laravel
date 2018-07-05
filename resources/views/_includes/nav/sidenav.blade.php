@@ -16,9 +16,11 @@
       </li>
       <li><a href="" class="">@lang('sidenav.Manage_Media')</a></li>
     </ul>
+    @role('superadministrator|administrator')
     <p class="menu-label">@lang('sidenav.Administration')</p>
     <ul class="menu-list">
       <li><a href="{{ route('users.index') }}" class="{{ Nav::isResource('users') }}">@lang('sidenav.Manage_Users')</a></li>
+      @role('superadministrator')
       <li>
         <a class="has-submenu {{Nav::hasSegment(['roles', 'permissions'],2)}}">@lang('sidenav.Roles&Permissions')</a>
         <ul class="submenu">
@@ -26,6 +28,8 @@
           <li><a href="{{route('permissions.index')}}" class="{{Nav::isResource('permissions')}}">@lang('sidenav.Permissions')</a></li>
         </ul>
       </li>
+      @endrole
     </ul>
+    @endrole
   </aside>
 </div>

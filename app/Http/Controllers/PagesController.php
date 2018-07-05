@@ -19,6 +19,11 @@ class PagesController extends Controller
     return view('pages.about_us')->withEmployees($employees)->withVacancies($vacancies);
   }
 
+  public function whatwedo()
+  {
+    return view('pages.whatwedo');
+  }
+
   /**
   * Display the specified resource.
   *

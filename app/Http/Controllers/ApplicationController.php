@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use App\Application;
+use App\Mail\ApplicationCreated;
 use App\Vacancy;
 use Session;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
   public function __construct()
   {
-    $this->middleware('role:superadministrator|administrator')->except(['store']);
+    $this->middleware('permission:delete-application|create-application|read-application|update-application')->except(['store']);
   }
   /**
   * Display a listing of the resource.
@@ -99,6 +101,8 @@ class ApplicationController extends Controller
     $application->vacancy_id = $request->vacancy_id;
 
     $application->save();
+
+    Mail::send(new ApplicationCreated($application));
 
     return redirect()->back()->with('success', "Your application to ". $application->vacancy->name .  "has been posted successfully");
   }

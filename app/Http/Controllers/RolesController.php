@@ -11,7 +11,7 @@ class RolesController extends Controller
 {
   public function __construct()
   {
-    $this->middleware('role:superadministrator|administrator');
+    $this->middleware('role:superadministrator');
   }
     /**
      * Display a listing of the resource.

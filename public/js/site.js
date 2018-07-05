@@ -43236,8 +43236,8 @@ Vue.component('example-component', __webpack_require__(46));
 // const app = new Vue({
 //     el: '#app'
 // });
-
 __webpack_require__(50);
+__webpack_require__(51);
 
 /***/ }),
 /* 46 */
@@ -43469,6 +43469,12 @@ if (false) {
 
 /***/ }),
 /* 50 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 51 */
 /***/ (function(module, exports) {
 
 document.querySelector(".navbar_menu").addEventListener("click", function () {

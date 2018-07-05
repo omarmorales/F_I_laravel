@@ -12,13 +12,14 @@
 */
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/aboutus', 'PagesController@aboutus')->name('aboutus');
+Route::get('/whatwedo', 'PagesController@whatwedo')->name('whatwedo');
 Route::get('/vacancies', 'PagesController@vacancies')->name('sitevacancies');
 Route::get('/vacancies/{vacancy}', 'VacanciesController@showSite')->name('vacancy.show');
 Route::resource('/applications', 'ApplicationController', ['only' => ['store']]);
 
 Auth::routes();
 
-Route::prefix('manage')->middleware('role:superadministrator|administrator|user')->group(function(){
+Route::prefix('manage')->middleware('role:superadministrator|administrator|user|admintalento')->group(function(){
   Route::get('/', 'ManageController@index');
   Route::get('/dashboard', 'ManageController@dashboard')->name('manage.dashboard');
   Route::resource('/users', 'UserController');
