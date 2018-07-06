@@ -7,7 +7,7 @@
       <span class="main">Quiénes somos</span>
       <span>Entrerate de nuestra trayectoria</span>
     </a>
-    <a href="">
+    <a href="{{route('whatwedo')}}">
       <span class="main">Qué hacemos</span>
       <span>Enterate de nuestro servicios</span>
     </a>

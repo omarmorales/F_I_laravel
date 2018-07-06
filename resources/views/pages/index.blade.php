@@ -218,7 +218,7 @@
     </div>
   </div>
 
-  <div class="columns is-hidden-desktop" style="margin-right:0; margin-left:0; margin-bottom:0;">
+  <div class="columns is-hidden-desktop">
     <div class="column is-narrow is-hidden-touch">
       <div style="width: 250px;">
       </div>
