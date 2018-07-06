@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-  <div id="slider">
+  <div id="slider" class="js-section">
     <div class="cont">
       <div class="container-image img1" style="background-image: url({{ Storage::disk('spaces')->url('website_images/bus.jpg') }});">
         <div class="content">
@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="column has-background-grey-dark">
-      <section class="hero is-fullheight has-background-grey-dark js-section">
+      <section class="hero is-fullheight has-background-grey-dark">
         <div class="hero-body">
           <div class="columns">
             <div class="column is-6 is-offset-3 has-text-centered has-text-white has-text-weight-light ">
@@ -218,7 +218,7 @@
     </div>
   </div>
 
-  <div class="columns is-hidden-desktop">
+  <div class="columns is-hidden-desktop" style="margin-right:0; margin-left:0; margin-bottom:0;">
     <div class="column is-narrow is-hidden-touch">
       <div style="width: 250px;">
       </div>

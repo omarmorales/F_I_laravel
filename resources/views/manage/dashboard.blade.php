@@ -6,38 +6,59 @@
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-8">
         <div class="tile">
+          @role('superadministrator|administrator')
           <div class="tile is-parent is-vertical">
             <article class="tile is-child notification">
-              <p class="title"><i class="fas fa-users"></i> Users</p>
-              <p class="subtitle">Top tile</p>
+              <a href="{{route('users.index')}}" style="text-decoration:none;">
+                <p class="title"><i class="fas fa-users"></i> {{ count($users) }} Users</p>
+              </a>
             </article>
             <article class="tile is-child notification">
-              <p class="title"><i class="fas fa-user-tag"></i> Roles</p>
-              <p class="subtitle">Bottom tile</p>
+              <a href="{{route('roles.index')}}" style="text-decoration:none;">
+                <p class="title"><i class="fas fa-user-tag"></i> {{ count($roles) }} Roles</p>
+              </a>
             </article>
             <article class="tile is-child notification">
-              <p class="title"><i class="fas fa-user-lock"></i> Permissions</p>
-              <p class="subtitle">Bottom tile</p>
+              <a href="{{route('permissions.index')}}" style="text-decoration:none;">
+                <p class="title"><i class="fas fa-user-lock"></i> {{ count($permissions) }} Permissions</p>
+              </a>
             </article>
           </div>
+          @endrole
           <div class="tile is-parent">
             <article class="tile is-child notification">
-              <p class="title">Middle tile</p>
-              <p class="subtitle">With an image</p>
-              <figure class="image is-4by3">
-                <img src="https://bulma.io/images/placeholders/640x480.png">
-              </figure>
+              <a href="{{route('vacancies.index')}}" style="text-decoration:none;">
+                <p class="title"><i class="fas fa-bookmark"></i> Vacancies</p>
+              </a>
+              <article class="media">
+                <figure class="media-left">
+                  <i class="fas fa-caret-right"></i>
+                </figure>
+                <div class="media-content">
+                  @foreach ($vacancies as $vacancy)
+                    <a href="{{route('vacancies.show', $vacancy->id)}}" style="text-decoration:none;">
+                      <p><strong>{{ $vacancy->name }}</strong> <small>{{ $vacancy->created_at->diffForHumans() }}</small>
+                    </a>
+                    <nav class="level is-mobile">
+                      <div class="level-left">
+                        <a style="text-decoration:none;" class="level-item">
+                          @if ($vacancy->public == true)
+                            <span class="tag is-success">Public</span>
+                          @else
+                            <span class="tag is-light">Private</span>
+                          @endif
+                        </a>
+                        <a href="{{route('applications.index')}}" style="text-decoration:none;" class="level-item">
+                          <span class="tag is-info">{{ count($vacancy->applications) }} applications</span>
+                        </a>
+                      </div>
+                    </nav>
+                    </p>
+                  @endforeach
+                </div>
+              </article>
             </article>
           </div>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child notification">
-            <p class="title">Wide tile</p>
-            <p class="subtitle">Aligned with the right tile</p>
-            <div class="content">
-              <!-- Content -->
-            </div>
-          </article>
         </div>
       </div>
       <div class="tile is-parent">

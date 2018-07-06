@@ -38,7 +38,7 @@
       <!-- Authentication Links -->
       @guest
         <a class="navbar-item" href="{{ route('login') }}">{{ __('Login') }}</a>
-        <a class="navbar-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+        {{-- <a class="navbar-item" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
       @else
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">{{ Auth::user()->name }}</a>
