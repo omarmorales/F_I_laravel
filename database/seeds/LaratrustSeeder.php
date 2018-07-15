@@ -76,6 +76,7 @@ class LaratrustSeeder extends Seeder
                         'email' => $key.'@app.com',
                         'password' => bcrypt('password'),
                         'remember_token' => str_random(10),
+                        'default_language' => 'es',
                     ]);
                     $permissions = [];
 
@@ -87,7 +88,6 @@ class LaratrustSeeder extends Seeder
                             'name' => $permissionValue . '-' . $module,
                             'display_name' => ucfirst($permissionValue) . ' ' . ucfirst($module),
                             'description' => ucfirst($permissionValue) . ' ' . ucfirst($module),
-                            'default_language' => 'es'
                         ])->id;
 
                         $this->command->info('Creating Permission to '.$permissionValue.' for '. $module);
