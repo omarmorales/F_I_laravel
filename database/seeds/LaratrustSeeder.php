@@ -87,6 +87,7 @@ class LaratrustSeeder extends Seeder
                             'name' => $permissionValue . '-' . $module,
                             'display_name' => ucfirst($permissionValue) . ' ' . ucfirst($module),
                             'description' => ucfirst($permissionValue) . ' ' . ucfirst($module),
+                            'default_language' => 'es'
                         ])->id;
 
                         $this->command->info('Creating Permission to '.$permissionValue.' for '. $module);
