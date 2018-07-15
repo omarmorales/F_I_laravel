@@ -16,6 +16,7 @@ return [
     'General' => 'General',
     'Dashboard' => 'Dashboard',
     'Content' => 'Content',
+    'Manage_Posts' => 'Manage Posts',
     'Manage_Staff' => 'Manage Staff',
     'Manage_Vacancies' => 'Manage Vacancies',
     'Vacancies' => 'Vacancies',

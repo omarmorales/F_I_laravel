@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\Post;
 use App\Permission;
 use App\Vacancy;
 use App\Application;
 
 class ManageController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
   public function index()
   {
     return redirect()->route('manage.dashboard');
@@ -23,6 +28,7 @@ class ManageController extends Controller
     $permissions = Permission::all();
     $vacancies = Vacancy::all();
     $applications = Application::all();
-    return view('manage.dashboard')->withUsers($users)->withRoles($roles)->withPermissions($permissions)->withVacancies($vacancies)->withApplications($applications);
+    $posts = Post::all();
+    return view('manage.dashboard')->withUsers($users)->withRoles($roles)->withPermissions($permissions)->withVacancies($vacancies)->withApplications($applications)->withPosts($posts);
   }
 }

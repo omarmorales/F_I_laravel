@@ -6,7 +6,8 @@
     </ul>
     <p class="menu-label">@lang('sidenav.Content')</p>
     <ul class="menu-list">
-      <li><a href="{{route('employees.index')}}" class="{{ Nav::isResource('employees') }}">@lang('sidenav.Manage_Staff')</a></li>
+      <li><a href="{{route('posts.index')}}" class="{{ Nav::isResource('posts') }}">@lang('sidenav.Manage_Posts')</a></li>
+      {{-- <li><a href="{{route('employees.index')}}" class="{{ Nav::isResource('employees') }}">@lang('sidenav.Manage_Staff')</a></li> --}}
       <li>
         <a class="has-submenu {{Nav::hasSegment(['vacancies', 'applications'],2)}}">@lang('sidenav.Manage_Vacancies')</a>
         <ul class="submenu">
@@ -14,7 +15,7 @@
           <li><a href="{{route('applications.index')}}" class="{{Nav::isResource('applications')}}">@lang('sidenav.Applications')</a></li>
         </ul>
       </li>
-      <li><a href="" class="">@lang('sidenav.Manage_Media')</a></li>
+      {{-- <li><a href="" class="">@lang('sidenav.Manage_Media')</a></li> --}}
     </ul>
     @role('superadministrator|administrator')
     <p class="menu-label">@lang('sidenav.Administration')</p>

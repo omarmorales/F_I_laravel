@@ -25,6 +25,7 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|user|
   Route::resource('/users', 'UserController');
   Route::resource('/roles', 'RolesController');
   Route::resource('/permissions', 'PermissionsController');
+  Route::resource('/posts', 'PostController');
   Route::resource('/employees', 'EmployeeController');
   Route::resource('/vacancies', 'VacanciesController');
   Route::resource('/applications', 'ApplicationController', ['except' => ['store']]);

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use App\Vacancy;
+use App\Post;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
   public function index(){
-    return view('pages.index');
+    $posts = Post::orderBy('id', 'asc')->paginate(10);
+    return view('pages.index')->withPosts($posts);
   }
 
   public function aboutus()

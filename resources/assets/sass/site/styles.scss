@@ -11,22 +11,12 @@ html,body {
   }
 }
 
-.orange-gradient {
-  background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+.blue-gradient {
+  background: linear-gradient(to right, #3fa9f5 , #7ac943);
 }
 
 .has-text-orange {
   color: #ff7900;
-}
-
-.navbar{
-  @include desktop {
-    background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
-    p{
-      margin: auto;
-      top: 0; left: 0; bottom: 0; right: 0;
-    }
-  }
 }
 
 /* menu touch */
@@ -291,7 +281,7 @@ html,body {
  }
 
  .button-round {
-   background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+   background: $link;
    border-radius: 999em;
    width: 40px;
    height: 40px;

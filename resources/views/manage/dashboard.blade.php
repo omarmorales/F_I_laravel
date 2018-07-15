@@ -64,10 +64,13 @@
       <div class="tile is-parent">
         <article class="tile is-child notification">
           <div class="content">
-            <p class="title">Tall tile</p>
-            <p class="subtitle">With even more content</p>
+            <p class="title">Posts</p>
             <div class="content">
-              <!-- Content -->
+              @foreach ($posts as $post)
+                <a href="{{route('posts.show', $post->id)}}" style="text-decoration:none;">
+                  <p><strong>{{ $post->title }}</strong> <small>{{ $post->created_at->diffForHumans() }}</small>
+                </a>
+              @endforeach
             </div>
           </div>
         </article>

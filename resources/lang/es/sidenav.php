@@ -16,6 +16,7 @@ return [
     'General' => 'General',
     'Dashboard' => 'Tablero',
     'Content' => 'Contenido',
+    'Manage_Posts' => 'Administrar Publicaciones',
     'Manage_Staff' => 'Administrar Personal',
     'Manage_Vacancies' => 'Administrar Vacantes',
     'Vacancies' => 'Vacantes',
