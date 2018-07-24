@@ -35,7 +35,7 @@
               <div class="field">
                 <p class="control">
                   <label for="description" class="label">Description</label>
-                  <textarea class="textarea" id="description" name="description">{!! $post->description !!}</textarea>
+                  <textarea class="textarea" id="description" name="description">{{ $post->description }}</textarea>
                 </p>
               </div>
 
@@ -57,7 +57,7 @@
               <div class="field">
                 <p class="control">
                   <label for="description_es" class="label">Descripción</label>
-                  <textarea class="textarea" id="description_es" name="description_es">{!!$post->description!!}</textarea>
+                  <textarea class="textarea" id="description_es" name="description_es">{{ $post->description }}</textarea>
                 </p>
               </div>
 
@@ -122,6 +122,25 @@
             </b-dropdown>
           </div>
         </div>
+
+        <div class="column is-12">
+          <label class="label">@lang('posts.editfile')</label>
+          <div class="columns">
+            <div class="column is-2">
+              <div class="block">
+                    <b-radio v-model="change_thumbnail2" name="change_thumbnail2" native-value="yes">@lang('posts.yes')</b-radio>
+                    <b-radio v-model="change_thumbnail2" name="change_thumbnail2" native-value="no">@lang('posts.no')</b-radio>
+              </div>
+            </div>
+            <div class="column">
+              <input class="input" type="file" name="file" id="file" v-if="change_thumbnail2 == 'yes'">
+              <a href="{{ asset('storage/files/'. $post->file) }}" v-if="change_thumbnail2 == 'no'" target="_blank">
+                <i class="fas fa-file m-r-10"></i>
+                {{ $post->file }}
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
       <b-tooltip label="@lang('posts.submit')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">
         <button href="{{ route('applications.create') }}" class="button-float button-round" style="border-width:0px; border-style:none;">
@@ -139,7 +158,8 @@
       el: '#app',
       data: {
         isPublic: true,
-        change_thumbnail: 'no'
+        change_thumbnail: 'no',
+        change_thumbnail2: 'no'
       }
     });
   }

@@ -10,6 +10,8 @@ return [
     'title' => 'Title',
     'description' => 'Description',
     'thumbnail' => 'Add Thumbnail',
+    'file' => 'Add file',
+    'editfile' => 'Edit file?',
     'editThumbnail' => 'Edit thumbnail?',
     'yes' => 'Yes',
     'no' => 'No',

@@ -65,6 +65,21 @@ class PostController extends Controller
       $fileNameToStore = 'noimage.jpg';
     }
 
+    if ($request->hasFile('file')) {
+      //get filename with the extension
+      $file_twoNameWithExt = $request->file('file')->getClientOriginalName();
+      //get just fileName
+      $filename_two = pathinfo($file_twoNameWithExt, PATHINFO_FILENAME);
+      //get just ext
+      $extension_two = $request->file('file')->getClientOriginalExtension();
+      //file name to Store
+      $fileNameToStore_two=$filename_two.'_'.time().'.'.$extension_two;
+      //upload
+      $path_two = $request->file('file')->storeAs('public/files', $fileNameToStore_two);
+    } else {
+      $fileNameToStore_two = 'noimage.jpg';
+    }
+
     $post = new Post();
 
     $post->title = $request->title;
@@ -74,6 +89,7 @@ class PostController extends Controller
     $post->description_es = $request->description_es;
 
     $post->thumbnail = $fileNameToStore;
+    $post->file = $fileNameToStore_two;
     $post->public = $request->public;
 
     $post->save();
@@ -137,6 +153,21 @@ class PostController extends Controller
       $fileNameToStore = 'noimage.jpg';
     }
 
+    if ($request->hasFile('file')) {
+      //get filename with the extension
+      $file_twoNameWithExt = $request->file('file')->getClientOriginalName();
+      //get just fileName
+      $filename_two = pathinfo($file_twoNameWithExt, PATHINFO_FILENAME);
+      //get just ext
+      $extension_two = $request->file('file')->getClientOriginalExtension();
+      //file name to Store
+      $fileNameToStore_two=$filename_two.'_'.time().'.'.$extension_two;
+      //upload
+      $path_two = $request->file('file')->storeAs('public/files', $fileNameToStore_two);
+    } else {
+      $fileNameToStore_two = 'noimage.jpg';
+    }
+
     $post->title = $request->title;
     $post->description = $request->description;
 
@@ -145,6 +176,10 @@ class PostController extends Controller
 
     if ($request->hasFile('thumbnail')) {
       $post->thumbnail = $fileNameToStore;
+    }
+
+    if ($request->hasFile('file')) {
+      $post->file = $fileNameToStore_two;
     }
     $post->public = $request->public;
 
@@ -156,11 +191,23 @@ class PostController extends Controller
   /**
   * Remove the specified resource from storage.
   *
-  * @param  int  $id
+  * @param  \App\Post  $post
   * @return \Illuminate\Http\Response
   */
-  public function destroy($id)
+  public function destroy(Post $post)
   {
-    //
+    if ($post->thumbnail != 'noimage.jpg') {
+      //delete de image
+      Storage::delete( public_path('/thumbnails/' . $post->thumbnail));
+    }
+
+    if ($post->file != 'noimage.jpg') {
+      //delete de image
+      Storage::delete( public_path('/files/' . $post->file));
+    }
+
+    $post->delete();
+
+    return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
   }
 }

@@ -62,15 +62,6 @@
 
             </b-tab-item>
           </b-tabs>
-
-          <b-field label="Add some tags">
-              <b-taginput
-                  v-model="tags"
-                  ellipsis
-                  icon="label"
-                  placeholder="Add a tag">
-              </b-taginput>
-          </b-field>
         </div>
 
         <div class="column is-6">
@@ -116,6 +107,10 @@
               </b-dropdown-item>
             </b-dropdown>
           </div>
+        </div>
+        <div class="column is-12">
+          <label class="label">@lang('posts.file')</label>
+          <input class="input" type="file" name="file" id="file" value="{{old('file')}}">
         </div>
       </div>
       <b-tooltip label="@lang('posts.submit')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">

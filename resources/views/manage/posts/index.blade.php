@@ -40,11 +40,11 @@
                 @endif
                 <nav class="level is-mobile">
                   <div class="level-left">
-                    <a href="{{ route('posts.show',$post->id) }}" class="level-item" aria-label="show">
+                    {{-- <a href="{{ route('posts.show',$post->id) }}" class="level-item" aria-label="show">
                       <span class="icon is-small has-text-info">
                         <i class="far fa-eye" aria-hidden="true"></i>
                       </span>
-                    </a>
+                    </a> --}}
                     <a href="{{ route('posts.edit',$post->id) }}" class="level-item" aria-label="edit">
                       <span class="icon is-small has-text-info">
                         <i class="far fa-edit" aria-hidden="true"></i>
@@ -67,6 +67,36 @@
               </div>
             </article>
           </div>
+        </div>
+
+        <div id="modal" class="modal" v-bind:class="{ 'is-active': isActive{{ $post->id }} }">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+              {{csrf_field()}}
+              {{ method_field('DELETE') }}
+
+              <div class="notification">
+                <div class="columns">
+                  <div class="column is-2 has-text-centered">
+                    <i class="fas fa-trash has-text-danger is-size-1"></i>
+                  </div>
+                  <div class="column is-10">
+                    <p class="is-size-5">Are you sure you want to delete <strong>{{ $post->title }}</strong> from the database? <small>This action cannot be undone.</small></p>
+                  </div>
+                </div>
+                <div class="field is-grouped is-grouped-right">
+                  <div class="control">
+                    <a class="button is-light" v-on:click="isActive{{ $post->id }} = !isActive{{ $post->id }}">Cancel</a>
+                  </div>
+                  <div class="control">
+                    <button class="button is-danger">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <button class="modal-close is-large" aria-label="close" v-on:click="isActive{{ $post->id }} = !isActive{{ $post->id }}"></button>
         </div>
       @endforeach
     </div>

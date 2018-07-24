@@ -22,9 +22,11 @@
           <div class="column is-4">
             <div class="card">
               <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="Placeholder image">
-                </figure>
+                <a href="{{ asset('storage/files/'. $post->file) }}" target="_blank">
+                  <figure class="image is-4by3">
+                    <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title }}">
+                  </figure>
+                </a>
               </div>
               <div class="card-content">
                 <div class="media">
@@ -41,11 +43,9 @@
 
                 <div class="content">
                   @if (App::isLocale('en'))
-                    {!! $post->description !!}
-                    <time datetime="{{ $post->created_at }}">{{ $post->created_at->format('Y-m-d') }}</time>
+
                   @elseif (App::isLocale('es'))
-                    {!! $post->description_es !!}
-                    <time datetime="{{ $post->created_at }}">{{ $post->created_at->format('Y-m-d') }}</time>
+
                   @endif
                 </div>
               </div>

@@ -34,7 +34,7 @@
         <a class="navbar-item" href="{{ route('aboutus') }}">{{ __('Acerca') }}</a>
         <a class="navbar-item" href="{{ route('sitevacancies') }}">{{ __('Vacantes') }}</a>
         {{-- <a class="navbar-item" href="{{ route('login') }}">{{ __('Contacto') }}</a> --}}
-        <a class="navbar-item" href="https://www.linkedin.com/company/c230-consultores" target="_blank">
+        <a class="navbar-item" href="https://www.linkedin.com/company/fundacion-idea" target="_blank">
           <i class="fab fa-linkedin-in"></i>
         </a>
         <a class="navbar-item" href="https://twitter.com/FundacionIDEAMX" target="_blank">
