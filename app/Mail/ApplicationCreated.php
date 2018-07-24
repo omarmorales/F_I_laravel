@@ -32,7 +32,7 @@ class ApplicationCreated extends Mailable
     public function build()
     {
         return $this->from('omorales@c-230.com', 'C230 Consultores - CMS Administrator')
-                    ->to('reclutamiento@c-230.com', 'Reclutamiento C230')
+                    ->to('saul090594@gmail.com', 'Reclutamiento C230')
                     ->subject('Application posted successfully')
                     ->view('emails.applications.create');
     }

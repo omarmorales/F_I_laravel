@@ -14345,7 +14345,7 @@ body {
 .spinner {
   width: 80px;
   height: 80px;
-  border: 2px solid orange;
+  border: 2px solid lightblue;
   border-top: 3px solid white;
   border-radius: 100%;
   position: absolute;
@@ -14397,22 +14397,22 @@ body {
 
 .separator {
   margin-top: 10px;
-  background: -webkit-gradient(linear, left top, right top, from(#f15a24), color-stop(#ff7900), to(#ff9c27));
-  background: linear-gradient(to right, #f15a24, #ff7900, #ff9c27);
+  background: -webkit-gradient(linear, left top, right top, from(#3fa9f5), to(#7ac943));
+  background: linear-gradient(to right, #3fa9f5, #7ac943);
   height: 5px;
 }
 
 @media screen and (min-width: 1088px) {
   .separator {
-    background: -webkit-gradient(linear, left top, right top, from(#f15a24), color-stop(#ff7900), to(#ff9c27));
-    background: linear-gradient(to right, #f15a24, #ff7900, #ff9c27);
+    background: -webkit-gradient(linear, left top, right top, from(#3fa9f5), to(#7ac943));
+    background: linear-gradient(to right, #3fa9f5, #7ac943);
     height: 8px;
   }
 }
 
 .small-separator {
-  background: -webkit-gradient(linear, left top, right top, from(#f15a24), color-stop(#ff7900), to(#ff9c27));
-  background: linear-gradient(to right, #f15a24, #ff7900, #ff9c27);
+  background: -webkit-gradient(linear, left top, right top, from(#3fa9f5), to(#7ac943));
+  background: linear-gradient(to right, #3fa9f5, #7ac943);
   height: 5px;
   width: 15%;
   margin: 0;

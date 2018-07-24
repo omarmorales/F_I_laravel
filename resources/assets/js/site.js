@@ -23,5 +23,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 // const app = new Vue({
 //     el: '#app'
 // });
+require('./cms/navbar');
 require('./site/slider');
 require('./site/menu');

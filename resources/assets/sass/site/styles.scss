@@ -135,7 +135,7 @@ html,body {
     width: 80px;
     height: 80px;
 
-    border: 2px solid orange;
+    border: 2px solid lightblue;
     border-top:3px solid white;
     border-radius: 100%;
 
@@ -172,16 +172,16 @@ html,body {
 
 .separator {
   margin-top: 10px;
-  background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+  background: linear-gradient(to right, #3fa9f5 , #7ac943);
   height: 5px;
   @include desktop {
-    background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+    background: linear-gradient(to right, #3fa9f5 , #7ac943);
     height: 8px;
   }
 }
 
 .small-separator {
-  background: linear-gradient(to right, #f15a24 , #ff7900, #ff9c27);
+  background: linear-gradient(to right, #3fa9f5 , #7ac943);
   height: 5px;
   width: 15%;
   margin: 0;

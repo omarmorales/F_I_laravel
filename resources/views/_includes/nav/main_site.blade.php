@@ -2,13 +2,8 @@
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item is-hidden-desktop" href="{{ url('/') }}">
-        <img src="{{ asset('images/logo.png') }}" alt="C230 Consultores logo">
+        <img src="{{ asset('images/logo.png') }}" alt="Fundacion IDEA logo">
       </a>
-      @if (Request::segment(1) == "manage")
-        <a class="navbar-item is-hidden-desktop" id="admin-slideout-button">
-          <span class="icon"><i class="fas fa-angle-right"></i></span>
-        </a>
-      @endif
       <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
         <span></span>
         <span></span>
@@ -36,13 +31,13 @@
       </div>
 
       <div class="navbar-end">
-        <a class="navbar-item" href="{{ route('login') }}">{{ __('Acerca') }}</a>
-        <a class="navbar-item" href="{{ route('login') }}">{{ __('Vacantes') }}</a>
-        <a class="navbar-item" href="{{ route('login') }}">{{ __('Contacto') }}</a>
-        <a class="navbar-item" href="{{ route('login') }}">
+        <a class="navbar-item" href="{{ route('aboutus') }}">{{ __('Acerca') }}</a>
+        <a class="navbar-item" href="{{ route('sitevacancies') }}">{{ __('Vacantes') }}</a>
+        {{-- <a class="navbar-item" href="{{ route('login') }}">{{ __('Contacto') }}</a> --}}
+        <a class="navbar-item" href="https://www.linkedin.com/company/c230-consultores" target="_blank">
           <i class="fab fa-linkedin-in"></i>
         </a>
-        <a class="navbar-item" href="{{ route('login') }}">
+        <a class="navbar-item" href="https://twitter.com/FundacionIDEAMX" target="_blank">
           <i class="fab fa-twitter"></i>
         </a>
       </div>

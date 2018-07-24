@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 37);
+/******/ 	return __webpack_require__(__webpack_require__.s = 38);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -43191,36 +43191,6 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(38);
-__webpack_require__(42);
-module.exports = __webpack_require__(43);
-
-
-/***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_buefy__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_buefy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_buefy__);
-__webpack_require__(10);
-
-window.Vue = __webpack_require__(3);
-
-
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a);
-
-// Vue.component('vacancies', require('./components/Vacancies.vue'));
-
-__webpack_require__(39);
-__webpack_require__(40);
-__webpack_require__(41);
-
-/***/ }),
-/* 39 */
 /***/ (function(module, exports) {
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -43246,6 +43216,36 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(39);
+__webpack_require__(42);
+module.exports = __webpack_require__(43);
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_buefy__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_buefy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_buefy__);
+__webpack_require__(10);
+
+window.Vue = __webpack_require__(3);
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a);
+
+// Vue.component('vacancies', require('./components/Vacancies.vue'));
+
+__webpack_require__(37);
+__webpack_require__(40);
+__webpack_require__(41);
 
 /***/ }),
 /* 40 */
