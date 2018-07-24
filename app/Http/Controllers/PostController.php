@@ -84,35 +84,73 @@ class PostController extends Controller
   /**
   * Display the specified resource.
   *
-  * @param  int  $id
+  * @param  \App\Post  $post
   * @return \Illuminate\Http\Response
   */
-  public function show($id)
+  public function show(Post $post)
   {
-    //
+    return view('manage.posts.show')->withPost($post);
   }
 
   /**
   * Show the form for editing the specified resource.
   *
-  * @param  int  $id
+  * @param  \App\Post  $post
   * @return \Illuminate\Http\Response
   */
-  public function edit($id)
+  public function edit(Post $post)
   {
     //
+    return view('manage.posts.edit')->withPost($post);
   }
 
   /**
   * Update the specified resource in storage.
   *
   * @param  \Illuminate\Http\Request  $request
-  * @param  int  $id
+  * @param  \App\Post  $post
   * @return \Illuminate\Http\Response
   */
-  public function update(Request $request, $id)
+  public function update(Request $request, Post $post)
   {
     //
+    $this->validateWith([
+      'title' => 'required|max:255',
+      'description' => 'sometimes',
+      'title_es' => 'required|max:255',
+      'description_es' => 'sometimes',
+    ]);
+
+    //handle file uopz_overload
+    if ($request->hasFile('thumbnail')) {
+      //get filename with the extension
+      $fileNameWithExt = $request->file('thumbnail')->getClientOriginalName();
+      //get just fileName
+      $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+      //get just ext
+      $extension = $request->file('thumbnail')->getClientOriginalExtension();
+      //file name to Store
+      $fileNameToStore=$filename.'_'.time().'.'.$extension;
+      //upload
+      $path = $request->file('thumbnail')->storeAs('public/thumbnails', $fileNameToStore);
+    } else {
+      $fileNameToStore = 'noimage.jpg';
+    }
+
+    $post->title = $request->title;
+    $post->description = $request->description;
+
+    $post->title_es = $request->title_es;
+    $post->description_es = $request->description_es;
+
+    if ($request->hasFile('thumbnail')) {
+      $post->thumbnail = $fileNameToStore;
+    }
+    $post->public = $request->public;
+
+    $post->save();
+
+    return redirect()->route('posts.index')->with('success', 'Post updated successfully');
   }
 
   /**

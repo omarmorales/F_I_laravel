@@ -29,13 +29,13 @@
               <div class="field">
                 <p class="control">
                   <label for="title" class="label">@lang('posts.title')</label>
-                  <input type="text" class="input" name="title" value="{{old('title')}}" id="title">
+                  <input type="text" class="input" name="title" value="{{ $post->title }}" id="title">
                 </p>
               </div>
               <div class="field">
                 <p class="control">
                   <label for="description" class="label">Description</label>
-                  <textarea class="textarea" id="description" name="description">{{old('description')}}</textarea>
+                  <textarea class="textarea" id="description" name="description">{!! $post->description !!}</textarea>
                 </p>
               </div>
 
@@ -51,13 +51,13 @@
               <div class="field">
                 <p class="control">
                   <label for="title_es" class="label">Título</label>
-                  <input type="text" class="input" name="title_es" value="{{old('title_es')}}" id="title_es">
+                  <input type="text" class="input" name="title_es" value="{{$post->title_es}}" id="title_es">
                 </p>
               </div>
               <div class="field">
                 <p class="control">
                   <label for="description_es" class="label">Descripción</label>
-                  <textarea class="textarea" id="description_es" name="description_es">{{old('description_es')}}</textarea>
+                  <textarea class="textarea" id="description_es" name="description_es">{!!$post->description!!}</textarea>
                 </p>
               </div>
 
@@ -66,8 +66,21 @@
         </div>
 
         <div class="column is-6">
-          <label class="label">@lang('posts.thumbnail')</label>
-          <input class="input" type="file" name="thumbnail" id="thumbnail" value="{{old('thumbnail')}}">
+          <label class="label">@lang('posts.editThumbnail')</label>
+          <div class="columns">
+            <div class="column is-4">
+              <div class="block">
+                    <b-radio v-model="change_thumbnail" name="change_thumbnail" native-value="yes">@lang('posts.yes')</b-radio>
+                    <b-radio v-model="change_thumbnail" name="change_thumbnail" native-value="no">@lang('posts.no')</b-radio>
+              </div>
+            </div>
+            <div class="column">
+              <input class="input" type="file" name="thumbnail" id="thumbnail" value="{{old('descripcion')}}" v-if="change_thumbnail == 'yes'">
+              <figure class="image is-96x96" v-if="change_thumbnail == 'no'">
+                <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title }}">
+              </figure>
+            </div>
+          </div>
         </div>
 
         <div class="column">
@@ -125,20 +138,9 @@
     const app = new Vue({
       el: '#app',
       data: {
-        isPublic: true
+        isPublic: true,
+        change_thumbnail: 'no'
       }
-    });
-
-    $('#description_es').summernote({
-      placeholder: 'Agrega una descripción para este miembro del personal',
-      tabsize: 2,
-      height: 100
-    });
-
-    $('#description').summernote({
-      placeholder: 'Add description for staff member',
-      tabsize: 2,
-      height: 100
     });
   }
   </script>
