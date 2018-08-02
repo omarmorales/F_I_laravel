@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use App\Post;
+use App\Tag;
+use DB;
+use Session;
+use Hash;
+use Input;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -30,7 +35,8 @@ class PostController extends Controller
   */
   public function create()
   {
-    return view('manage.posts.create');
+    $tags = Tag::all();
+    return view('manage.posts.create')->withTags($tags);
   }
 
   /**
@@ -94,6 +100,10 @@ class PostController extends Controller
 
     $post->save();
 
+    if ($request->tags) {
+      $post->tags()->sync(explode(',', $request->tags));
+    }
+
     return redirect()->route('posts.index')->with('success', 'Post created successfully');
   }
 
@@ -117,7 +127,8 @@ class PostController extends Controller
   public function edit(Post $post)
   {
     //
-    return view('manage.posts.edit')->withPost($post);
+    $tags = Tag::all();
+    return view('manage.posts.edit')->withPost($post)->withTags($tags);
   }
 
   /**
@@ -184,6 +195,7 @@ class PostController extends Controller
     $post->public = $request->public;
 
     $post->save();
+    $post->tags()->sync(explode(',', $request->tags));
 
     return redirect()->route('posts.index')->with('success', 'Post updated successfully');
   }

@@ -112,9 +112,20 @@
           <label class="label">@lang('posts.file')</label>
           <input class="input" type="file" name="file" id="file" value="{{old('file')}}">
         </div>
+        <div class="column is-12">
+          <input type="hidden" :value="tagsSelected" name="tags">
+          <label class="label"> Post's Tags</label>
+          <section>
+            @foreach ($tags as $tag)
+              <div class="field">
+                  <b-checkbox v-model="tagsSelected" :native-value="{{$tag->id}}">{{$tag->name}}</b-checkbox>
+              </div>
+            @endforeach
+          </section>
+        </div>
       </div>
       <b-tooltip label="@lang('posts.submit')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">
-        <button href="{{ route('applications.create') }}" class="button-float button-round" style="border-width:0px; border-style:none;">
+        <button href="{{ route('posts.create') }}" class="button-float button-round" style="border-width:0px; border-style:none;">
           <span class="fas fa-save"></span>
         </button>
       </b-tooltip>
@@ -128,7 +139,8 @@
     const app = new Vue({
       el: '#app',
       data: {
-        isPublic: true
+        isPublic: true,
+        tagsSelected: [{!! old('tags') ? old('tags') : '' !!}]
       }
     });
 

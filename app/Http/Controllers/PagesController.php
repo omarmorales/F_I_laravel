@@ -5,13 +5,23 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\Vacancy;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
   public function index(){
-    $posts = Post::orderBy('id', 'asc')->paginate(10);
-    return view('pages.index')->withPosts($posts);
+    if (request()->tag) {
+      $posts = Post::with('tags')->whereHas('tags', function($query){
+        $query->where('id', request()->tag);
+      })->get();
+      $tags = Tag::all();
+    } else {
+      $tags = Tag::all();
+      $posts = Post::orderBy('id', 'asc')->paginate(10);
+    }
+
+    return view('pages.index')->withPosts($posts)->withTags($tags);
   }
 
   public function aboutus()

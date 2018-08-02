@@ -132,7 +132,7 @@
                     <b-radio v-model="change_thumbnail2" name="change_thumbnail2" native-value="no">@lang('posts.no')</b-radio>
               </div>
             </div>
-            <div class="column">
+            <div class="column is-12">
               <input class="input" type="file" name="file" id="file" v-if="change_thumbnail2 == 'yes'">
               <a href="{{ asset('storage/files/'. $post->file) }}" v-if="change_thumbnail2 == 'no'" target="_blank">
                 <i class="fas fa-file m-r-10"></i>
@@ -140,6 +140,17 @@
               </a>
             </div>
           </div>
+        </div>
+        <div class="column is-12">
+          <input type="hidden" :value="tagsSelected" name="tags">
+          <label for="roles" class="label">{{ $post->title }}'s Tags</label>
+          <section>
+            @foreach ($tags as $tag)
+              <div class="field">
+                  <b-checkbox v-model="tagsSelected" :native-value="{{$tag->id}}">{{$tag->name}}</b-checkbox>
+              </div>
+            @endforeach
+          </section>
         </div>
       </div>
       <b-tooltip label="@lang('posts.submit')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">
@@ -159,7 +170,8 @@
       data: {
         isPublic: true,
         change_thumbnail: 'no',
-        change_thumbnail2: 'no'
+        change_thumbnail2: 'no',
+        tagsSelected: {!! $post->tags->pluck('id') !!}
       }
     });
   }
