@@ -14,7 +14,7 @@ class PagesController extends Controller
     if (request()->tag) {
       $posts = Post::with('tags')->whereHas('tags', function($query){
         $query->where('id', request()->tag);
-      })->get();
+      })->paginate(10);
       $tags = Tag::all();
     } else {
       $tags = Tag::all();

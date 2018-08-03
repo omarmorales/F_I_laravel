@@ -54,7 +54,17 @@ class ApplicationController extends Controller
       'email' => 'required|email',
       'school' => 'required|max:255',
       'vacancy_id' => 'required',
-      'motivation_letter' => 'required|max:10000'
+      'motivation_letter' => 'required|max:10000',
+      'cv' => 'required|max:10000',
+      'how_hear_aboutus' => 'required',
+      'situation' => 'required',
+      'average' => 'required',
+      'themes' => 'required',
+      'stata' => 'required',
+      'future' => 'required',
+      'whyinterested' => 'required',
+      'whyhireyou' => 'required',
+      'comments' => 'required',
     ]);
 
     //handle file uopz_overload
@@ -68,7 +78,7 @@ class ApplicationController extends Controller
       //file name to Store
       $fileNameToStore=$filename.'_'.time().'.'.$extension;
       //upload
-      $path = Storage::disk('spaces')->putFileAs('motivation-letters', $request->file('motivation_letter'), $fileNameToStore, 'public');
+      $path = $request->file('motivation_letter')->storeAs('public/motivation_letters', $fileNameToStore);
     } else {
       $fileNameToStore = 'noimage.jpg';
     }
@@ -84,7 +94,7 @@ class ApplicationController extends Controller
       //file name to Store
       $cvNameToStore=$cvName.'_'.time().'.'.$cvExtension;
       //upload
-      $cvPath = Storage::disk('spaces')->putFileAs('cvs', $request->file('cv'), $cvNameToStore, 'public');
+      $path = $request->file('cv')->storeAs('public/cvs', $cvNameToStore);
     } else {
       $cvNameToStore = 'noimage.jpg';
     }
@@ -97,6 +107,16 @@ class ApplicationController extends Controller
 
     $application->motivation_letter = $fileNameToStore;
     $application->cv = $cvNameToStore;
+
+    $application->how_hear_aboutus = $request->how_hear_aboutus;
+    $application->situation = $request->situation;
+    $application->average = $request->average;
+    $application->themes = $request->themes;
+    $application->stata = $request->stata;
+    $application->future = $request->future;
+    $application->whyinterested = $request->whyinterested;
+    $application->whyhireyou = $request->whyhireyou;
+    $application->comments = $request->comments;
 
     $application->vacancy_id = $request->vacancy_id;
 
@@ -151,11 +171,11 @@ class ApplicationController extends Controller
   {
     if ($application->motivation_letter != 'noimage.jpg') {
       //delete de image
-      Storage::disk('spaces')->delete('public/motivation-letters/'.$application->motivation_letter);
+      Storage::delete( public_path('/motivation_letters/' . $application->motivation_letter));
     }
 
     if ($application->cv != 'noimage.jpg') {
-      Storage::disk('spaces')->delete('public/cvs/'.$application->cv);
+      Storage::delete( public_path('/cvs/' . $application->cv));
     }
 
     $application->delete();

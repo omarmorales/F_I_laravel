@@ -88,26 +88,13 @@
                   <p class="is-size-4-desktop is-uppercase has-text-weight-normal m-b-10 has-text-link">Datos del aplicante</p>
                   <div class="columns">
                     <div class="column">
-                      <div class="field">
-                        <p class="control">
-                          <label for="name" class="label">Nombre</label>
-                          <input type="text" class="input" name="name" value="{{old('name')}}" id="name">
-                        </p>
-                      </div>
+                      <b-field label="Nombre">
+                          <b-input type="text" name="name" id="name" required></b-input>
+                      </b-field>
 
-                      <div class="field">
-                        <p class="control">
-                          <label for="email" class="label">Correo</label>
-                          <input type="email" class="input" name="email" value="{{old('email')}}" id="email">
-                        </p>
-                      </div>
-
-                      <div class="field">
-                        <p class="control">
-                          <label for="school" class="label">Universidad</label>
-                          <input type="text" class="input" name="school" value="{{old('school')}}" id="school">
-                        </p>
-                      </div>
+                      <b-field label="Email">
+                        <b-input type="email" name="email" id="email" required></b-input>
+                      </b-field>
                     </div>
 
                     <div class="column">
@@ -125,6 +112,65 @@
                         </div>
                       </div>
                       <input type="hidden" class="vacancy_id" name="vacancy_id" value="{{ $vacancy->id }}" id="vacancy_id">
+                    </div>
+                  </div>
+
+                  <div class="columns is-multiline">
+                    <div class="column is-12">
+                      <b-field label="¿Cómo te enteraste de nosotros?">
+                          <b-input type="text" name="how_hear_aboutus" id="how_hear_aboutus" required></b-input>
+                      </b-field>
+
+                      <b-field label="Favor de indicarnos cuál de las siguientes opciones describe mejor tu situación actual.">
+                          <b-select placeholder="Selecciona una opción" name="situation" id="situation" required>
+                              <option value="0">Soy estudiante</option>
+                              <option value="1">Soy estudiante y busco empleo</option>
+                              <option value="2">Soy recién egresado y busco empleo</option>
+                              <option value="3">Terminé mis estudios (pero aún no me titulo) y busco empleo</option>
+                              <option value="4">Terminé mis estudios (pero aún no me titulo) y estoy trabajando</option>
+                              <option value="5">Estoy titulado y busco empleo</option>
+                              <option value="6">Estoy titulado y trabajo actualmente</option>
+                              <option value="7">Otro</option>
+                          </b-select>
+                      </b-field>
+
+                      <b-field label="Universidad">
+                        <b-input name="school" id="school" required></b-input>
+                      </b-field>
+
+                      <b-field label="¿Cuál es tu promedio actual en la licenciatura? Y si ya terminaste de estudiar, ¿cuál fue tu promedio final?">
+                        <b-input type="number" min="0" max="100" name="average" id="average" required></b-input>
+                      </b-field>
+
+                      <b-field label="De los temas en los que hemos trabajado, ¿hay alguno en el que preferirías no trabajar? ¿por qué? No te preocupes, tu respuesta no afectará el proceso de reclutamiento. ">
+                          <b-input maxlength="200" type="textarea" name="themes" id="themes" required></b-input>
+                      </b-field>
+
+                      <b-field label="Cuéntanos qué es lo más complejo que has hecho en STATA.">
+                          <b-input maxlength="200" type="textarea" name="stata" id="stata" required></b-input>
+                      </b-field>
+
+                      <b-field label="¿Dónde te ves profesionalmente en 5 años? ¿Qué haces y qué has logrado? Tal vez es prematuro, pero queremos entender tus planes a futuro.">
+                          <b-input maxlength="200" type="textarea" name="future" id="future" required></b-input>
+                      </b-field>
+                    </div>
+                    <div class="column is-10">
+                      <div class="notification is-link">
+                        Por último, las dos preguntas más importantes:
+                      </div>
+                    </div>
+                    <div class="column is-12">
+                      <b-field label="Please answer in English: Tell us why you are interested in working at C230 Consultores (please use between 200 and 300 words).">
+                          <b-input maxlength="300" type="textarea" name="whyinterested" id="whyinterested" required></b-input>
+                      </b-field>
+
+                      <b-field label="Please answer in English: Why should we hire you?">
+                          <b-input maxlength="120" type="textarea" name="whyhireyou" id="whyhireyou" required></b-input>
+                      </b-field>
+
+                      <b-field label="¡Gracias por tu interés en nosotros! Si tienes algún otro comentario, puedes hacerlo en este espacio.">
+                          <b-input maxlength="200" type="textarea" name="comments" id="comments" required></b-input>
+                      </b-field>
                     </div>
                   </div>
 
