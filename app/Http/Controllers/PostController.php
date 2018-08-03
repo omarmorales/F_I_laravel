@@ -81,7 +81,7 @@ class PostController extends Controller
       //file name to Store
       $fileNameToStore_two=$filename_two.'_'.time().'.'.$extension_two;
       //upload
-      $path_two = $request->file('file')->storeAs('public/files', $fileNameToStore_two);
+      $path_two = Storage::disk('spaces')->putFileAs('IDEA/files', $request->file('file'), $fileNameToStore_two, 'public');
     } else {
       $fileNameToStore_two = 'noimage.jpg';
     }
@@ -174,7 +174,7 @@ class PostController extends Controller
       //file name to Store
       $fileNameToStore_two=$filename_two.'_'.time().'.'.$extension_two;
       //upload
-      $path_two = $request->file('file')->storeAs('public/files', $fileNameToStore_two);
+      $path_two = Storage::disk('spaces')->putFileAs('IDEA/files', $request->file('file'), $fileNameToStore_two, 'public');
     } else {
       $fileNameToStore_two = 'noimage.jpg';
     }
@@ -215,7 +215,7 @@ class PostController extends Controller
 
     if ($post->file != 'noimage.jpg') {
       //delete de image
-      Storage::delete( public_path('/files/' . $post->file));
+      Storage::disk('spaces')->delete('public/IDEA/files/'. $post->file);
     }
 
     $post->delete();
