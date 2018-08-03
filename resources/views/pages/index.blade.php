@@ -55,7 +55,7 @@
                 </p>
               </header>
               <div class="card-image">
-                <a href="{{ asset('storage/files/'. $post->file) }}" target="_blank">
+                <a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" alt="{{ $post->file }}" target="_blank">
                   <figure class="image is-4by3">
                     <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title }}">
                   </figure>
