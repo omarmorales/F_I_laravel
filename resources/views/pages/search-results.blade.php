@@ -29,7 +29,7 @@
           <li><a href="{{ route('index') }}">Inicio</a></li>
           <li class="is-active"><a href="#" aria-current="page">Búsqueda</a></li>
         </ul>
-        <p class="m-t-20">{{ $posts->count() }} resultado(s) para
+        <p class="m-t-20">{{ $posts->total() }} resultado(s) para
           <span class="has-text-weight-semibold">
             "{{ request()->input('query') }}"
           </span>
@@ -63,6 +63,7 @@
           </div>
         @endforeach
       </div>
+      {{ $posts->appends(request()->input())->links() }}
     </div>
   </section>
   <b-tooltip label="Volver al inicio" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">

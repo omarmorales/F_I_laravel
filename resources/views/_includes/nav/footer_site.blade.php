@@ -14,6 +14,9 @@
 
       <div class="column is-one-third">
         <p class="is-size-4-desktop is-size-5-touch is-uppercase has-text-weight-normal">Medios</p>
+        <a href="https://www.facebook.com/FundacionIDEA/" target="_blank">
+          <p class="m-b-5 has-text-white"><i class="fab fa-facebook-f m-r-10"></i>Facebook</p>
+        </a>
         <a href="https://www.linkedin.com/company/c230-consultores" target="_blank">
           <p class="m-b-5 has-text-white"><i class="fab fa-linkedin-in m-r-10"></i>LinkedIn</p>
         </a>

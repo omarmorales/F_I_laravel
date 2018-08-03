@@ -65,6 +65,7 @@
           </div>
         @endforeach
       </div>
+      {{ $posts->links() }}
     </div>
   </section>
   <b-tooltip label="Volver al inicio" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">

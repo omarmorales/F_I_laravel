@@ -34,6 +34,9 @@
         <a class="navbar-item" href="{{ route('aboutus') }}">{{ __('Acerca') }}</a>
         <a class="navbar-item" href="{{ route('sitevacancies') }}">{{ __('Vacantes') }}</a>
         {{-- <a class="navbar-item" href="{{ route('login') }}">{{ __('Contacto') }}</a> --}}
+        <a class="navbar-item" href="https://www.facebook.com/FundacionIDEA/" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
         <a class="navbar-item" href="https://www.linkedin.com/company/fundacion-idea" target="_blank">
           <i class="fab fa-linkedin-in"></i>
         </a>

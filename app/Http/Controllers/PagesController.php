@@ -56,8 +56,12 @@ class PagesController extends Controller
 
   public function search(Request $request)
   {
+    $request->validate([
+      'query' => 'required|min:3'
+    ]);
     $query = $request->input('query');
-    $posts = Post::where('title', 'like', "%$query%")->get();
+    $posts = Post::where('title', 'like', "%$query%")->orWhere('title_es', 'like', "%$query%")->orWhere('description', 'like', "%$query%")->orWhere('description_es', 'like', "%$query%")->paginate(10);
+    // $posts = Post::search($query)->paginate(10);
     return view('pages.search-results')->with('posts', $posts);
   }
 }
