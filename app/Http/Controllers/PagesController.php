@@ -53,4 +53,11 @@ class PagesController extends Controller
     $vacancies = Vacancy::orderBy('id', 'asc')->paginate(5);
     return view('pages.vacancies')->withVacancies($vacancies);
   }
+
+  public function search(Request $request)
+  {
+    $query = $request->input('query');
+    $posts = Post::where('title', 'like', "%$query%")->get();
+    return view('pages.search-results')->with('posts', $posts);
+  }
 }

@@ -19,24 +19,22 @@
             @include('_includes.forms.search')
           </div>
         </div>
-        <div class="columns">
-          <div class="column">
-            <nav class="level m-t-10">
-              @foreach ($tags as $tag)
-                <div class="level-item has-text-centered">
-                  <div>
-                    <a class="heading has-text-white" href="{{ route('index', ['tag' => $tag->id]) }}">{{ $tag->name }}</a>
-                  </div>
-                </div>
-              @endforeach
-            </nav>
-          </div>
-        </div>
       </div>
     </div>
   </section>
   <section id="posts">
     <div class="container m-t-30 m-b-30">
+      <nav class="breadcrumb m-t-20" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="{{ route('index') }}">Inicio</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Búsqueda</a></li>
+        </ul>
+        <p class="m-t-20">{{ $posts->count() }} resultado(s) para
+          <span class="has-text-weight-semibold">
+            "{{ request()->input('query') }}"
+          </span>
+        </p>
+      </nav>
       <div class="columns is-multiline">
         @foreach ($posts as $post)
           <div class="column is-4">
@@ -80,7 +78,6 @@
       const app = new Vue({
         el: '#app',
         data: {
-          tag: 0
         }
       });
     }

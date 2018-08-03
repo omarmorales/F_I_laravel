@@ -16,6 +16,7 @@ Route::get('/whatwedo', 'PagesController@whatwedo')->name('whatwedo');
 Route::get('/vacancies', 'PagesController@vacancies')->name('sitevacancies');
 Route::get('/vacancies/{vacancy}', 'VacanciesController@showSite')->name('vacancy.show');
 Route::resource('/applications', 'ApplicationController', ['only' => ['store']]);
+Route::get('/search', 'PagesController@search')->name('search');
 
 Auth::routes();
 
