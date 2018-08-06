@@ -30,14 +30,14 @@
                   </div>
                   <nav class="level is-mobile">
                     <div class="level-left">
-                      <a href="{{ Storage::disk('spaces')->url('motivation-letters/'.$application->motivation_letter) }}" class="level-item" aria-label="reply">
+                      <a target="_blank" href="{{ asset('storage/motivation_letters/'.$application->motivation_letter) }}" class="level-item" aria-label="reply">
                         <span class="icon is-small has-text-info">
                           <b-tooltip label="Motivation letter" position="is-top" type="is-dark">
                             <i class="fas fa-file-alt" aria-hidden="true"></i>
                           </b-tooltip>
                         </span>
                       </a>
-                      <a href="{{ Storage::disk('spaces')->url('cvs/'.$application->cv) }}" class="level-item" aria-label="reply">
+                      <a target="_blank" href="{{ asset('storage/cvs/'.$application->cv) }}" class="level-item" aria-label="reply">
                         <span class="icon is-small has-text-info">
                           <b-tooltip label="CV" position="is-top" type="is-dark">
                             <i class="fas fa-file-alt" aria-hidden="true"></i>

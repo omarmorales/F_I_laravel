@@ -16,7 +16,7 @@
       <div class="column is-6">
         <div class="field">
           <label class="label">Carta motivos</label>
-          <a target="_blank" href="{{ Storage::disk('spaces')->url('motivation-letters/'.$application->motivation_letter)}}">
+          <a target="_blank" href="{{ asset('storage/motivation_letters/'.$application->motivation_letter) }}">
             <span class="icon is-medium"><i class="fas fa-file fa-lg"></i></span>{{ $application->motivation_letter }}
           </a>
         </div>
@@ -25,7 +25,7 @@
       <div class="column is-6">
         <div class="field">
           <label class="label">Currículum Vitae</label>
-          <a href="{{ Storage::disk('spaces')->url('cvs/'.$application->cv) }}" target="_blank">
+          <a target="_blank" href="{{ asset('storage/cvs/'.$application->cv) }}">
             <span class="icon is-medium"><i class="fas fa-file fa-lg"></i></span>{{ $application->cv }}
           </a>
         </div>
