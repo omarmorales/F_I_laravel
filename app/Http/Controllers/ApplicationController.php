@@ -135,7 +135,7 @@ class ApplicationController extends Controller
   */
   public function show(Application $application)
   {
-    //
+    return view('manage.applications.show')->withApplication($application);
   }
 
   /**

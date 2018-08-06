@@ -44,6 +44,13 @@
                           </b-tooltip>
                         </span>
                       </a>
+                      <a href="{{ route('applications.show', $application->id) }}" class="level-item" aria-label="reply">
+                        <span class="icon is-small has-text-primary">
+                          <b-tooltip label="Show application" position="is-top" type="is-dark">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                          </b-tooltip>
+                        </span>
+                      </a>
                       <a class="level-item" aria-label="delete" v-on:click="isActive{{ $application->id }} = !isActive{{ $application->id }}">
                         <span class="icon is-small has-text-danger">
                           <b-tooltip label="Delete application" position="is-top" type="is-dark">
