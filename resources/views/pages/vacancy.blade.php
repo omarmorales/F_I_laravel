@@ -154,10 +154,8 @@
                           <b-input maxlength="200" type="textarea" name="future" id="future" required></b-input>
                       </b-field>
                     </div>
-                    <div class="column is-10">
-                      <div class="notification is-link">
-                        Por último, las dos preguntas más importantes:
-                      </div>
+                    <div class="column is-12">
+                      <p class="is-size-4-desktop is-uppercase has-text-weight-normal m-b-10 has-text-link">Por último, las dos preguntas más importantes:</p>
                     </div>
                     <div class="column is-12">
                       <b-field label="Please answer in English: Tell us why you are interested in working at C230 Consultores (please use between 200 and 300 words).">
@@ -203,5 +201,9 @@
       }
     });
   }
+
+  window.addEventListener('loader', function(){
+    overlay.style.display = 'block';
+  })
   </script>
 @endsection

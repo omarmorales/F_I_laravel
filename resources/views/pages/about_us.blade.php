@@ -6,7 +6,9 @@
       <div class="container">
         <div class="columns">
           <div class="column is-8">
-            <img src="{{ asset('images/logoBig.png') }}" alt="C230 Consultores logo">
+            <a href="{{ route('index') }}">
+              <img src="{{ asset('images/logoBig.png') }}" alt="C230 Consultores logo">
+            </a>
           </div>
           <div class="column">
             <p class="has-text-white">Somos Fundación IDEA, uno de los primeros think tanks de política pública en México</p>

@@ -125,12 +125,13 @@
         </div>
       </div>
       <b-tooltip label="@lang('posts.submit')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">
-        <button href="{{ route('posts.create') }}" class="button-float button-round" style="border-width:0px; border-style:none;">
+        <button href="{{ route('posts.create') }}" class="button-float button-round" style="border-width:0px; border-style:none;" @click="openLoading">
           <span class="fas fa-save"></span>
         </button>
       </b-tooltip>
     </form>
   </div>
+  <b-loading :is-full-page="isFullPage" :active.sync="isLoading" :can-cancel="true"></b-loading>
 @endsection
 
 @section('scripts')
@@ -139,8 +140,15 @@
     const app = new Vue({
       el: '#app',
       data: {
+        isLoading: false,
+        isFullPage: true,
         isPublic: true,
         tagsSelected: [{!! old('tags') ? old('tags') : '' !!}]
+      },
+      methods: {
+        openLoading() {
+          this.isLoading = true
+        }
       }
     });
 
