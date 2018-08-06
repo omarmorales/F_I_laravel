@@ -2,7 +2,7 @@
 
 @section('content')
   <section class="hero blue-gradient is-bold is-hidden-touch">
-    <div class="hero-body" style="margin-top:2em; margin-bottom:1em;">
+    <div class="hero-body js-section" style="margin-top:2em; margin-bottom:1em;">
       <div class="container">
         <div class="columns">
           <div class="column is-8">
@@ -84,6 +84,21 @@
           tag: 0
         }
       });
+
+      function scrollIt(element) {
+      window.scrollTo({
+        'behavior': 'smooth',
+        'left': 0,
+        'top': element.offsetTop
+      });
+    }
+
+    const btn = document.getElementById('js-btn');
+    const section = document.querySelector('.js-section');
+
+    btn.addEventListener('click', function() {
+      scrollIt(section);
+    });
     }
   </script>
 @endsection
