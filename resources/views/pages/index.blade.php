@@ -21,15 +21,17 @@
         </div>
         <div class="columns">
           <div class="column">
-            <nav class="level m-t-10">
-              @foreach ($tags as $tag)
-                <div class="level-item has-text-centered">
-                  <div>
-                    <a class="heading has-text-white" href="{{ route('index', ['tag' => $tag->id]) }}">{{ $tag->name }}</a>
-                  </div>
-                </div>
-              @endforeach
-            </nav>
+            <div class="tabs is-centered m-t-10">
+              <ul id="tabs-menu-tags">
+                @foreach ($tags as $tag)
+                  @if (request()->tag == $tag->id)
+                    <li class="is-active"><a class="has-background-white is-uppercase is-size-7">{{ $tag->name }}</a></li>
+                  @else
+                    <li><a class="has-text-white is-uppercase is-size-7" style="letter-spacing: 1px;" href="{{ route('index', ['tag' => $tag->id]) }}">{{ $tag->name }}</a></li>
+                  @endif
+                @endforeach
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -41,16 +43,16 @@
         @foreach ($posts as $post)
           <div class="column is-4">
             <div class="card">
-              <header class="card-header">
+              <header class="card-header has-background-link">
                 <p style="margin:1em;">
                   @foreach ($post->tags as $tag)
-                    <b-tag rounded class="m-b-10">{{ $tag->name }}</b-tag>
+                    <a href="{{ route('index', ['tag' => $tag->id]) }}"><b-tag class="m-b-10 is-uppercase" type="is-dark">{{ $tag->name }}</b-tag></a>
                   @endforeach
                   <br>
                   @if (App::isLocale('en'))
-                    <span>{{ $post->title }}</span>
+                    <span class="is-size-5 has-text-white is-capitalized">{{ $post->title }}</span>
                   @elseif (App::isLocale('es'))
-                    <span>{{ $post->title_es }}</span>
+                    <span class="is-size-5 has-text-white is-capitalized">{{ $post->title_es }}</span>
                   @endif
                 </p>
               </header>

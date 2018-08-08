@@ -14685,6 +14685,11 @@ body {
 
 /* Slider ends */
 
+#tabs-menu-tags li {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
 .m-t-5 {
   margin-top: 5px !important;
 }
