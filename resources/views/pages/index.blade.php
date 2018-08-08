@@ -46,7 +46,7 @@
               <header class="card-header has-background-link">
                 <p style="margin:1em;">
                   @foreach ($post->tags as $tag)
-                    <a href="{{ route('index', ['tag' => $tag->id]) }}"><b-tag class="m-b-10 is-uppercase" type="is-dark">{{ $tag->name }}</b-tag></a>
+                    <a href="{{ route('index', ['tag' => $tag->id]) }}"><b-tag class="m-b-10 is-uppercase" type="is-success">{{ $tag->name }}</b-tag></a>
                   @endforeach
                   <br>
                   @if (App::isLocale('en'))
