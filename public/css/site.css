@@ -14690,6 +14690,10 @@ body {
   margin-left: 1em;
 }
 
+.card {
+  height: 100%;
+}
+
 .m-t-5 {
   margin-top: 5px !important;
 }
