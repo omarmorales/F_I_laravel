@@ -24,7 +24,7 @@ class PostController extends Controller
   */
   public function index()
   {
-    $posts = Post::orderBy('id', 'desc')->paginate(10);
+    $posts = Post::paginate(10);
     return view('manage.posts.index')->withPosts($posts);
   }
 
@@ -52,7 +52,7 @@ class PostController extends Controller
       'description' => 'sometimes',
       'title_es' => 'required|max:255',
       'description_es' => 'sometimes',
-      'thumbnail' => 'required'
+      'thumbnail' => 'sometimes'
     ]);
 
     //handle file uopz_overload

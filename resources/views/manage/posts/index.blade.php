@@ -40,11 +40,11 @@
                 @endif
                 <nav class="level is-mobile">
                   <div class="level-left">
-                    {{-- <a href="{{ route('posts.show',$post->id) }}" class="level-item" aria-label="show">
+                    <a href="{{ route('posts.show',$post->id) }}" class="level-item" aria-label="show">
                       <span class="icon is-small has-text-info">
                         <i class="far fa-eye" aria-hidden="true"></i>
                       </span>
-                    </a> --}}
+                    </a>
                     <a href="{{ route('posts.edit',$post->id) }}" class="level-item" aria-label="edit">
                       <span class="icon is-small has-text-info">
                         <i class="far fa-edit" aria-hidden="true"></i>

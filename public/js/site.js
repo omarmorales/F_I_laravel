@@ -43249,6 +43249,9 @@ __webpack_require__(10);
 
 window.Vue = __webpack_require__(3);
 
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a, {
+  defaultIconPack: 'fa'
+});
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a);
 
