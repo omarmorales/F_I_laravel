@@ -10,7 +10,6 @@
     </nav>
 
     <h1 class="title">@lang('posts.IndexTitle')</h1>
-    {{ $posts->links() }}
     <div class="columns is-multiline">
       @foreach ($posts as $post)
         <div class="column is-6">
