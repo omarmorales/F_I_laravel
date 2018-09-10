@@ -29,6 +29,7 @@
                     </a>
                   </div>
                   <div class="column is-5">
+                    <div class="fb-share-button m-b-10" data-href="{{ route('post.show',$post->id) }}" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2Fposts%2F4&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
                     <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title }}">
                   </div>
                 </div>
