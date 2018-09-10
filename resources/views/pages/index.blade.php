@@ -56,7 +56,7 @@
                   @endif
                 </p>
               </header>
-              <div class="card-image" style=" height:100%; background-image: url({{ asset('storage/thumbnails/'.$post->thumbnail) }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+              <div class="card-image" style=" height:250px; background-image: url({{ asset('storage/thumbnails/'.$post->thumbnail) }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
                 <a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" alt="{{ $post->file }}" target="_blank">
 
                 </a>
