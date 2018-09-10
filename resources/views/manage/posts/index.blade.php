@@ -68,41 +68,11 @@
             </article>
           </div>
         </div>
-
-        <div id="modal" class="modal" v-bind:class="{ 'is-active': isActive{{ $post->id }} }">
-          <div class="modal-background"></div>
-          <div class="modal-content">
-            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-              {{csrf_field()}}
-              {{ method_field('DELETE') }}
-
-              <div class="notification">
-                <div class="columns">
-                  <div class="column is-2 has-text-centered">
-                    <i class="fas fa-trash has-text-danger is-size-1"></i>
-                  </div>
-                  <div class="column is-10">
-                    <p class="is-size-5">Are you sure you want to delete <strong>{{ $post->title }}</strong> from the database? <small>This action cannot be undone.</small></p>
-                  </div>
-                </div>
-                <div class="field is-grouped is-grouped-right">
-                  <div class="control">
-                    <a class="button is-light" v-on:click="isActive{{ $post->id }} = !isActive{{ $post->id }}">Cancel</a>
-                  </div>
-                  <div class="control">
-                    <button class="button is-danger">Delete</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <button class="modal-close is-large" aria-label="close" v-on:click="isActive{{ $post->id }} = !isActive{{ $post->id }}"></button>
-        </div>
       @endforeach
+
     </div>
-
     {{ $posts->links() }}
-
+    
     <b-tooltip label="@lang('posts.createTxt')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">
       <a href="{{ route('posts.create') }}" class="button-float button-round">
         <span class="fas fa-plus"></span>
@@ -117,9 +87,6 @@
       const app = new Vue({
         el: '#app',
         data: {
-          @foreach ($posts as $post)
-            isActive{{ $post->id }}: false,
-          @endforeach
         },
       });
     }
