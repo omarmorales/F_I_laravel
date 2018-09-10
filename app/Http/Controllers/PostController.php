@@ -119,6 +119,18 @@ class PostController extends Controller
   }
 
   /**
+  * Display the specified resource.
+  *
+  * @param  \App\Post  $post
+  * @return \Illuminate\Http\Response
+  */
+  public function showSite(Post $post)
+  {
+    //return the sigle vacancy as resource
+    return view('pages.post')->withPost($post);
+  }
+
+  /**
   * Show the form for editing the specified resource.
   *
   * @param  \App\Post  $post

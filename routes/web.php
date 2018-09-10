@@ -15,6 +15,7 @@ Route::get('/aboutus', 'PagesController@aboutus')->name('aboutus');
 Route::get('/whatwedo', 'PagesController@whatwedo')->name('whatwedo');
 Route::get('/vacancies', 'PagesController@vacancies')->name('sitevacancies');
 Route::get('/vacancies/{vacancy}', 'VacanciesController@showSite')->name('vacancy.show');
+Route::get('/posts/{post}', 'PostController@showSite')->name('post.show');
 Route::resource('/applications', 'ApplicationController', ['only' => ['store']]);
 Route::get('/search', 'PagesController@search')->name('search');
 

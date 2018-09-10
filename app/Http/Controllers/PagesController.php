@@ -36,18 +36,6 @@ class PagesController extends Controller
     return view('pages.whatwedo');
   }
 
-  /**
-  * Display the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  public function show(Vacancy $vacancy)
-  {
-    //return the sigle vacancy as resource
-    return view('pages.vacancy')->withVacancy($vacancy);
-  }
-
   public function vacancies()
   {
     $vacancies = Vacancy::orderBy('id', 'asc')->paginate(5);
