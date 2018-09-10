@@ -43,22 +43,24 @@
         @foreach ($posts as $post)
           <div class="column is-4">
             <div class="card">
-              <header class="card-header has-background-link">
+              <header class="card-header has-background-link" style="min-height:130px;">
                 <p style="margin:1em;">
                   @foreach ($post->tags as $tag)
                     <a href="{{ route('index', ['tag' => $tag->id]) }}"><b-tag class="m-b-10 is-uppercase" type="is-success">{{ $tag->name }}</b-tag></a>
                   @endforeach
                   <br>
                   @if (App::isLocale('en'))
-                    <span class="is-size-5 has-text-white is-capitalized">{{ $post->title }}</span>
+                    <span class="is-size-5 has-text-white is-capitalized">{{ str_limit($post->title, 60) }}</span>
                   @elseif (App::isLocale('es'))
-                    <span class="is-size-5 has-text-white is-capitalized">{{ $post->title_es }}</span>
+                    <span class="is-size-5 has-text-white is-capitalized">{{ str_limit($post->title_es, 60) }}</span>
                   @endif
                 </p>
               </header>
-              <div class="card-image" style=" height:250px; background-image: url({{ asset('storage/thumbnails/'.$post->thumbnail) }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+              <div class="card-image">
                 <a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" alt="{{ $post->file }}" target="_blank">
-
+                  <figure class="image is-4by3">
+                    <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title }}">
+                  </figure>
                 </a>
               </div>
             </div>
