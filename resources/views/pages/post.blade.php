@@ -19,7 +19,7 @@
                   <div class="column is-7">
                     <h2 class="is-size-2 has-text-weight-light">{{ $post->title }}</h2>
                     <hr class="separator m-b-20">
-                    <p class="m-b-20">{{ $post->description }}</p>
+                    <p class="m-b-20">{!! $post->description !!}</p>
 
                     <a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" class="button is-link is-pulled-right" target="_blank">
                       <span class="icon is-small">
