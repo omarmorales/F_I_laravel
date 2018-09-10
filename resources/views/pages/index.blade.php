@@ -57,7 +57,7 @@
                 </p>
               </header>
               <div class="card-image">
-                <a href="{{ route('post.show',$post->id) }}" alt="{{ $post->file }}" target="_blank">
+                <a href="{{ route('post.show',$post->id) }}" alt="{{ $post->file }}">
                   <figure class="image is-4by3">
                     <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title }}">
                   </figure>
