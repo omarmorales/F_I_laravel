@@ -15,7 +15,7 @@ class PostController extends Controller
 {
   public function __construct()
   {
-    $this->middleware('auth');
+    $this->middleware('auth', ['except' => 'showSite']);
   }
   /**
   * Display a listing of the resource.
@@ -24,7 +24,7 @@ class PostController extends Controller
   */
   public function index()
   {
-    $posts = Post::paginate(10);
+    $posts = Post::orderBy('created_at', 'desc')->paginate(10);
     return view('manage.posts.index')->withPosts($posts);
   }
 
