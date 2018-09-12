@@ -14,11 +14,11 @@ class PagesController extends Controller
     if (request()->tag) {
       $posts = Post::with('tags')->whereHas('tags', function($query){
         $query->where('id', request()->tag);
-      })->paginate(12);
+      })->orderBy('id', 'desc')->paginate(12);
       $tags = Tag::all();
     } else {
       $tags = Tag::all();
-      $posts = Post::orderBy('id', 'asc')->paginate(12);
+      $posts = Post::orderBy('id', 'desc')->paginate(12);
     }
 
     return view('pages.index')->withPosts($posts)->withTags($tags);
