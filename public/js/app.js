@@ -43245,6 +43245,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a, {
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a);
 
+var VueTruncate = __webpack_require__(57);
+Vue.use(VueTruncate);
+
 // Vue.component('vacancies', require('./components/Vacancies.vue'));
 
 __webpack_require__(37);
@@ -43315,6 +43318,70 @@ function toggleClass() {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function () {
+
+  var vueTruncate = {};
+
+  vueTruncate.install = function (Vue) {
+    
+    /**
+     * 
+     * @param {String} text
+     * @param {Number} length
+     * @param {String} clamp
+     * 
+     */
+
+    Vue.filter('truncate', function (text, length, clamp) {
+      clamp = clamp || '...';
+      length = length || 30;
+      
+      if (text.length <= length) return text;
+
+      var tcText = text.slice(0, length - clamp.length);
+      var last = tcText.length - 1;
+      
+
+      while (last > 0 && tcText[last] !== ' ' && tcText[last] !== clamp[0]) last -= 1;
+
+      // Fix for case when text dont have any `space`
+      last = last || length - clamp.length;
+
+      tcText =  tcText.slice(0, last);
+
+      return tcText + clamp;
+    });
+  }
+
+  if (true) {
+    module.exports = vueTruncate;
+  } else if (typeof define == "function" && define.amd) {
+    define([], function(){ return vueTruncate });
+  } else if (window.Vue) {
+    window.VueTruncate = vueTruncate;
+    Vue.use(VueTruncate);
+  }
+
+})()
+
 
 /***/ })
 /******/ ]);

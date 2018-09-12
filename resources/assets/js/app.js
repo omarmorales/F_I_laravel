@@ -9,6 +9,9 @@ Vue.use(Buefy, {
 
 Vue.use(Buefy);
 
+var VueTruncate = require('vue-truncate-filter');
+Vue.use(VueTruncate);
+
 // Vue.component('vacancies', require('./components/Vacancies.vue'));
 
 require('./cms/navbar');
