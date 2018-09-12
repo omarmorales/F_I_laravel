@@ -59,7 +59,7 @@
             <article class="media">
               <figure class="media-left">
                 <p class="image is-64x64">
-                  <img :src="'http://67.205.181.253/storage/thumbnails/'+ props.row.thubnail">
+                  <img :src="'http://67.205.181.253/storage/thumbnails/'+ props.row.thumbnail">
                   @{{ props.row.thumbnail }}
                 </p>
               </figure>
