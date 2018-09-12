@@ -59,7 +59,7 @@
             <article class="media">
               <figure class="media-left">
                 <p class="image is-64x64">
-                  <img :src="'https://bulma.io/images/placeholders/'+props.row.thumbnail">
+                  <img :src="'http://67.205.181.253/storage/thumbnails/'+ props.row.thubnail">
                   @{{ props.row.thumbnail }}
                 </p>
               </figure>
