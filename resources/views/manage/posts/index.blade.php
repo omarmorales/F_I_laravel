@@ -65,7 +65,7 @@
               <div class="media-content">
                 <div class="content">
                   <p v-html="props.row.description">
-                    @{{ props.row.description }}
+                    @{{ props.row.description | truncate(250) }}
                   </p>
                 </div>
               </div>
