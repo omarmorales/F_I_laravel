@@ -64,8 +64,8 @@
               </figure>
               <div class="media-content">
                 <div class="content">
-                  <p>
-                    @{{ props.row.description | truncate(100) }}
+                  <p v-html="props.row.description">
+                    @{{ props.row.description }}
                   </p>
                 </div>
               </div>
