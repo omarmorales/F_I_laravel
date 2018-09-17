@@ -19,7 +19,9 @@
       </div>
     </div>
   </section>
+  {{-- header fundacion idea ends --}}
 
+  {{-- content starts --}}
   <div class="container">
     <div class="columns is-multiline">
       <div class="column is-12 m-t-10">
@@ -63,9 +65,9 @@
                            </p>
                            <p>
                              @if (App::isLocale('en'))
-                               {!! str_limit($vacancy->requirements,500) !!}
+                               {!! str_limit($vacancy->requirements,450) !!}
                              @else
-                               {!! str_limit($vacancy->requirements_es,500) !!}
+                               {!! str_limit($vacancy->requirements_es,450) !!}
                              @endif
                            </p>
                            <a href="{{ route('vacancy.show', $vacancy->id) }}" class="has-text-link">Leer más <i class="fas fa-angle-right m-l-5"></i></a>
@@ -81,16 +83,7 @@
         @endforeach
         {{ $vacancies->links() }}
       </div>
-
-
+      {{-- content ends --}}
     </div>
   </div>
-  <section id="vacancies" class="m-t-20">
-    <div class="container">
-
-
-
-
-    </div>
-  </section>
 @endsection
