@@ -43222,8 +43222,8 @@ document.addEventListener('DOMContentLoaded', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(39);
-__webpack_require__(42);
-module.exports = __webpack_require__(43);
+__webpack_require__(43);
+module.exports = __webpack_require__(44);
 
 
 /***/ }),
@@ -43245,95 +43245,17 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a, {
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_buefy___default.a);
 
-var VueTruncate = __webpack_require__(57);
+var VueTruncate = __webpack_require__(40);
 Vue.use(VueTruncate);
 
 // Vue.component('vacancies', require('./components/Vacancies.vue'));
 
 __webpack_require__(37);
-__webpack_require__(40);
 __webpack_require__(41);
+__webpack_require__(42);
 
 /***/ }),
 /* 40 */
-/***/ (function(module, exports) {
-
-var accordions = document.getElementsByClassName('has-submenu');
-var adminSlideButton = document.getElementById('admin-slideout-button');
-
-function setSubmenuStyles(submenu, maxHeight, margins) {
-  submenu.style.maxHeight = maxHeight;
-  submenu.style.marginTop = margins;
-  submenu.style.marginBottom = margins;
-}
-
-adminSlideButton.onclick = function () {
-  this.classList.toggle('is-active');
-  document.getElementById('admin-side-menu').classList.toggle('is-active');
-};
-
-for (var i = 0; i < accordions.length; i++) {
-  if (accordions[i].classList.contains('is-active')) {
-    var submenu = accordions[i].nextElementSibling;
-    setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
-    setSubmenuStyles(submenu, submenu.style.maxHeight = "108px");
-  }
-
-  accordions[i].onclick = function () {
-    this.classList.toggle('is-active');
-
-    var submenu = this.nextElementSibling;
-    if (submenu.style.maxHeight) {
-      // menu is open, we need to close it now
-      setSubmenuStyles(submenu, null, null);
-    } else {
-      // meny is close, so we need to open it
-      setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.85em");
-    }
-  };
-}
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports) {
-
-var modal = document.getElementById('modal');
-var elements = document.getElementsByClassName('toggle-modal');
-for (var i = 0; i < elements.length; i++) {
-  elements[i].addEventListener('click', toggleClass);
-}
-
-function toggleClass() {
-  modal.classList.toggle('is-active');
-}
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 ;(function () {
@@ -43382,6 +43304,71 @@ function toggleClass() {
 
 })()
 
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports) {
+
+var accordions = document.getElementsByClassName('has-submenu');
+var adminSlideButton = document.getElementById('admin-slideout-button');
+
+function setSubmenuStyles(submenu, maxHeight, margins) {
+  submenu.style.maxHeight = maxHeight;
+  submenu.style.marginTop = margins;
+  submenu.style.marginBottom = margins;
+}
+
+adminSlideButton.onclick = function () {
+  this.classList.toggle('is-active');
+  document.getElementById('admin-side-menu').classList.toggle('is-active');
+};
+
+for (var i = 0; i < accordions.length; i++) {
+  if (accordions[i].classList.contains('is-active')) {
+    var submenu = accordions[i].nextElementSibling;
+    setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.75em");
+    setSubmenuStyles(submenu, submenu.style.maxHeight = "108px");
+  }
+
+  accordions[i].onclick = function () {
+    this.classList.toggle('is-active');
+
+    var submenu = this.nextElementSibling;
+    if (submenu.style.maxHeight) {
+      // menu is open, we need to close it now
+      setSubmenuStyles(submenu, null, null);
+    } else {
+      // meny is close, so we need to open it
+      setSubmenuStyles(submenu, submenu.scrollHeight + "px", "0.85em");
+    }
+  };
+}
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+var modal = document.getElementById('modal');
+var elements = document.getElementsByClassName('toggle-modal');
+for (var i = 0; i < elements.length; i++) {
+  elements[i].addEventListener('click', toggleClass);
+}
+
+function toggleClass() {
+  modal.classList.toggle('is-active');
+}
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
