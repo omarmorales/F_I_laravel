@@ -1,9 +1,9 @@
-document.querySelector(".navbar_menu")
-  .addEventListener("click",function(){
-    document.querySelector(".menu-screen").classList.add("active");
-  });
-
-document.querySelector(".close")
-  .addEventListener("click",function(){
-    document.querySelector(".menu-screen").classList.remove("active");
-  });
+// document.querySelector(".navbar_menu")
+//   .addEventListener("click",function(){
+//     document.querySelector(".menu-screen").classList.add("active");
+//   });
+//
+// document.querySelector(".close")
+//   .addEventListener("click",function(){
+//     document.querySelector(".menu-screen").classList.remove("active");
+//   });

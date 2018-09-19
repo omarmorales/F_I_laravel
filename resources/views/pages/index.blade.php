@@ -37,7 +37,7 @@
       </div>
     </div>
   </section>
-  <section id="posts">
+  {{-- <section id="posts">
     <div class="container m-t-30 m-b-30">
       <div class="columns is-multiline">
         @foreach ($posts as $post)
@@ -69,7 +69,9 @@
       </div>
       {{ $posts->links() }}
     </div>
-  </section>
+  </section> --}}
+
+  <posts></posts>
   <b-tooltip label="Volver al inicio" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">
     <a id="js-btn" class="button-float button-round">
       <span class="fas fa-angle-up"></span>

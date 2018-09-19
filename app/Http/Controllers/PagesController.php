@@ -38,7 +38,7 @@ class PagesController extends Controller
 
   public function vacancies()
   {
-    $vacancies = Vacancy::orderBy('id', 'asc')->paginate(5);
+    $vacancies = Vacancy::orderBy('id', 'desc')->paginate(5);
     return view('pages.vacancies')->withVacancies($vacancies);
   }
 

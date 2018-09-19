@@ -17,19 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::resource('photo', 'PhotoController', ['except' => ['create', 'store', 'update', 'destroy']]);
-
-// list vacancies
-Route::get('vacancies', 'VacanciesController@index');
-
-// list single vacancy
-Route::get('vacancy/{id}', 'VacanciesController@show');
-
-// Create new vacancy
-Route::post('vacancy', 'VacanciesController@store');
-
-// Update artcle
-Route::put('vacancy', 'VacanciesController@store');
-
-//delete
-Route::delete('vacancy/{id}', 'VacanciesController@destroy');
+Route::apiResources(['post' => 'API\PostController']);
