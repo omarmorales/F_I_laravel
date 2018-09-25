@@ -45053,7 +45053,7 @@ var render = function() {
         ? _c(
             "nav",
             {
-              staticClass: "pagination is-rounded",
+              staticClass: "pagination is-rounded m-t-20",
               attrs: { role: "navigation", "aria-label": "pagination" }
             },
             [

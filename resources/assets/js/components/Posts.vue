@@ -10,7 +10,7 @@
 
 <template>
   <div class="container min-fullheight">
-    <nav v-if="pagination.from != pagination.last_page" class="pagination is-rounded" role="navigation" aria-label="pagination">
+    <nav v-if="pagination.from != pagination.last_page" class="pagination is-rounded m-t-20" role="navigation" aria-label="pagination">
       <a class="pagination-previous" title="This is the first page" :disabled="!pagination.prev_page_url" @click="loadPosts(pagination.prev_page_url)">Previous</a>
       <a class="pagination-next" @click="loadPosts(pagination.next_page_url)" :disabled="!pagination.next_page_url">Next page</a>
       <span class="pagination-list">Page {{pagination.current_page}} of {{pagination.last_page}}</span>
