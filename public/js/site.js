@@ -44981,12 +44981,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -45055,6 +45049,57 @@ var render = function() {
     "div",
     { staticClass: "container min-fullheight" },
     [
+      _vm.pagination.from != _vm.pagination.last_page
+        ? _c(
+            "nav",
+            {
+              staticClass: "pagination is-rounded",
+              attrs: { role: "navigation", "aria-label": "pagination" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "pagination-previous",
+                  attrs: {
+                    title: "This is the first page",
+                    disabled: !_vm.pagination.prev_page_url
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.loadPosts(_vm.pagination.prev_page_url)
+                    }
+                  }
+                },
+                [_vm._v("Previous")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "pagination-next",
+                  attrs: { disabled: !_vm.pagination.next_page_url },
+                  on: {
+                    click: function($event) {
+                      _vm.loadPosts(_vm.pagination.next_page_url)
+                    }
+                  }
+                },
+                [_vm._v("Next page")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "pagination-list" }, [
+                _vm._v(
+                  "Page " +
+                    _vm._s(_vm.pagination.current_page) +
+                    " of " +
+                    _vm._s(_vm.pagination.last_page)
+                )
+              ])
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
       _c(
         "transition-group",
         {
@@ -45145,7 +45190,7 @@ var render = function() {
         ? _c(
             "nav",
             {
-              staticClass: "pagination is-rounded",
+              staticClass: "pagination is-rounded m-b-20",
               attrs: { role: "navigation", "aria-label": "pagination" }
             },
             [
