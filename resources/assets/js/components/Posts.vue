@@ -17,8 +17,8 @@
             <p style="margin:1em;" v-for="tag in post.tags" :key="tag.id">
               <a href="#"><b-tag class="m-b-10 is-uppercase" type="is-success">{{ tag.name }}</b-tag></a>
               <br>
-              <span v-if="post.title.length>=50" class="is-size-5 has-text-white is-capitalized">{{ post.title.substring(0,50)+".." }}</span>
-              <span v-else class="is-size-5 has-text-white is-capitalized">{{ post.title }}</span>
+              <span v-if="post.title.length>=50" class="is-size-5 has-text-white is-capitalized">{{ post.title_es.substring(0,50)+".." }}</span>
+              <span v-else class="is-size-5 has-text-white is-capitalized">{{ post.title_es }}</span>
             </p>
           </header>
           <div class="card-image">
