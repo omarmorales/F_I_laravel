@@ -13,7 +13,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
       return Post::with('tags')->latest()->paginate(9);
     }

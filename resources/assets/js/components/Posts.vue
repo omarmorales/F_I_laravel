@@ -10,13 +10,21 @@
 
 <template>
   <div class="container min-fullheight">
+    <div class="field m-t-20">
+      <p class="control has-icons-right">
+        <input class="input" type="email" placeholder="Palabra clave" v-model="search">
+        <span class="icon is-small is-right">
+          <i class="fas fa-search"></i>
+        </span>
+      </p>
+    </div>
     <nav v-if="pagination.from != pagination.last_page" class="pagination is-rounded m-t-20" role="navigation" aria-label="pagination">
       <a class="pagination-previous" title="This is the first page" :disabled="!pagination.prev_page_url" @click="loadPosts(pagination.prev_page_url)">Previous</a>
       <a class="pagination-next" @click="loadPosts(pagination.next_page_url)" :disabled="!pagination.next_page_url">Next page</a>
       <span class="pagination-list">Page {{pagination.current_page}} of {{pagination.last_page}}</span>
     </nav>
     <transition-group tag="div" :css="false" name="fadeIn" @before-enter="beforeEnter" @enter="enter" @leave="leave" class="columns is-multiline m-b-30 m-t-30">
-      <div class="column is-4" v-for="(post,index) in posts" :data-index="index" :key="post.id">
+      <div class="column is-4" v-for="(post,index) in filteredPosts" :data-index="index" :key="post.id">
         <div class="card">
           <header class="card-header has-background-link post-header-card">
             <p style="margin:1em;" v-for="tag in post.tags" :key="tag.id">
@@ -48,6 +56,7 @@ export default {
   data(){
     return {
       posts: [],
+      search: '',
       pagination: {}
     }
   },
@@ -96,6 +105,12 @@ export default {
 
   created() {
     this.loadPosts();
-  }
+  },
+
+  computed: {
+    filteredPosts() {
+      return this.posts.filter(post => {return post.title_es.match(this.search)});
+    }
+  },
 }
 </script>
