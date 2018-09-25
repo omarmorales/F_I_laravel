@@ -18,11 +18,6 @@
         </span>
       </p>
     </div>
-    <nav v-if="pagination.from != pagination.last_page" class="pagination is-rounded m-t-20" role="navigation" aria-label="pagination">
-      <a class="pagination-previous" title="This is the first page" :disabled="!pagination.prev_page_url" @click="loadPosts(pagination.prev_page_url)">Previous</a>
-      <a class="pagination-next" @click="loadPosts(pagination.next_page_url)" :disabled="!pagination.next_page_url">Next page</a>
-      <span class="pagination-list">Page {{pagination.current_page}} of {{pagination.last_page}}</span>
-    </nav>
     <transition-group tag="div" :css="false" name="fadeIn" @before-enter="beforeEnter" @enter="enter" @leave="leave" class="columns is-multiline m-b-30 m-t-30">
       <div class="column is-4" v-for="(post,index) in filteredPosts" :data-index="index" :key="post.id">
         <div class="card">
@@ -43,11 +38,6 @@
         </div>
       </div>
     </transition-group>
-    <nav v-if="pagination.from != pagination.last_page" class="pagination is-rounded m-b-20" role="navigation" aria-label="pagination">
-      <a class="pagination-previous" title="This is the first page" :disabled="!pagination.prev_page_url" @click="loadPosts(pagination.prev_page_url)">Previous</a>
-      <a class="pagination-next" @click="loadPosts(pagination.next_page_url)" :disabled="!pagination.next_page_url">Next page</a>
-      <span class="pagination-list">Page {{pagination.current_page}} of {{pagination.last_page}}</span>
-    </nav>
   </div>
 </template>
 
@@ -57,30 +47,15 @@ export default {
     return {
       posts: [],
       search: '',
-      pagination: {}
     }
   },
 
   methods: {
-    loadPosts(first_page_url){
-      first_page_url = first_page_url || '/api/post';
-      let vm = this;
-      axios.get(first_page_url).then((response) => {
+    loadPosts(){
+      axios.get('api/post').then((response) => {
         console.log(response);
-        this.posts = response.data.data;
-        vm.makePagination(response.data);
+        this.posts = response.data;
       })
-    },
-    makePagination(data) {
-      let pagination = {
-        from: data.from,
-        to: data.to,
-        current_page: data.current_page,
-        last_page: data.last_page,
-        next_page_url: data.next_page_url,
-        prev_page_url: data.prev_page_url
-      }
-      this.pagination = pagination
     },
     beforeEnter(el){
       el.style.opacity = 0;
@@ -111,6 +86,6 @@ export default {
     filteredPosts() {
       return this.posts.filter(post => {return post.title_es.match(this.search)});
     }
-  },
+  }
 }
 </script>

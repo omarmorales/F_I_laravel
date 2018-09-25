@@ -44979,49 +44979,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       posts: [],
-      search: '',
-      pagination: {}
+      search: ''
     };
   },
 
 
   methods: {
-    loadPosts: function loadPosts(first_page_url) {
+    loadPosts: function loadPosts() {
       var _this = this;
 
-      first_page_url = first_page_url || '/api/post';
-      var vm = this;
-      axios.get(first_page_url).then(function (response) {
+      axios.get('api/post').then(function (response) {
         console.log(response);
-        _this.posts = response.data.data;
-        vm.makePagination(response.data);
+        _this.posts = response.data;
       });
-    },
-    makePagination: function makePagination(data) {
-      var pagination = {
-        from: data.from,
-        to: data.to,
-        current_page: data.current_page,
-        last_page: data.last_page,
-        next_page_url: data.next_page_url,
-        prev_page_url: data.prev_page_url
-      };
-      this.pagination = pagination;
     },
     beforeEnter: function beforeEnter(el) {
       el.style.opacity = 0;
@@ -45096,57 +45071,6 @@ var render = function() {
           _vm._m(0)
         ])
       ]),
-      _vm._v(" "),
-      _vm.pagination.from != _vm.pagination.last_page
-        ? _c(
-            "nav",
-            {
-              staticClass: "pagination is-rounded m-t-20",
-              attrs: { role: "navigation", "aria-label": "pagination" }
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "pagination-previous",
-                  attrs: {
-                    title: "This is the first page",
-                    disabled: !_vm.pagination.prev_page_url
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.loadPosts(_vm.pagination.prev_page_url)
-                    }
-                  }
-                },
-                [_vm._v("Previous")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "pagination-next",
-                  attrs: { disabled: !_vm.pagination.next_page_url },
-                  on: {
-                    click: function($event) {
-                      _vm.loadPosts(_vm.pagination.next_page_url)
-                    }
-                  }
-                },
-                [_vm._v("Next page")]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "pagination-list" }, [
-                _vm._v(
-                  "Page " +
-                    _vm._s(_vm.pagination.current_page) +
-                    " of " +
-                    _vm._s(_vm.pagination.last_page)
-                )
-              ])
-            ]
-          )
-        : _vm._e(),
       _vm._v(" "),
       _c(
         "transition-group",
@@ -45232,58 +45156,7 @@ var render = function() {
             ]
           )
         })
-      ),
-      _vm._v(" "),
-      _vm.pagination.from != _vm.pagination.last_page
-        ? _c(
-            "nav",
-            {
-              staticClass: "pagination is-rounded m-b-20",
-              attrs: { role: "navigation", "aria-label": "pagination" }
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "pagination-previous",
-                  attrs: {
-                    title: "This is the first page",
-                    disabled: !_vm.pagination.prev_page_url
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.loadPosts(_vm.pagination.prev_page_url)
-                    }
-                  }
-                },
-                [_vm._v("Previous")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "pagination-next",
-                  attrs: { disabled: !_vm.pagination.next_page_url },
-                  on: {
-                    click: function($event) {
-                      _vm.loadPosts(_vm.pagination.next_page_url)
-                    }
-                  }
-                },
-                [_vm._v("Next page")]
-              ),
-              _vm._v(" "),
-              _c("span", { staticClass: "pagination-list" }, [
-                _vm._v(
-                  "Page " +
-                    _vm._s(_vm.pagination.current_page) +
-                    " of " +
-                    _vm._s(_vm.pagination.last_page)
-                )
-              ])
-            ]
-          )
-        : _vm._e()
+      )
     ],
     1
   )
