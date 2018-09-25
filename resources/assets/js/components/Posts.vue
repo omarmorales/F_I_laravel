@@ -17,8 +17,7 @@
             <p style="margin:1em;" v-for="tag in post.tags" :key="tag.id">
               <a href="#"><b-tag class="m-b-10 is-uppercase" type="is-success">{{ tag.name }}</b-tag></a>
               <br>
-              <span v-if="post.title.length>=50" class="is-size-5 has-text-white is-capitalized">{{ post.title_es.substring(0,50)+".." }}</span>
-              <span v-else class="is-size-5 has-text-white is-capitalized">{{ post.title_es }}</span>
+              <span class="is-size-5 has-text-white is-capitalized">{{ post.title_es | first-characters }}</span>
             </p>
           </header>
           <div class="card-image">
@@ -31,6 +30,22 @@
         </div>
       </div>
     </transition-group>
+    <nav v-if="pagination.from != pagination.last_page" class="pagination is-rounded" role="navigation" aria-label="pagination">
+      <a class="pagination-previous" title="This is the first page" :disabled="!pagination.prev_page_url" @click="loadPosts(pagination.prev_page_url)">Previous</a>
+      <a class="pagination-next" @click="loadPosts(pagination.next_page_url)" :disabled="!pagination.next_page_url">Next page</a>
+      <!-- <ul class="pagination-list">
+        <li>
+          <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">{{pagination.current_page}}</a>
+        </li>
+        <li>
+          <a class="pagination-link" aria-label="Goto page 2">2</a>
+        </li>
+        <li>
+          <a class="pagination-link" aria-label="Goto page 3">3</a>
+        </li>
+      </ul> -->
+      <span class="pagination-list">Page {{pagination.current_page}} of {{pagination.last_page}}</span>
+    </nav>
   </div>
 </template>
 
@@ -38,12 +53,31 @@
 export default {
   data(){
     return {
-      posts: {}
+      posts: [],
+      pagination: {}
     }
   },
+
   methods: {
-    loadPosts(){
-      axios.get("api/post").then(({data}) => (this.posts = data.data));
+    loadPosts(first_page_url){
+      first_page_url = first_page_url || '/api/post';
+      let vm = this;
+      axios.get(first_page_url).then((response) => {
+        console.log(response);
+        this.posts = response.data.data;
+        vm.makePagination(response.data);
+      })
+    },
+    makePagination(data) {
+      let pagination = {
+        from: data.from,
+        to: data.to,
+        current_page: data.current_page,
+        last_page: data.last_page,
+        next_page_url: data.next_page_url,
+        prev_page_url: data.prev_page_url
+      }
+      this.pagination = pagination
     },
     beforeEnter(el){
       el.style.opacity = 0;
@@ -64,9 +98,10 @@ export default {
     }
   },
 
+
+
   created() {
     this.loadPosts();
-
   }
 }
 </script>

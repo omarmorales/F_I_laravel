@@ -24,6 +24,15 @@ Vue.use(Buefy, {
 Vue.use(Buefy);
 // buefy ends
 
+// filters
+Vue.filter('first-characters', function(value){
+  if (value.length >= 40) {
+    return value.substring(0,40) + '...';
+  } else {
+    return value
+  }
+});
+
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('posts', require('./components/Posts.vue'));
 

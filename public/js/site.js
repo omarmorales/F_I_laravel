@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 46);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -43333,20 +43333,102 @@ module.exports = function normalizeComponent (
 /* 42 */,
 /* 43 */,
 /* 44 */,
-/* 45 */,
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 45 */
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__(47);
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
 
 
 /***/ }),
+/* 46 */,
 /* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(48);
+
+
+/***/ }),
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vform__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vform__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vform___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vform__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_buefy__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_buefy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_buefy__);
@@ -43376,17 +43458,26 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_buefy___default.a, {
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_buefy___default.a);
 // buefy ends
 
-Vue.component('example-component', __webpack_require__(49));
-Vue.component('posts', __webpack_require__(52));
+// filters
+Vue.filter('first-characters', function (value) {
+  if (value.length >= 40) {
+    return value.substring(0, 40) + '...';
+  } else {
+    return value;
+  }
+});
+
+Vue.component('example-component', __webpack_require__(50));
+Vue.component('posts', __webpack_require__(53));
 
 // const app = new Vue({
 //     el: '#app',
 // });
 __webpack_require__(37);
-__webpack_require__(55);
+__webpack_require__(60);
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -44369,15 +44460,15 @@ var AlertSuccess_Component = normalizeComponent(
 /******/ });
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(38)
 /* script */
-var __vue_script__ = __webpack_require__(50)
+var __vue_script__ = __webpack_require__(51)
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(52)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44416,7 +44507,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44445,7 +44536,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44488,19 +44579,19 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(61)
+  __webpack_require__(54)
 }
 var normalizeComponent = __webpack_require__(38)
 /* script */
-var __vue_script__ = __webpack_require__(53)
+var __vue_script__ = __webpack_require__(58)
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(59)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44539,311 +44630,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 53 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      posts: {}
-    };
-  },
-
-  methods: {
-    loadPosts: function loadPosts() {
-      var _this = this;
-
-      axios.get("api/post").then(function (_ref) {
-        var data = _ref.data;
-        return _this.posts = data.data;
-      });
-    },
-    beforeEnter: function beforeEnter(el) {
-      el.style.opacity = 0;
-      el.style.transform = "scale(0)";
-      el.style.transition = "all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1)";
-    },
-    enter: function enter(el) {
-      var delay = 200 * el.dataset.index;
-      setTimeout(function () {
-        el.style.opacity = 1;
-        el.style.transform = "scale(1)";
-      }, delay);
-    },
-    leave: function leave(el) {
-      el.style.opacity = 0;
-      el.style.transform = "scale(0)";
-    }
-  },
-
-  created: function created() {
-    this.loadPosts();
-  }
-});
-
-/***/ }),
 /* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container min-fullheight" },
-    [
-      _c(
-        "transition-group",
-        {
-          staticClass: "columns is-multiline m-b-30 m-t-30",
-          attrs: { tag: "div", css: false, name: "fadeIn" },
-          on: {
-            "before-enter": _vm.beforeEnter,
-            enter: _vm.enter,
-            leave: _vm.leave
-          }
-        },
-        _vm._l(_vm.posts, function(post, index) {
-          return _c(
-            "div",
-            {
-              key: post.id,
-              staticClass: "column is-4",
-              attrs: { "data-index": index }
-            },
-            [
-              _c("div", { staticClass: "card" }, [
-                _c(
-                  "header",
-                  {
-                    staticClass:
-                      "card-header has-background-link post-header-card"
-                  },
-                  _vm._l(post.tags, function(tag) {
-                    return _c(
-                      "p",
-                      { key: tag.id, staticStyle: { margin: "1em" } },
-                      [
-                        _c(
-                          "a",
-                          { attrs: { href: "#" } },
-                          [
-                            _c(
-                              "b-tag",
-                              {
-                                staticClass: "m-b-10 is-uppercase",
-                                attrs: { type: "is-success" }
-                              },
-                              [_vm._v(_vm._s(tag.name))]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        post.title.length >= 50
-                          ? _c(
-                              "span",
-                              {
-                                staticClass:
-                                  "is-size-5 has-text-white is-capitalized"
-                              },
-                              [
-                                _vm._v(
-                                  _vm._s(post.title.substring(0, 50) + "..")
-                                )
-                              ]
-                            )
-                          : _c(
-                              "span",
-                              {
-                                staticClass:
-                                  "is-size-5 has-text-white is-capitalized"
-                              },
-                              [_vm._v(_vm._s(post.title))]
-                            )
-                      ]
-                    )
-                  })
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-image" }, [
-                  _c("a", { attrs: { href: "posts/" + post.id } }, [
-                    _c("figure", { staticClass: "image is-4by3" }, [
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "http://67.205.181.253/storage/thumbnails/" +
-                            post.thumbnail
-                        }
-                      })
-                    ])
-                  ])
-                ])
-              ])
-            ]
-          )
-        })
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3e5f8528", module.exports)
-  }
-}
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-/* 56 */,
-/* 57 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(62);
+var content = __webpack_require__(55);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(63)("5d85b406", content, false, {});
+var update = __webpack_require__(56)("5d85b406", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -44859,10 +44656,10 @@ if(false) {
 }
 
 /***/ }),
-/* 62 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(57)(false);
+exports = module.exports = __webpack_require__(45)(false);
 // imports
 
 
@@ -44873,7 +44670,7 @@ exports.push([module.i, "\n.post-header-card {\n  min-height:130px;\n}\n.min-ful
 
 
 /***/ }),
-/* 63 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -44892,7 +44689,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(64)
+var listToStyles = __webpack_require__(57)
 
 /*
 type StyleObject = {
@@ -45101,7 +44898,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 64 */
+/* 57 */
 /***/ (function(module, exports) {
 
 /**
@@ -45131,6 +44928,287 @@ module.exports = function listToStyles (parentId, list) {
   }
   return styles
 }
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      posts: [],
+      pagination: {}
+    };
+  },
+
+
+  methods: {
+    loadPosts: function loadPosts(first_page_url) {
+      var _this = this;
+
+      first_page_url = first_page_url || '/api/post';
+      var vm = this;
+      axios.get(first_page_url).then(function (response) {
+        console.log(response);
+        _this.posts = response.data.data;
+        vm.makePagination(response.data);
+      });
+    },
+    makePagination: function makePagination(data) {
+      var pagination = {
+        from: data.from,
+        to: data.to,
+        current_page: data.current_page,
+        last_page: data.last_page,
+        next_page_url: data.next_page_url,
+        prev_page_url: data.prev_page_url
+      };
+      this.pagination = pagination;
+    },
+    beforeEnter: function beforeEnter(el) {
+      el.style.opacity = 0;
+      el.style.transform = "scale(0)";
+      el.style.transition = "all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1)";
+    },
+    enter: function enter(el) {
+      var delay = 200 * el.dataset.index;
+      setTimeout(function () {
+        el.style.opacity = 1;
+        el.style.transform = "scale(1)";
+      }, delay);
+    },
+    leave: function leave(el) {
+      el.style.opacity = 0;
+      el.style.transform = "scale(0)";
+    }
+  },
+
+  created: function created() {
+    this.loadPosts();
+  }
+});
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "container min-fullheight" },
+    [
+      _c(
+        "transition-group",
+        {
+          staticClass: "columns is-multiline m-b-30 m-t-30",
+          attrs: { tag: "div", css: false, name: "fadeIn" },
+          on: {
+            "before-enter": _vm.beforeEnter,
+            enter: _vm.enter,
+            leave: _vm.leave
+          }
+        },
+        _vm._l(_vm.posts, function(post, index) {
+          return _c(
+            "div",
+            {
+              key: post.id,
+              staticClass: "column is-4",
+              attrs: { "data-index": index }
+            },
+            [
+              _c("div", { staticClass: "card" }, [
+                _c(
+                  "header",
+                  {
+                    staticClass:
+                      "card-header has-background-link post-header-card"
+                  },
+                  _vm._l(post.tags, function(tag) {
+                    return _c(
+                      "p",
+                      { key: tag.id, staticStyle: { margin: "1em" } },
+                      [
+                        _c(
+                          "a",
+                          { attrs: { href: "#" } },
+                          [
+                            _c(
+                              "b-tag",
+                              {
+                                staticClass: "m-b-10 is-uppercase",
+                                attrs: { type: "is-success" }
+                              },
+                              [_vm._v(_vm._s(tag.name))]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "is-size-5 has-text-white is-capitalized"
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(_vm._f("first-characters")(post.title_es))
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  })
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-image" }, [
+                  _c("a", { attrs: { href: "posts/" + post.id } }, [
+                    _c("figure", { staticClass: "image is-4by3" }, [
+                      _c("img", {
+                        attrs: {
+                          src:
+                            "http://67.205.181.253/storage/thumbnails/" +
+                            post.thumbnail
+                        }
+                      })
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          )
+        })
+      ),
+      _vm._v(" "),
+      _vm.pagination.from != _vm.pagination.last_page
+        ? _c(
+            "nav",
+            {
+              staticClass: "pagination is-rounded",
+              attrs: { role: "navigation", "aria-label": "pagination" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "pagination-previous",
+                  attrs: {
+                    title: "This is the first page",
+                    disabled: !_vm.pagination.prev_page_url
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.loadPosts(_vm.pagination.prev_page_url)
+                    }
+                  }
+                },
+                [_vm._v("Previous")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "pagination-next",
+                  attrs: { disabled: !_vm.pagination.next_page_url },
+                  on: {
+                    click: function($event) {
+                      _vm.loadPosts(_vm.pagination.next_page_url)
+                    }
+                  }
+                },
+                [_vm._v("Next page")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "pagination-list" }, [
+                _vm._v(
+                  "Page " +
+                    _vm._s(_vm.pagination.current_page) +
+                    " of " +
+                    _vm._s(_vm.pagination.last_page)
+                )
+              ])
+            ]
+          )
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3e5f8528", module.exports)
+  }
+}
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports) {
+
 
 
 /***/ })
