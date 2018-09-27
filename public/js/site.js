@@ -45222,7 +45222,13 @@ var render = function() {
                         [
                           _c(
                             "a",
-                            { attrs: { href: "#" } },
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.setNewValue(tag.name)
+                                }
+                              }
+                            },
                             [
                               _c(
                                 "b-tag",
@@ -45239,10 +45245,10 @@ var render = function() {
                           _c("br"),
                           _vm._v(" "),
                           _c(
-                            "span",
+                            "a",
                             {
-                              staticClass:
-                                "is-size-5 has-text-white is-capitalized"
+                              staticClass: "is-size-5 has-text-white",
+                              attrs: { href: "posts/" + post.id }
                             },
                             [
                               _vm._v(
