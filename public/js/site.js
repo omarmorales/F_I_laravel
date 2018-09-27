@@ -44979,11 +44979,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       posts: [],
+      tags: [],
       search: ''
     };
   },
@@ -44993,10 +45025,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     loadPosts: function loadPosts() {
       var _this = this;
 
+      var vm = this;
       axios.get('api/post').then(function (response) {
-        console.log(response);
         _this.posts = response.data;
+        vm.getTags(response.data);
       });
+    },
+    getTags: function getTags(data) {
+      var vm = this;
+      var all_tags = [];
+      for (var x = 0; x < data.length; x++) {
+        for (var i = 0; i < data[x].tags.length; i++) {
+          all_tags.push(data[x].tags[i].name);
+        }
+      }
+      vm.uniqueTags(all_tags);
+    },
+    uniqueTags: function uniqueTags(all_tags) {
+      var tags = all_tags.filter(function (elem, index, self) {
+        return index == self.indexOf(elem);
+      });
+      this.tags = tags;
     },
     beforeEnter: function beforeEnter(el) {
       el.style.opacity = 0;
@@ -45040,128 +45089,204 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container min-fullheight" },
-    [
-      _c("div", { staticClass: "field m-t-20" }, [
-        _c("p", { staticClass: "control has-icons-right" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.search,
-                expression: "search"
-              }
-            ],
-            staticClass: "input",
-            attrs: { type: "email", placeholder: "Palabra clave" },
-            domProps: { value: _vm.search },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.search = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _vm._m(0)
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "transition-group",
-        {
-          staticClass: "columns is-multiline m-b-30 m-t-30",
-          attrs: { tag: "div", css: false, name: "fadeIn" },
-          on: {
-            "before-enter": _vm.beforeEnter,
-            enter: _vm.enter,
-            leave: _vm.leave
-          }
-        },
-        _vm._l(_vm.filteredPosts, function(post, index) {
-          return _c(
-            "div",
-            {
-              key: post.id,
-              staticClass: "column is-4",
-              attrs: { "data-index": index }
-            },
-            [
-              _c("div", { staticClass: "card" }, [
-                _c(
-                  "header",
-                  {
-                    staticClass:
-                      "card-header has-background-link post-header-card"
-                  },
-                  _vm._l(post.tags, function(tag) {
-                    return _c(
-                      "p",
-                      { key: tag.id, staticStyle: { margin: "1em" } },
-                      [
-                        _c(
-                          "a",
-                          { attrs: { href: "#" } },
-                          [
-                            _c(
-                              "b-tag",
-                              {
-                                staticClass: "m-b-10 is-uppercase",
-                                attrs: { type: "is-success" }
-                              },
-                              [_vm._v(_vm._s(tag.name))]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c(
-                          "span",
+  return _c("div", [
+    _c(
+      "section",
+      { staticClass: "hero blue-gradient is-bold is-hidden-touch" },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "hero-body js-section",
+            staticStyle: { "margin-top": "2em", "margin-bottom": "1em" }
+          },
+          [
+            _c("div", { staticClass: "container" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column" }, [
+                  _c("div", { staticClass: "field m-t-20" }, [
+                    _c("p", { staticClass: "control has-icons-right" }, [
+                      _c("input", {
+                        directives: [
                           {
-                            staticClass:
-                              "is-size-5 has-text-white is-capitalized"
-                          },
-                          [
-                            _vm._v(
-                              _vm._s(_vm._f("first-characters")(post.title_es))
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  })
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-image" }, [
-                  _c("a", { attrs: { href: "posts/" + post.id } }, [
-                    _c("figure", { staticClass: "image is-4by3" }, [
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "http://67.205.181.253/storage/thumbnails/" +
-                            post.thumbnail
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.search,
+                            expression: "search"
+                          }
+                        ],
+                        staticClass: "input",
+                        attrs: { type: "email", placeholder: "Palabra clave" },
+                        domProps: { value: _vm.search },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.search = $event.target.value
+                          }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm._m(1)
                     ])
                   ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns" }, [
+                _c("div", { staticClass: "column" }, [
+                  _c(
+                    "div",
+                    { staticClass: "tabs is-centered m-t-10" },
+                    _vm._l(_vm.tags, function(tag) {
+                      return _c("ul", { attrs: { id: "tabs-menu-tags" } }, [
+                        _c("li", [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "has-text-white is-uppercase is-size-7"
+                            },
+                            [_vm._v(_vm._s(tag))]
+                          )
+                        ])
+                      ])
+                    })
+                  )
+                ])
               ])
-            ]
-          )
-        })
-      )
-    ],
-    1
-  )
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "container min-fullheight" },
+      [
+        _c(
+          "transition-group",
+          {
+            staticClass: "columns is-mobile is-multiline m-b-30 m-t-30",
+            attrs: { tag: "div", css: false, name: "fadeIn" },
+            on: {
+              "before-enter": _vm.beforeEnter,
+              enter: _vm.enter,
+              leave: _vm.leave
+            }
+          },
+          _vm._l(_vm.filteredPosts, function(post, index) {
+            return _c(
+              "div",
+              {
+                key: post.id,
+                staticClass:
+                  "column is-12-mobile is-half-tablet is-one-third-desktop",
+                attrs: { "data-index": index }
+              },
+              [
+                _c("div", { staticClass: "card" }, [
+                  _c(
+                    "header",
+                    {
+                      staticClass:
+                        "card-header has-background-link post-header-card"
+                    },
+                    _vm._l(post.tags, function(tag) {
+                      return _c(
+                        "p",
+                        { key: tag.id, staticStyle: { margin: "1em" } },
+                        [
+                          _c(
+                            "a",
+                            { attrs: { href: "#" } },
+                            [
+                              _c(
+                                "b-tag",
+                                {
+                                  staticClass: "m-b-10 is-uppercase",
+                                  attrs: { type: "is-success" }
+                                },
+                                [_vm._v(_vm._s(tag.name))]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass:
+                                "is-size-5 has-text-white is-capitalized"
+                            },
+                            [
+                              _vm._v(
+                                _vm._s(
+                                  _vm._f("first-characters")(post.title_es)
+                                )
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    })
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-image" }, [
+                    _c("a", { attrs: { href: "posts/" + post.id } }, [
+                      _c("figure", { staticClass: "image is-4by3" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "http://67.205.181.253/storage/thumbnails/" +
+                              post.thumbnail
+                          }
+                        })
+                      ])
+                    ])
+                  ])
+                ])
+              ]
+            )
+          })
+        )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "columns is-mobile" }, [
+      _c("div", { staticClass: "column is-8" }, [
+        _c("a", { attrs: { href: "" } }, [
+          _c("img", {
+            attrs: {
+              src: "http://67.205.181.253/images/logoBig.png",
+              alt: "C230 Consultores logo"
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "column" }, [
+        _c("p", { staticClass: "has-text-white" }, [
+          _vm._v(
+            "Somos Fundación IDEA, uno de los primeros think tanks de política pública en México"
+          )
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
