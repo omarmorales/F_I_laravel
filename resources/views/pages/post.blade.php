@@ -40,7 +40,7 @@
         </div>
         <div class="column is-5">
           <div class="fb-share-button is-pulled-right m-b-10 is-hidden-touch" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-          <figure class="image is-square">
+          <figure class="image is-4by3">
             <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title_es }}">
           </figure>
         </div>
