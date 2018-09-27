@@ -45014,6 +45014,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      tag_selected: '',
+      isActive: false,
       posts: [],
       tags: [],
       search: ''
@@ -45047,6 +45049,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
       this.tags = tags;
     },
+    setNewValue: function setNewValue(value) {
+      this.tag_selected = value;
+      console.log(this.tag_selected);
+    },
     beforeEnter: function beforeEnter(el) {
       el.style.opacity = 0;
       el.style.transform = "scale(0)";
@@ -45074,9 +45080,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     filteredPosts: function filteredPosts() {
       var _this2 = this;
 
-      return this.posts.filter(function (post) {
-        return post.title_es.match(_this2.search);
-      });
+      if (this.tag_selected == "") {
+        return this.posts.filter(function (post) {
+          return post.title_es.match(_this2.search);
+        });
+      } else {
+        return this.posts.filter(function (post) {
+          for (var i = 0; i < post.tags.length; i++) {
+            return post.tags[i].name.match(_this2.tag_selected);
+          }
+        });
+      }
     }
   }
 });
@@ -45148,7 +45162,12 @@ var render = function() {
                             "a",
                             {
                               staticClass:
-                                "has-text-white is-uppercase is-size-7"
+                                "has-text-white is-uppercase is-size-7",
+                              on: {
+                                click: function($event) {
+                                  _vm.setNewValue(tag)
+                                }
+                              }
                             },
                             [_vm._v(_vm._s(tag))]
                           )

@@ -15,7 +15,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-      return Post::with('tags')->latest()->get();
+      $posts = Post::with('tags')->latest()->get();
+      return $posts;
     }
 
     /**

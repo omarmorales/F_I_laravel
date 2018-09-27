@@ -39,7 +39,7 @@
             <div class="column">
               <div class="tabs is-centered m-t-10">
                 <ul id="tabs-menu-tags" v-for="tag in tags">
-                  <li><a class="has-text-white is-uppercase is-size-7">{{ tag }}</a></li>
+                  <li><a class="has-text-white is-uppercase is-size-7" @click="setNewValue(tag)">{{ tag }}</a></li>
                 </ul>
               </div>
             </div>
@@ -76,6 +76,8 @@
 export default {
   data(){
     return {
+      tag_selected: '',
+      isActive: false,
       posts: [],
       tags: [],
       search: '',
@@ -106,6 +108,10 @@ export default {
       });
       this.tags = tags;
     },
+    setNewValue(value){
+      this.tag_selected = value;
+      console.log(this.tag_selected)
+    },
     beforeEnter(el){
       el.style.opacity = 0;
       el.style.transform = "scale(0)";
@@ -133,7 +139,15 @@ export default {
 
   computed: {
     filteredPosts() {
-      return this.posts.filter(post => {return post.title_es.match(this.search)});
+      if (this.tag_selected == "") {
+        return this.posts.filter(post => {return post.title_es.match(this.search)});
+      } else {
+        return this.posts.filter(post => {
+          for (var i = 0; i < post.tags.length; i++) {
+            return post.tags[i].name.match(this.tag_selected)
+          }
+        });
+      }
     }
   }
 }
