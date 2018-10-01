@@ -51,7 +51,7 @@ class FilesPstController extends Controller
         //file name to Store
         $fileNameToStore=$filename.'_'.time().'.'.$extension;
         //upload
-        $path = $request->file('file')->storeAs('public/files', $fileNameToStore);
+        $path = Storage::disk('spaces')->putFileAs('IDEA/files', $request->file('file'), $fileNameToStore, 'public');
       } else {
         $fileNameToStore = 'noimage.jpg';
       }
@@ -108,7 +108,7 @@ class FilesPstController extends Controller
      */
     public function destroy(files_pst $files_pst)
     {
-      Storage::delete('public/files/'.$files_pst->file);
+      Storage::disk('spaces')->delete('/IDEA/files/'. $files_pst->file);
       $files_pst->delete();
       return redirect()->back()->with('success', "File deleted successfully");
     }

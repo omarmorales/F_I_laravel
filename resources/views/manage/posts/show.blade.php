@@ -15,12 +15,6 @@
       <div class="column is-7">
         <p>{!! $post->description !!}</p>
 
-        <a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" class="button is-link is-pulled-right" target="_blank">
-          <span class="icon is-small">
-            <i class="fas fa-download"></i>
-          </span>
-          <span>Descargar</span>
-        </a>
         <button class="button is-link is-pulled-right m-r-10"
           @click="isCardModalActive = true">
           <span class="icon is-small">
@@ -37,14 +31,31 @@
     <div class="columns">
       @if ($post->files_psts->count() > 0)
         <div class="column">
-          <h3 class="subtitle">Archivos extra</h3>
+          <h3 class="subtitle">Descargar archivos</h3>
+          <p>
+            <span class="icon is-small">
+              <i class="fas fa-file"></i>
+            </span>
+            <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
+          </p>
           @foreach ($post->files_psts as $extra_file)
-            <p>
-              <span class="icon is-small">
-                <i class="fas fa-file"></i>
-              </span>
-              <span><a href="#">{{ $extra_file->file }}</a></span>
-            </p>
+            <form action="{{ route('filespst.destroy', $extra_file->id) }}" method="POST">
+              @csrf
+              {{ method_field('DELETE') }}
+              <p>
+                <span class="icon is-small">
+                  <i class="fas fa-file"></i>
+                </span>
+                <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$extra_file->file) }}" target="_blank">{{ $extra_file->file }}</a></span>
+                <span class="icon is-small">
+                  <button class="button m-l-20">
+                    <span class="icon is-small">
+                      <i class="fas fa-trash has-text-danger"></i>
+                    </span>
+                  </button>
+                </span>
+              </p>
+            </form>
           @endforeach
         </div>
       @endif

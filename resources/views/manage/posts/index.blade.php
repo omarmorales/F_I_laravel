@@ -47,7 +47,8 @@
               <form :action="'{{ route('posts.index') }}'+'/'+props.row.id" method="POST">
                 @csrf
                 {{ method_field('DELETE') }}
-                <a :href="'posts/'+ props.row.id+ '/edit'" class="button"><i class="fas fa-edit"></i></a>
+                <a :href="'posts/'+ props.row.id" class="button"><i class="fas fa-eye"></i></a>
+                <a :href="'posts/'+ props.row.id+ '/edit'" class="button is-info"><i class="fas fa-edit"></i></a>
                 <button class="button is-danger">
                   <i class="fas fa-trash"></i>
                 </button>
