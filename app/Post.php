@@ -29,6 +29,10 @@ class Post extends Model
   //         'posts.description_es' => 5,
   //     ],
   // ];
+  public function files_psts()
+  {
+    return $this->hasMany('App\files_pst');
+  }
 
   public function tags()
   {

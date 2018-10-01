@@ -35,6 +35,7 @@ Vue.filter('first-characters', function(value){
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('posts', require('./components/Posts.vue'));
+Vue.component('vacancies', require('./components/Vacancies.vue'));
 
 // const app = new Vue({
 //     el: '#app',

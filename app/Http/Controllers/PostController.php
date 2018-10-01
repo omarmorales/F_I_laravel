@@ -223,12 +223,12 @@ class PostController extends Controller
   {
     if ($post->thumbnail != 'noimage.jpg') {
       //delete de image
-      Storage::delete( public_path('/thumbnails/' . $post->thumbnail));
+      Storage::delete('public/thumbnails/'.$post->thumbnail);
     }
 
     if ($post->file != 'noimage.jpg') {
       //delete de image
-      Storage::disk('spaces')->delete('public/IDEA/files/'. $post->file);
+      Storage::delete('IDEA/files/'.$post->file);
     }
 
     $post->delete();
