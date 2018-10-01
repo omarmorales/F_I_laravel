@@ -58,6 +58,16 @@
             </form>
           @endforeach
         </div>
+      @else
+        <div class="column">
+          <h3 class="subtitle">Descargar archivos</h3>
+          <p>
+            <span class="icon is-small">
+              <i class="fas fa-file"></i>
+            </span>
+            <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
+          </p>
+        </div>
       @endif
     </div>
 
