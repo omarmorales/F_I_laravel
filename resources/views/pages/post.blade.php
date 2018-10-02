@@ -30,20 +30,55 @@
           <h2 class="is-size-2 has-text-weight-light">{{ $post->title_es }}</h2>
           <hr class="separator m-b-20">
           <p class="m-b-20">{!! $post->description_es !!}</p>
-
-          <a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" class="button is-link is-pulled-right m-b-20" target="_blank">
-            <span class="icon is-small">
-              <i class="fas fa-download"></i>
-            </span>
-            <span>Descargar</span>
-          </a>
         </div>
         <div class="column is-5">
-          <div class="fb-share-button is-pulled-right m-b-10 is-hidden-touch" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
           <figure class="image is-4by3">
             <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title_es }}">
           </figure>
         </div>
+      </div>
+
+      <div class="columns m-b-20">
+        @if ($post->files_psts->count() > 0)
+          <div class="column">
+            <h3 class="subtitle">Descargar archivos</h3>
+            <p>
+              <span class="icon is-small">
+                <i class="fas fa-file"></i>
+              </span>
+              <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
+            </p>
+            @foreach ($post->files_psts as $extra_file)
+              <p>
+                <form action="{{ action('FilesPstController@destroy', $extra_file->id) }}" method="POST">
+                  @csrf
+                  {{ method_field('DELETE') }}
+                  <span class="icon is-small">
+                    <i class="fas fa-file"></i>
+                  </span>
+                  <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$extra_file->file) }}" target="_blank">{{ $extra_file->file }}</a></span>
+                  <span class="icon is-small">
+                    <button class="button m-l-20" type="submit">
+                      <span class="icon is-small">
+                        <i class="fas fa-trash has-text-danger"></i>
+                      </span>
+                    </button>
+                  </span>
+                </form>
+              </p>
+            @endforeach
+          </div>
+        @else
+          <div class="column">
+            <h3 class="subtitle">Descargar archivos</h3>
+            <p>
+              <span class="icon is-small">
+                <i class="fas fa-file"></i>
+              </span>
+              <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
+            </p>
+          </div>
+        @endif
       </div>
     </div>
   </section>

@@ -43469,13 +43469,13 @@ Vue.filter('first-characters', function (value) {
 
 Vue.component('example-component', __webpack_require__(50));
 Vue.component('posts', __webpack_require__(53));
-Vue.component('vacancies', __webpack_require__(65));
+Vue.component('vacancies', __webpack_require__(60));
 
 // const app = new Vue({
 //     el: '#app',
 // });
 __webpack_require__(37);
-__webpack_require__(60);
+__webpack_require__(63);
 
 /***/ }),
 /* 49 */
@@ -45333,24 +45333,14 @@ if (false) {
 
 /***/ }),
 /* 60 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(38)
 /* script */
-var __vue_script__ = __webpack_require__(66)
+var __vue_script__ = __webpack_require__(61)
 /* template */
-var __vue_template__ = __webpack_require__(67)
+var __vue_template__ = __webpack_require__(62)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45389,7 +45379,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 66 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45418,7 +45408,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 67 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -45459,6 +45449,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-2fc47f1c", module.exports)
   }
 }
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports) {
+
+
 
 /***/ })
 /******/ ]);
