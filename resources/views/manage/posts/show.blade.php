@@ -39,23 +39,23 @@
             <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
           </p>
           @foreach ($post->files_psts as $extra_file)
-            <form action="{{ route('filespst.destroy', $extra_file->id) }}" method="POST">
-              @csrf
-              {{ method_field('DELETE') }}
-              <p>
+            <p>
+              <form action="{{ action('FilesPstController@destroy', $extra_file->id) }}" method="POST">
+                @csrf
+                {{ method_field('DELETE') }}
                 <span class="icon is-small">
                   <i class="fas fa-file"></i>
                 </span>
                 <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$extra_file->file) }}" target="_blank">{{ $extra_file->file }}</a></span>
                 <span class="icon is-small">
-                  <button class="button m-l-20">
+                  <button class="button m-l-20" type="submit">
                     <span class="icon is-small">
                       <i class="fas fa-trash has-text-danger"></i>
                     </span>
                   </button>
                 </span>
-              </p>
-            </form>
+              </form>
+            </p>
           @endforeach
         </div>
       @else

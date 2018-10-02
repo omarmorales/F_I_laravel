@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\files_pst;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use DB;
 
 class FilesPstController extends Controller
 {
@@ -103,13 +104,17 @@ class FilesPstController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\files_pst  $files_pst
      * @return \Illuminate\Http\Response
      */
-    public function destroy(files_pst $files_pst)
+    public function destroy($id)
     {
-      Storage::disk('spaces')->delete('/IDEA/files/'. $files_pst->file);
-      $files_pst->delete();
-      return redirect()->back()->with('success', "File deleted successfully");
+      $extra_file = files_pst::find($id);
+      if (DB::table("files_psts")->delete($id)) {
+        Storage::disk('spaces')->delete('IDEA/files/'.$extra_file->file);
+        return redirect()->back()->with('success', "File deleted");
+      } else {
+        return redirect()->back()->with('error', "File can't be deleted");
+      }
+
     }
 }
