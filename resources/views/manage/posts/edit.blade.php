@@ -160,6 +160,7 @@
       </b-tooltip>
     </form>
   </div>
+  <b-loading :is-full-page="isFullPage" :active.sync="isLoading" :can-cancel="true"></b-loading>
 @endsection
 
 @section('scripts')
@@ -172,7 +173,24 @@
         change_thumbnail: 'no',
         change_thumbnail2: 'no',
         tagsSelected: {!! $post->tags->pluck('id') !!}
+      },
+      methods: {
+        openLoading() {
+          this.isLoading = true
+        }
       }
+    });
+
+    $('#description_es').summernote({
+      placeholder: 'Agrega una descripción para este miembro del personal',
+      tabsize: 2,
+      height: 100
+    });
+
+    $('#description').summernote({
+      placeholder: 'Add description for staff member',
+      tabsize: 2,
+      height: 100
     });
   }
   </script>
