@@ -139,8 +139,9 @@ export default {
 
   computed: {
     filteredPosts() {
+      let reg = new RegExp(this.search, "i");
       if (this.tag_selected == "") {
-        return this.posts.filter(post => {return post.title_es.match(this.search)});
+        return this.posts.filter(post => {return post.title_es.match(reg) || post.title.match(reg)});
       } else {
         return this.posts.filter(post => {
           for (var i = 0; i < post.tags.length; i++) {

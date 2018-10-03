@@ -43460,8 +43460,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_buefy___default.a);
 
 // filters
 Vue.filter('first-characters', function (value) {
-  if (value.length >= 40) {
-    return value.substring(0, 40) + '...';
+  if (value.length >= 60) {
+    return value.substring(0, 60) + '...';
   } else {
     return value;
   }
@@ -45081,9 +45081,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     filteredPosts: function filteredPosts() {
       var _this2 = this;
 
+      var reg = new RegExp(this.search, "i");
       if (this.tag_selected == "") {
         return this.posts.filter(function (post) {
-          return post.title_es.match(_this2.search);
+          return post.title_es.match(reg) || post.title.match(reg);
         });
       } else {
         return this.posts.filter(function (post) {

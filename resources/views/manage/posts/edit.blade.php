@@ -17,52 +17,101 @@
 
       <div class="columns is-multiline">
         <div class="column is-12">
-          <b-tabs type="is-boxed">
-            <b-tab-item>
-              <template slot="header">
-                <span>
-                  <img src="{{ Storage::disk('spaces')->url('website_images/flags/4x3/us.svg') }}" style="max-width:20px;">
-                </span>
-                <span> English </span>
-              </template>
+          @if (App::isLocale('en'))
+            <b-tabs type="is-boxed">
+              <b-tab-item>
+                <template slot="header">
+                  <span>
+                    <img src="{{ Storage::disk('spaces')->url('website_images/flags/4x3/us.svg') }}" style="max-width:20px;">
+                  </span>
+                  <span> English </span>
+                </template>
 
-              <div class="field">
-                <p class="control">
-                  <label for="title" class="label">@lang('posts.title')</label>
-                  <input type="text" class="input" name="title" value="{{ $post->title }}" id="title">
-                </p>
-              </div>
-              <div class="field">
-                <p class="control">
-                  <label for="description" class="label">Description</label>
-                  <textarea class="textarea" id="description" name="description">{{ $post->description }}</textarea>
-                </p>
-              </div>
+                <div class="field">
+                  <p class="control">
+                    <label for="title" class="label">@lang('posts.title')</label>
+                    <input type="text" class="input" name="title" value="{{ $post->title }}" id="title">
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <label for="description" class="label">Description</label>
+                    <textarea class="textarea" id="description" name="description">{{ $post->description }}</textarea>
+                  </p>
+                </div>
 
-            </b-tab-item>
-            <b-tab-item>
-              <template slot="header">
-                <span>
-                  <img src="{{ Storage::disk('spaces')->url('website_images/flags/4x3/mx.svg') }}" style="max-width:20px;">
-                </span>
-                <span> Español</span>
-              </template>
+              </b-tab-item>
+              <b-tab-item>
+                <template slot="header">
+                  <span>
+                    <img src="{{ Storage::disk('spaces')->url('website_images/flags/4x3/mx.svg') }}" style="max-width:20px;">
+                  </span>
+                  <span> Español</span>
+                </template>
 
-              <div class="field">
-                <p class="control">
-                  <label for="title_es" class="label">Título</label>
-                  <input type="text" class="input" name="title_es" value="{{$post->title_es}}" id="title_es">
-                </p>
-              </div>
-              <div class="field">
-                <p class="control">
-                  <label for="description_es" class="label">Descripción</label>
-                  <textarea class="textarea" id="description_es" name="description_es">{{ $post->description }}</textarea>
-                </p>
-              </div>
+                <div class="field">
+                  <p class="control">
+                    <label for="title_es" class="label">Título</label>
+                    <input type="text" class="input" name="title_es" value="{{$post->title_es}}" id="title_es">
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <label for="description_es" class="label">Descripción</label>
+                    <textarea class="textarea" id="description_es" name="description_es">{{ $post->description_es }}</textarea>
+                  </p>
+                </div>
 
-            </b-tab-item>
-          </b-tabs>
+              </b-tab-item>
+            </b-tabs>
+          @else
+            <b-tabs type="is-boxed">
+              <b-tab-item>
+                <template slot="header">
+                  <span>
+                    <img src="{{ Storage::disk('spaces')->url('website_images/flags/4x3/mx.svg') }}" style="max-width:20px;">
+                  </span>
+                  <span> Español</span>
+                </template>
+
+                <div class="field">
+                  <p class="control">
+                    <label for="title_es" class="label">Título</label>
+                    <input type="text" class="input" name="title_es" value="{{$post->title_es}}" id="title_es">
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <label for="description_es" class="label">Descripción</label>
+                    <textarea class="textarea" id="description_es" name="description_es">{{ $post->description_es }}</textarea>
+                  </p>
+                </div>
+
+              </b-tab-item>
+              <b-tab-item>
+                <template slot="header">
+                  <span>
+                    <img src="{{ Storage::disk('spaces')->url('website_images/flags/4x3/us.svg') }}" style="max-width:20px;">
+                  </span>
+                  <span> English </span>
+                </template>
+
+                <div class="field">
+                  <p class="control">
+                    <label for="title" class="label">@lang('posts.title')</label>
+                    <input type="text" class="input" name="title" value="{{ $post->title }}" id="title">
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <label for="description" class="label">Description</label>
+                    <textarea class="textarea" id="description" name="description">{{ $post->description }}</textarea>
+                  </p>
+                </div>
+
+              </b-tab-item>
+            </b-tabs>
+          @endif
         </div>
 
         <div class="column is-6">
@@ -151,6 +200,9 @@
               </div>
             @endforeach
           </section>
+        </div>
+        <div class="column is-12 m-b-20">
+
         </div>
       </div>
       <b-tooltip label="@lang('posts.submit')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">

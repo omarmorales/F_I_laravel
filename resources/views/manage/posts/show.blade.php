@@ -6,21 +6,37 @@
       <ul>
         <li><a href="">@lang('posts.SectionTitle')</a></li>
         <li><a href="{{ route('posts.index') }}">@lang('posts.IndexTitle')</a></li>
-        <li class="is-active"><a href="#" aria-current="page">{{ $post->title }}</a></li>
+        @if (App::isLocale('en'))
+          <li class="is-active"><a href="#" aria-current="page">{{ $post->title }}</a></li>
+        @else
+          <li class="is-active"><a href="#" aria-current="page">{{ $post->title_es }}</a></li>
+        @endif
       </ul>
     </nav>
 
-    <h1 class="title">{{ $post->title }}</h1>
+    <h1 class="title">
+      @if (App::isLocale('en'))
+        {{ $post->title }}
+      @else
+        {{ $post->title_es }}
+      @endif
+    </h1>
     <div class="columns is-multiline">
       <div class="column is-7">
-        <p>{!! $post->description !!}</p>
+        <p>
+          @if (App::isLocale('en'))
+            {!! $post->description !!}
+          @else
+            {!! $post->description_es !!}
+          @endif
+        </p>
 
         <button class="button is-link is-pulled-right m-r-10"
           @click="isCardModalActive = true">
           <span class="icon is-small">
             <i class="fas fa-plus"></i>
           </span>
-          <span>Agregar archivo</span>
+          <span>@lang('posts.add_file')</span>
         </button>
       </div>
       <div class="column is-5">
@@ -60,7 +76,7 @@
         </div>
       @else
         <div class="column">
-          <h3 class="subtitle">Descargar archivos</h3>
+          <h3 class="subtitle">@lang('posts.download_files')</h3>
           <p>
             <span class="icon is-small">
               <i class="fas fa-file"></i>
@@ -83,7 +99,7 @@
           {{csrf_field()}}
           <header class="card-header">
             <p class="card-header-title">
-              Agregar archivo
+              @lang('posts.add_file')
             </p>
           </header>
           <div class="card-content">
@@ -93,7 +109,7 @@
             </div>
           </div>
           <footer class="modal-card-foot">
-            <button class="button is-link">Guardar</button>
+            <button class="button is-link">@lang('posts.submit')</button>
           </footer>
         </form>
       </div>
