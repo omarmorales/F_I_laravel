@@ -42,7 +42,7 @@
             <div class="column">
               <div class="tabs is-centered">
                 <ul id="tabs-menu-tags" v-for="tag in tags">
-                  <li><a class="has-text-white is-uppercase tags-font-size" @click="setNewValue(tag)">{{ tag }}</a></li>
+                  <li><a class="has-text-white is-uppercase tags-font-size is-paddingless" @click="setNewValue(tag)">{{ tag }}</a></li>
                 </ul>
               </div>
             </div>

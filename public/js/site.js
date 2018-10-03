@@ -45171,7 +45171,7 @@ var render = function() {
                             "a",
                             {
                               staticClass:
-                                "has-text-white is-uppercase tags-font-size",
+                                "has-text-white is-uppercase tags-font-size is-paddingless",
                               on: {
                                 click: function($event) {
                                   _vm.setNewValue(tag)
