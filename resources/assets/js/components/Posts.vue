@@ -59,7 +59,7 @@
               <p style="margin:1em;" v-for="tag in post.tags" :key="tag.id">
                 <a @click="setNewValue(tag.name)"><b-tag class="m-b-10 is-uppercase" type="is-success">{{ tag.name }}</b-tag></a>
                 <br>
-                <a :href="'posts/'+ post.id" class=" has-text-white">{{ post.title_es | first-characters }}</a>
+                <a :href="'posts/'+ post.id" class=" has-text-white tags-font-size">{{ post.title_es | first-characters }}</a>
               </p>
             </header>
             <div class="card-image">

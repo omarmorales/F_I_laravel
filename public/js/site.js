@@ -45260,7 +45260,7 @@ var render = function() {
                           _c(
                             "a",
                             {
-                              staticClass: " has-text-white",
+                              staticClass: " has-text-white tags-font-size",
                               attrs: { href: "posts/" + post.id }
                             },
                             [
