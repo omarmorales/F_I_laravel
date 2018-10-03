@@ -9,6 +9,9 @@
   .tags-font-size {
     font-size: .9em;
   }
+  .post-font-size {
+    font-size: .95em;
+  }
 </style>
 
 <template>
@@ -57,9 +60,9 @@
           <div class="card">
             <header class="card-header has-background-link post-header-card">
               <p style="margin:1em;" v-for="tag in post.tags" :key="tag.id">
-                <a @click="setNewValue(tag.name)"><b-tag class="m-b-10 is-uppercase" type="is-success">{{ tag.name }}</b-tag></a>
+                <a @click="setNewValue(tag.name)"><b-tag class="m-b-10 is-uppercase is-size-7" type="is-success">{{ tag.name }}</b-tag></a>
                 <br>
-                <a :href="'posts/'+ post.id" class=" has-text-white tags-font-size">{{ post.title_es | first-characters }}</a>
+                <a :href="'posts/'+ post.id" class=" has-text-white post-font-size has-text-weight-semibold">{{ post.title_es | first-characters }}</a>
               </p>
             </header>
             <div class="card-image">

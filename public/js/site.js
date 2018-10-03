@@ -44665,7 +44665,7 @@ exports = module.exports = __webpack_require__(45)(false);
 
 
 // module
-exports.push([module.i, "\n.post-header-card {\n  min-height:130px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n", ""]);
+exports.push([module.i, "\n.post-header-card {\n  min-height:130px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n.post-font-size {\n  font-size: .95em;\n}\n", ""]);
 
 // exports
 
@@ -45015,6 +45015,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -45246,7 +45249,7 @@ var render = function() {
                               _c(
                                 "b-tag",
                                 {
-                                  staticClass: "m-b-10 is-uppercase",
+                                  staticClass: "m-b-10 is-uppercase is-size-7",
                                   attrs: { type: "is-success" }
                                 },
                                 [_vm._v(_vm._s(tag.name))]
@@ -45260,7 +45263,8 @@ var render = function() {
                           _c(
                             "a",
                             {
-                              staticClass: " has-text-white tags-font-size",
+                              staticClass:
+                                " has-text-white post-font-size has-text-weight-semibold",
                               attrs: { href: "posts/" + post.id }
                             },
                             [
