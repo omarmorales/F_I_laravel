@@ -89,6 +89,7 @@ export default {
       let vm = this;
       axios.get('api/post').then((response) => {
         this.posts = response.data;
+        console.log(response.data);
         vm.getTags(response.data);
       })
     },
@@ -145,7 +146,7 @@ export default {
       } else {
         return this.posts.filter(post => {
           for (var i = 0; i < post.tags.length; i++) {
-            return post.tags[i].name.match(this.tag_selected)
+            return post.tags[i].name.match(this.tag_selected || this.posts.filter(post => {return post.title_es.match(reg) || post.title.match(reg)}))
           }
         });
       }

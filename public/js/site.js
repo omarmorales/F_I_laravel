@@ -45031,6 +45031,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var vm = this;
       axios.get('api/post').then(function (response) {
         _this.posts = response.data;
+        console.log(response.data);
         vm.getTags(response.data);
       });
     },
@@ -45089,7 +45090,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       } else {
         return this.posts.filter(function (post) {
           for (var i = 0; i < post.tags.length; i++) {
-            return post.tags[i].name.match(_this2.tag_selected);
+            return post.tags[i].name.match(_this2.tag_selected || _this2.posts.filter(function (post) {
+              return post.title_es.match(reg) || post.title.match(reg);
+            }));
           }
         });
       }
