@@ -44665,7 +44665,7 @@ exports = module.exports = __webpack_require__(45)(false);
 
 
 // module
-exports.push([module.i, "\n.post-header-card {\n  min-height:130px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n", ""]);
+exports.push([module.i, "\n.post-header-card {\n  min-height:130px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n", ""]);
 
 // exports
 
@@ -45012,6 +45012,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -45160,7 +45163,7 @@ var render = function() {
                 _c("div", { staticClass: "column" }, [
                   _c(
                     "div",
-                    { staticClass: "tabs is-centered m-t-10" },
+                    { staticClass: "tabs is-centered" },
                     _vm._l(_vm.tags, function(tag) {
                       return _c("ul", { attrs: { id: "tabs-menu-tags" } }, [
                         _c("li", [
@@ -45168,7 +45171,7 @@ var render = function() {
                             "a",
                             {
                               staticClass:
-                                "has-text-white is-uppercase is-size-6",
+                                "has-text-white is-uppercase tags-font-size",
                               on: {
                                 click: function($event) {
                                   _vm.setNewValue(tag)
@@ -45257,7 +45260,7 @@ var render = function() {
                           _c(
                             "a",
                             {
-                              staticClass: "is-size-6 has-text-white",
+                              staticClass: " has-text-white",
                               attrs: { href: "posts/" + post.id }
                             },
                             [

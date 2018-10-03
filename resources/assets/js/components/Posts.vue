@@ -6,6 +6,9 @@
   .min-fullheight {
     min-height: 50vh;
   }
+  .tags-font-size {
+    font-size: .9em;
+  }
 </style>
 
 <template>
@@ -37,9 +40,9 @@
           </div>
           <div class="columns">
             <div class="column">
-              <div class="tabs is-centered m-t-10">
+              <div class="tabs is-centered">
                 <ul id="tabs-menu-tags" v-for="tag in tags">
-                  <li><a class="has-text-white is-uppercase is-size-6" @click="setNewValue(tag)">{{ tag }}</a></li>
+                  <li><a class="has-text-white is-uppercase tags-font-size" @click="setNewValue(tag)">{{ tag }}</a></li>
                 </ul>
               </div>
             </div>
@@ -56,7 +59,7 @@
               <p style="margin:1em;" v-for="tag in post.tags" :key="tag.id">
                 <a @click="setNewValue(tag.name)"><b-tag class="m-b-10 is-uppercase" type="is-success">{{ tag.name }}</b-tag></a>
                 <br>
-                <a :href="'posts/'+ post.id" class="is-size-6 has-text-white">{{ post.title_es | first-characters }}</a>
+                <a :href="'posts/'+ post.id" class=" has-text-white">{{ post.title_es | first-characters }}</a>
               </p>
             </header>
             <div class="card-image">
