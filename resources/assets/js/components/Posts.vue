@@ -39,7 +39,7 @@
             <div class="column">
               <div class="tabs is-centered m-t-10">
                 <ul id="tabs-menu-tags" v-for="tag in tags">
-                  <li><a class="has-text-white is-uppercase is-size-7" @click="setNewValue(tag)">{{ tag }}</a></li>
+                  <li><a class="has-text-white is-uppercase is-size-6" @click="setNewValue(tag)">{{ tag }}</a></li>
                 </ul>
               </div>
             </div>
@@ -48,14 +48,15 @@
       </div>
     </section>
     <div class="container min-fullheight">
-      <transition-group tag="div" :css="false" name="fadeIn" @before-enter="beforeEnter" @enter="enter" @leave="leave" class="columns is-mobile is-multiline m-b-30 m-t-30">
+      <h2 class="subtitle m-t-20">Nuestras publicaciones</h2>
+      <transition-group tag="div" :css="false" name="fadeIn" @before-enter="beforeEnter" @enter="enter" @leave="leave" class="columns is-mobile is-multiline m-b-30 m-t-10">
         <div class="column is-12-mobile is-half-tablet is-one-third-desktop" v-for="(post,index) in filteredPosts" :data-index="index" :key="post.id">
           <div class="card">
             <header class="card-header has-background-link post-header-card">
               <p style="margin:1em;" v-for="tag in post.tags" :key="tag.id">
                 <a @click="setNewValue(tag.name)"><b-tag class="m-b-10 is-uppercase" type="is-success">{{ tag.name }}</b-tag></a>
                 <br>
-                <a :href="'posts/'+ post.id" class="is-size-5 has-text-white">{{ post.title_es | first-characters }}</a>
+                <a :href="'posts/'+ post.id" class="is-size-6 has-text-white">{{ post.title_es | first-characters }}</a>
               </p>
             </header>
             <div class="card-image">

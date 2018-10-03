@@ -45011,6 +45011,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -45167,7 +45168,7 @@ var render = function() {
                             "a",
                             {
                               staticClass:
-                                "has-text-white is-uppercase is-size-7",
+                                "has-text-white is-uppercase is-size-6",
                               on: {
                                 click: function($event) {
                                   _vm.setNewValue(tag)
@@ -45192,10 +45193,14 @@ var render = function() {
       "div",
       { staticClass: "container min-fullheight" },
       [
+        _c("h2", { staticClass: "subtitle m-t-20" }, [
+          _vm._v("Nuestras publicaciones")
+        ]),
+        _vm._v(" "),
         _c(
           "transition-group",
           {
-            staticClass: "columns is-mobile is-multiline m-b-30 m-t-30",
+            staticClass: "columns is-mobile is-multiline m-b-30 m-t-10",
             attrs: { tag: "div", css: false, name: "fadeIn" },
             on: {
               "before-enter": _vm.beforeEnter,
@@ -45252,7 +45257,7 @@ var render = function() {
                           _c(
                             "a",
                             {
-                              staticClass: "is-size-5 has-text-white",
+                              staticClass: "is-size-6 has-text-white",
                               attrs: { href: "posts/" + post.id }
                             },
                             [
