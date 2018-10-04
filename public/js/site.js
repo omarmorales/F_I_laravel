@@ -43460,8 +43460,16 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_buefy___default.a);
 
 // filters
 Vue.filter('first-characters', function (value) {
-  if (value.length >= 60) {
-    return value.substring(0, 60) + '...';
+  if (value.length >= 90) {
+    return value.substring(0, 90) + '...';
+  } else {
+    return value;
+  }
+});
+
+Vue.filter('first-characters-small', function (value) {
+  if (value.length >= 90) {
+    return value.substring(0, 90) + '...';
   } else {
     return value;
   }
@@ -44665,7 +44673,7 @@ exports = module.exports = __webpack_require__(45)(false);
 
 
 // module
-exports.push([module.i, "\n.post-header-card {\n  min-height:130px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n.post-font-size {\n  font-size: .95em;\n}\n", ""]);
+exports.push([module.i, "\n.post-header-card {\n  min-height:150px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n.post-font-size {\n  font-size: .95em;\n}\n", ""]);
 
 // exports
 

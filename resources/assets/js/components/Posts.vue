@@ -1,6 +1,6 @@
 <style media="screen">
   .post-header-card {
-    min-height:130px;
+    min-height:150px;
   }
 
   .min-fullheight {

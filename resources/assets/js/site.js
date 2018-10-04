@@ -26,8 +26,16 @@ Vue.use(Buefy);
 
 // filters
 Vue.filter('first-characters', function(value){
-  if (value.length >= 60) {
-    return value.substring(0,60) + '...';
+  if (value.length >= 90) {
+    return value.substring(0,90) + '...';
+  } else {
+    return value
+  }
+});
+
+Vue.filter('first-characters-small', function(value){
+  if (value.length >= 90) {
+    return value.substring(0,90) + '...';
   } else {
     return value
   }
