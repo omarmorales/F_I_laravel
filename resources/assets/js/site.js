@@ -26,8 +26,8 @@ Vue.use(Buefy);
 
 // filters
 Vue.filter('first-characters', function(value){
-  if (value.length >= 90) {
-    return value.substring(0,90) + '...';
+  if (value.length >= 100) {
+    return value.substring(0,100) + '...';
   } else {
     return value
   }

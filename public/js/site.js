@@ -43460,8 +43460,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_buefy___default.a);
 
 // filters
 Vue.filter('first-characters', function (value) {
-  if (value.length >= 90) {
-    return value.substring(0, 90) + '...';
+  if (value.length >= 100) {
+    return value.substring(0, 100) + '...';
   } else {
     return value;
   }
