@@ -39,49 +39,53 @@
       </div>
 
       <div class="column is-12 m-b-20">
-        @foreach ($vacancies as $vacancy)
-          <div class="columns is-multiline">
-            <div class="column is-12">
-              <div class="box">
-                <div class="columns">
-                  <div class="column is-3" style="background-image: url('{{ asset('images/vacancy_thumbnail.png') }}'); height: 250px; background-size: cover;background-repeat: no-repeat;background-position: center;">
+        @if (count($vacancies) > 0)
+          @foreach ($vacancies as $vacancy)
+            <div class="columns is-multiline">
+              <div class="column is-12">
+                <div class="box">
+                  <div class="columns">
+                    <div class="column is-3" style="background-image: url('{{ asset('images/vacancy_thumbnail.png') }}'); height: 250px; background-size: cover;background-repeat: no-repeat;background-position: center;">
 
-                  </div>
-                  <div class="column is-9">
-                    <article class="media">
-                      <div class="media-content">
-                        <div class="content">
-                          <p class="subtitle is-6">
-                            <i class="fas fa-clock m-r-5"></i>
-                            {{ $vacancy->created_at->diffForHumans() }}
-                          </p>
+                    </div>
+                    <div class="column is-9">
+                      <article class="media">
+                        <div class="media-content">
+                          <div class="content">
+                            <p class="subtitle is-6">
+                              <i class="fas fa-clock m-r-5"></i>
+                              {{ $vacancy->created_at->diffForHumans() }}
+                            </p>
 
-                          <p class="title is-4 has-text-weight-light m-t-10">
-                             @if (App::isLocale('en'))
-                               {{ $vacancy->name }}
-                             @else
-                               {{ $vacancy->name_es }}
-                             @endif
-                           </p>
-                           <p>
-                             @if (App::isLocale('en'))
-                               {!! str_limit($vacancy->requirements,450) !!}
-                             @else
-                               {!! str_limit($vacancy->requirements_es,450) !!}
-                             @endif
-                           </p>
-                           <a href="{{ route('vacancy.show', $vacancy->id) }}" class="has-text-link">Leer más <i class="fas fa-angle-right m-l-5"></i></a>
+                            <p class="title is-4 has-text-weight-light m-t-10">
+                               @if (App::isLocale('en'))
+                                 {{ $vacancy->name }}
+                               @else
+                                 {{ $vacancy->name_es }}
+                               @endif
+                             </p>
+                             <p>
+                               @if (App::isLocale('en'))
+                                 {!! str_limit($vacancy->requirements,450) !!}
+                               @else
+                                 {!! str_limit($vacancy->requirements_es,450) !!}
+                               @endif
+                             </p>
+                             <a href="{{ route('vacancy.show', $vacancy->id) }}" class="has-text-link">Leer más <i class="fas fa-angle-right m-l-5"></i></a>
+                          </div>
                         </div>
-                      </div>
-                    </article>
+                      </article>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          @endforeach
+          {{ $vacancies->links() }}
+        @else
+          <p class="m-b-30">No hay vacantes en este momento.</p>
+        @endif
 
-        @endforeach
-        {{ $vacancies->links() }}
       </div>
       {{-- content ends --}}
     </div>
