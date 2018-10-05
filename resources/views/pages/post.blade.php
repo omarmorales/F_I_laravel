@@ -19,28 +19,28 @@
   </section>
   <section id="post">
     <div class="container">
-      <nav class="breadcrumb m-t-20" aria-label="breadcrumbs">
+      <nav class="breadcrumb m-t-20 is-hidden-touch" aria-label="breadcrumbs">
         <ul>
           <li><a href="{{ route('index') }}">Inicio</a></li>
           <li class="is-active"><a href="#" aria-current="page">{{ $post->title_es }}</a></li>
         </ul>
       </nav>
-      <div class="columns">
-        <div class="column is-7">
-          <h2 class="is-size-2 has-text-weight-light">{{ $post->title_es }}</h2>
-          <hr class="separator m-b-20">
-          <p class="m-b-20">{!! $post->description_es !!}</p>
-        </div>
-        <div class="column is-5">
-          <figure class="image is-4by3">
-            <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title_es }}">
-          </figure>
-        </div>
+
+      <div class="m-t-75 is-hidden-desktop">
       </div>
 
-      <div class="columns m-b-20">
+      <div class="columns is-multiline">
+        <div class="column is-12">
+          <h2 class="is-size-2-desktop is-size-4-touch has-text-weight-light">{{ $post->title_es }}</h2>
+          <hr class="separator m-b-20">
+        </div>
+        <div class="column is-12" style="background-image: url({{ asset('storage/thumbnails/'.$post->thumbnail) }}); height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover;">
+        </div>
+        <div class="column is-12">
+          <span class="m-b-20 is-marginless">{!! $post->description_es !!}</span>
+        </div>
         @if ($post->files_psts->count() > 0)
-          <div class="column">
+          <div class="column is-12 m-b-30">
             <h3 class="subtitle">Descargar archivos</h3>
             <p>
               <span class="icon is-small">
@@ -62,7 +62,7 @@
             @endforeach
           </div>
         @else
-          <div class="column">
+          <div class="column is-12 m-b-30">
             <h3 class="subtitle">Descargar archivos</h3>
             <p>
               <span class="icon is-small">
