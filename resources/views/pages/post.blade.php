@@ -39,7 +39,7 @@
         <div class="column is-7">
           <span class="m-b-20 is-marginless">{!! $post->description_es !!}</span>
         </div>
-        <div class="column is-6 is-hidden-touch" style="background-image: url({{ asset('storage/thumbnails/'.$post->thumbnail) }}); height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="column is-5-desktop is-hidden-touch" style="background-image: url({{ asset('storage/thumbnails/'.$post->thumbnail) }}); height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover;">
         @if ($post->files_psts->count() > 0)
           <div class="column is-12 m-b-30">
             <h3 class="subtitle">Descargar archivos</h3>
