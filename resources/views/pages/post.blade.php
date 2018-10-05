@@ -57,13 +57,6 @@
                     <i class="fas fa-file"></i>
                   </span>
                   <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$extra_file->file) }}" target="_blank">{{ $extra_file->file }}</a></span>
-                  <span class="icon is-small">
-                    <button class="button m-l-20" type="submit">
-                      <span class="icon is-small">
-                        <i class="fas fa-trash has-text-danger"></i>
-                      </span>
-                    </button>
-                  </span>
                 </form>
               </p>
             @endforeach
