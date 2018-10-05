@@ -34,9 +34,9 @@
           <h2 class="is-size-2-desktop is-size-4-touch has-text-weight-light">{{ $post->title_es }}</h2>
           <hr class="separator m-b-20">
         </div>
-        <div class="column is-12" style="background-image: url({{ asset('storage/thumbnails/'.$post->thumbnail) }}); height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="column is-6" style="background-image: url({{ asset('storage/thumbnails/'.$post->thumbnail) }}); height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover;">
         </div>
-        <div class="column is-12">
+        <div class="column is-6">
           <span class="m-b-20 is-marginless">{!! $post->description_es !!}</span>
         </div>
         @if ($post->files_psts->count() > 0)
