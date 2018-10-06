@@ -26,55 +26,61 @@
         </ul>
       </nav>
 
-      <div class="m-t-75 is-hidden-desktop">
-      </div>
+      <div class="m-t-75 is-hidden-desktop"></div>
 
-      <div class="columns is-multiline">
-        <div class="column is-12">
-          <h2 class="is-size-2-desktop is-size-4-touch has-text-weight-light">{{ $post->title_es }}</h2>
-          <hr class="separator m-b-20">
-        </div>
-        <div class="column is-12 is-hidden-desktop" style="background-image: url({{ asset('storage/thumbnails/'.$post->thumbnail) }}); height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover;">
-        </div>
-        <div class="column is-7">
-          <span class="m-b-20 is-marginless">{!! $post->description_es !!}</span>
-        </div>
-        <div class="column is-5-desktop is-hidden-touch" style="background-image: url({{ asset('storage/thumbnails/'.$post->thumbnail) }}); height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover;">
-        @if ($post->files_psts->count() > 0)
-          <div class="column is-12 m-b-30">
-            <h3 class="subtitle">Descargar archivos</h3>
-            <p>
-              <span class="icon is-small">
-                <i class="fas fa-file"></i>
-              </span>
-              <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
-            </p>
-            @foreach ($post->files_psts as $extra_file)
-              <p>
-                <form action="{{ action('FilesPstController@destroy', $extra_file->id) }}" method="POST">
-                  @csrf
-                  {{ method_field('DELETE') }}
-                  <span class="icon is-small">
-                    <i class="fas fa-file"></i>
-                  </span>
-                  <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$extra_file->file) }}" target="_blank">{{ $extra_file->file }}</a></span>
-                </form>
-              </p>
-            @endforeach
+      <h2 class="is-size-2-desktop is-size-4-touch has-text-weight-light">{{ $post->title_es }}</h2>
+      <hr class="separator m-b-20">
+
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-12">
+          <div class="tile">
+            <div class="tile is-parent is-vertical">
+              <article class="tile is-child notification">
+                <span class="m-b-20 is-marginless">{!! $post->description_es !!}</span>
+              </article>
+              <article class="tile is-child notification">
+                @if ($post->files_psts->count() > 0)
+                  <h3 class="subtitle">Descargar archivos</h3>
+                  <p>
+                    <span class="icon is-small">
+                      <i class="fas fa-file"></i>
+                    </span>
+                    <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
+                  </p>
+                  @foreach ($post->files_psts as $extra_file)
+                    <p>
+                      <form action="{{ action('FilesPstController@destroy', $extra_file->id) }}" method="POST">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                        <span class="icon is-small">
+                          <i class="fas fa-file"></i>
+                        </span>
+                        <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$extra_file->file) }}" target="_blank">{{ $extra_file->file }}</a></span>
+                      </form>
+                    </p>
+                  @endforeach
+                @else
+                  <h3 class="subtitle">Descargar archivos</h3>
+                  <p>
+                    <span class="icon is-small">
+                      <i class="fas fa-file"></i>
+                    </span>
+                    <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
+                  </p>
+                @endif
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification">
+
+                <figure class="image is-4by3">
+                  <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}">
+                </figure>
+              </article>
+            </div>
           </div>
-        @else
-          <div class="column is-12 m-b-30">
-            <h3 class="subtitle">Descargar archivos</h3>
-            <p>
-              <span class="icon is-small">
-                <i class="fas fa-file"></i>
-              </span>
-              <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
-            </p>
-          </div>
-        @endif
+        </div>
       </div>
-    </div>
   </section>
 @endsection
 
