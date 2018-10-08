@@ -149,7 +149,7 @@ export default {
     filteredPosts() {
       let reg = new RegExp(this.search, "i");
       if (this.tag_selected == "") {
-        return this.posts.filter(post => {return post.title_es.match(reg) || post.title.match(reg)});
+        return _.orderBy(this.posts, ['publication_date'],['desc']).filter(post => {return post.title_es.match(reg) || post.title.match(reg)});
       } else {
         return this.posts.filter(post => {
           for (var i = 0; i < post.tags.length; i++) {

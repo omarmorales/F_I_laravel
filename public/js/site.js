@@ -61745,7 +61745,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       var reg = new RegExp(this.search, "i");
       if (this.tag_selected == "") {
-        return this.posts.filter(function (post) {
+        return _.orderBy(this.posts, ['publication_date'], ['desc']).filter(function (post) {
           return post.title_es.match(reg) || post.title.match(reg);
         });
       } else {
