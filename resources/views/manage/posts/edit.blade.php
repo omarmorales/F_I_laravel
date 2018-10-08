@@ -115,24 +115,13 @@
         </div>
 
         <div class="column is-6">
-          <label class="label">@lang('posts.editThumbnail')</label>
-          <div class="columns">
-            <div class="column is-4">
-              <div class="block">
-                    <b-radio v-model="change_thumbnail" name="change_thumbnail" native-value="yes">@lang('posts.yes')</b-radio>
-                    <b-radio v-model="change_thumbnail" name="change_thumbnail" native-value="no">@lang('posts.no')</b-radio>
-              </div>
-            </div>
-            <div class="column">
-              <input class="input" type="file" name="thumbnail" id="thumbnail" value="{{old('descripcion')}}" v-if="change_thumbnail == 'yes'">
-              <figure class="image is-96x96" v-if="change_thumbnail == 'no'">
-                <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title }}">
-              </figure>
-            </div>
+          <div class="field">
+            <label for="publication_date" class="label">@lang('posts.publication_date')</label>
+            <input type="date" id="publication_date" name="publication_date" class="input">
           </div>
         </div>
 
-        <div class="column">
+        <div class="column is-6">
           <div class="field">
             <label class="label">@lang('posts.public')</label>
             <input type="hidden" :value="isPublic" name="public">
@@ -173,6 +162,24 @@
         </div>
 
         <div class="column is-12">
+          <label class="label">@lang('posts.editThumbnail')</label>
+          <div class="columns">
+            <div class="column is-4">
+              <div class="block">
+                    <b-radio v-model="change_thumbnail" name="change_thumbnail" native-value="yes">@lang('posts.yes')</b-radio>
+                    <b-radio v-model="change_thumbnail" name="change_thumbnail" native-value="no">@lang('posts.no')</b-radio>
+              </div>
+            </div>
+            <div class="column">
+              <input class="input" type="file" name="thumbnail" id="thumbnail" value="{{old('descripcion')}}" v-if="change_thumbnail == 'yes'">
+              <figure class="image is-96x96" v-if="change_thumbnail == 'no'">
+                <img src="{{ asset('storage/thumbnails/'.$post->thumbnail) }}" alt="{{ $post->title }}">
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div class="column is-12">
           <label class="label">@lang('posts.editfile')</label>
           <div class="columns">
             <div class="column is-2">
@@ -202,7 +209,6 @@
           </section>
         </div>
         <div class="column is-12 m-b-20">
-
         </div>
       </div>
       <b-tooltip label="@lang('posts.submit')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">

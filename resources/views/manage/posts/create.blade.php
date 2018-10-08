@@ -115,11 +115,13 @@
         </div>
 
         <div class="column is-6">
-          <label class="label">@lang('posts.thumbnail')</label>
-          <input class="input" type="file" name="thumbnail" id="thumbnail" value="{{old('thumbnail')}}">
+          <div class="field">
+            <label for="publication_date" class="label">@lang('posts.publication_date')</label>
+            <input type="date" id="publication_date" name="publication_date" class="input">
+          </div>
         </div>
 
-        <div class="column">
+        <div class="column is-6">
           <div class="field">
             <label class="label">@lang('posts.public')</label>
             <input type="hidden" :value="isPublic" name="public">
@@ -158,7 +160,13 @@
             </b-dropdown>
           </div>
         </div>
-        <div class="column is-12">
+
+        <div class="column is-6">
+          <label class="label">@lang('posts.thumbnail')</label>
+          <input class="input" type="file" name="thumbnail" id="thumbnail" value="{{old('thumbnail')}}">
+        </div>
+
+        <div class="column is-6">
           <label class="label">@lang('posts.file')</label>
           <input class="input" type="file" name="file" id="file" value="{{old('file')}}">
         </div>
@@ -172,6 +180,9 @@
               </div>
             @endforeach
           </section>
+        </div>
+        <div class="column">
+
         </div>
       </div>
       <b-tooltip label="@lang('posts.submit')" position="is-left" type="is-dark" animated class="button-float m-r-40 m-b-20">

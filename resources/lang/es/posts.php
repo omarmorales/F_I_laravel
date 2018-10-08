@@ -32,4 +32,5 @@ return [
     'actions' => 'Acciones',
     'add_file' => 'Agregar archivo',
     'download_files' => 'Descargar archivos',
+    'publication_date' => 'Fecha de publicación',
 ];

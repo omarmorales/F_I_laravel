@@ -32,4 +32,5 @@ return [
     'actions' => 'Actions',
     'add_file' => 'Add file',
     'download_files' => 'Download files',
+    'publication_date' => 'Publication date',
 ];

@@ -53,6 +53,7 @@ class PostController extends Controller
       'description' => 'sometimes',
       'title_es' => 'required|max:255',
       'description_es' => 'sometimes',
+      'publication_date' => 'sometimes',
       'thumbnail' => 'sometimes'
     ]);
 
@@ -102,6 +103,7 @@ class PostController extends Controller
     $post->description_es = $request->description_es;
     $post->title_no_accents = strtr( $request->title_es, $unwanted_array );
 
+    $post->publication_date = $request->publication_date;
     $post->thumbnail = $fileNameToStore;
     $post->file = $fileNameToStore_two;
     $post->public = $request->public;
@@ -165,6 +167,7 @@ class PostController extends Controller
       'title' => 'required|max:255',
       'description' => 'sometimes',
       'title_es' => 'required|max:255',
+      'publication_date' => 'sometimes',
       'description_es' => 'sometimes',
     ]);
 
@@ -211,6 +214,8 @@ class PostController extends Controller
     $post->title_es = $request->title_es;
     $post->description_es = $request->description_es;
     $post->title_no_accents = strtr( $request->title_es, $unwanted_array );
+
+    $post->publication_date = $request->publication_date;
 
     if ($request->hasFile('thumbnail')) {
       $post->thumbnail = $fileNameToStore;
