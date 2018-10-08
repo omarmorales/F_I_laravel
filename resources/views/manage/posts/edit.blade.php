@@ -117,7 +117,7 @@
         <div class="column is-6">
           <div class="field">
             <label for="publication_date" class="label">@lang('posts.publication_date')</label>
-            <input type="date" id="publication_date" name="publication_date" class="input">
+            <input type="date" id="publication_date" name="publication_date" value="{{ $post->publication_date }}" class="input">
           </div>
         </div>
 
