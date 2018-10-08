@@ -8,6 +8,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+// moment
+import moment from 'moment';
 // vform
 import { Form, HasError, AlertError } from 'vform'
 
@@ -40,6 +42,24 @@ Vue.filter('first-characters-small', function(value){
     return value
   }
 });
+
+Vue.filter('vacancyRequirements', function(value){
+  if (value.length >= 150) {
+    return value.substring(0,150) + '...';
+  } else {
+    return value
+  }
+});
+
+Vue.filter('myDate', function(created){
+  return moment(created).lang("es").format('MMMM Do YYYY');
+});
+
+Vue.filter('myTime', function(created){
+  return moment(created).lang("es").format('h:mm a');
+});
+
+
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('posts', require('./components/Posts.vue'));

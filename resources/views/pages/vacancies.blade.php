@@ -21,73 +21,34 @@
   </section>
   {{-- header fundacion idea ends --}}
 
-  {{-- content starts --}}
-  <div class="container">
-    <div class="columns is-multiline">
-      <div class="column is-12 m-t-10">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-          <ul>
-            <li><a href="{{ route('index') }}">Inicio</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Vacantes</a></li>
-          </ul>
-        </nav>
-      </div>
+  {{-- vuejs data starts --}}
+  <vacancies></vacancies>
+  {{-- vuejs data ends --}}
+@endsection
 
-      <div class="column is-12">
-        <h2 class="is-size-1 has-text-weight-light">Vacantes</h2>
-        <hr class="small-separator m-b-10">
-      </div>
+@section('scripts')
+  <script type="text/javascript">
+    window.onload = function() {
+      const app = new Vue({
+        el: '#app',
+        data: {
+        }
+      });
 
-      <div class="column is-12 m-b-20">
-        @if (count($vacancies) > 0)
-          @foreach ($vacancies as $vacancy)
-            <div class="columns is-multiline">
-              <div class="column is-12">
-                <div class="box">
-                  <div class="columns">
-                    <div class="column is-3" style="background-image: url('{{ asset('images/vacancy_thumbnail.png') }}'); height: 250px; background-size: cover;background-repeat: no-repeat;background-position: center;">
+      function scrollIt(element) {
+      window.scrollTo({
+        'behavior': 'smooth',
+        'left': 0,
+        'top': element.offsetTop
+      });
+    }
 
-                    </div>
-                    <div class="column is-9">
-                      <article class="media">
-                        <div class="media-content">
-                          <div class="content">
-                            <p class="subtitle is-6">
-                              <i class="fas fa-clock m-r-5"></i>
-                              {{ $vacancy->created_at->diffForHumans() }}
-                            </p>
+    const btn = document.getElementById('js-btn');
+    const section = document.querySelector('.js-section');
 
-                            <p class="title is-4 has-text-weight-light m-t-10">
-                               @if (App::isLocale('en'))
-                                 {{ $vacancy->name }}
-                               @else
-                                 {{ $vacancy->name_es }}
-                               @endif
-                             </p>
-                             <p>
-                               @if (App::isLocale('en'))
-                                 {!! str_limit($vacancy->requirements,450) !!}
-                               @else
-                                 {!! str_limit($vacancy->requirements_es,450) !!}
-                               @endif
-                             </p>
-                             <a href="{{ route('vacancy.show', $vacancy->id) }}" class="has-text-link">Leer más <i class="fas fa-angle-right m-l-5"></i></a>
-                          </div>
-                        </div>
-                      </article>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          @endforeach
-          {{ $vacancies->links() }}
-        @else
-          <p class="m-b-30">No hay vacantes en este momento.</p>
-        @endif
-
-      </div>
-      {{-- content ends --}}
-    </div>
-  </div>
+    btn.addEventListener('click', function() {
+      scrollIt(section);
+    });
+    }
+  </script>
 @endsection

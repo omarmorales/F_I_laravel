@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResources(['post' => 'API\PostController']);
+Route::apiResources(['vacancy' => 'API\VacancyController']);
