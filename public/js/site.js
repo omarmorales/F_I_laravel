@@ -61683,6 +61683,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -61915,32 +61918,38 @@ var render = function() {
                       staticClass:
                         "card-header has-background-link post-header-card"
                     },
-                    _vm._l(post.tags, function(tag) {
-                      return _c(
+                    [
+                      _c(
                         "p",
-                        { key: tag.id, staticStyle: { margin: "1em" } },
+                        { staticStyle: { margin: "1em" } },
                         [
-                          _c(
-                            "a",
-                            {
-                              on: {
-                                click: function($event) {
-                                  _vm.setNewValue(tag.name)
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "b-tag",
-                                {
-                                  staticClass: "m-b-10 is-uppercase is-size-7",
-                                  attrs: { type: "is-success" }
-                                },
-                                [_vm._v(_vm._s(tag.name))]
-                              )
-                            ],
-                            1
-                          ),
+                          _vm._l(post.tags, function(tag) {
+                            return _c(
+                              "a",
+                              { key: tag.id },
+                              [
+                                _c(
+                                  "b-tag",
+                                  {
+                                    staticClass:
+                                      "m-b-10 is-uppercase is-size-7 m-r-5",
+                                    attrs: { type: "is-success" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.setNewValue(tag.name)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      _vm._s(tag.name) + "\n                "
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          }),
                           _vm._v(" "),
                           _c("br"),
                           _vm._v(" "),
@@ -61959,9 +61968,10 @@ var render = function() {
                               )
                             ]
                           )
-                        ]
+                        ],
+                        2
                       )
-                    })
+                    ]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-image" }, [
