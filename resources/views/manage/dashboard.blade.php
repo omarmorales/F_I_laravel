@@ -28,7 +28,7 @@
           <div class="tile is-parent">
             <article class="tile is-child notification">
               <a href="{{route('vacancies.index')}}" style="text-decoration:none;">
-                <p class="title"><i class="fas fa-bookmark"></i> Vacancies</p>
+                <p class="title"><i class="fas fa-bookmark"></i> Last Vacancies</p>
               </a>
               <article class="media">
                 <figure class="media-left">
@@ -64,7 +64,7 @@
       <div class="tile is-parent">
         <article class="tile is-child notification">
           <div class="content">
-            <p class="title">Posts</p>
+            <p class="title">Last Posts</p>
             <div class="content">
               @foreach ($posts as $post)
                 <a href="{{route('posts.show', $post->id)}}" style="text-decoration:none;">

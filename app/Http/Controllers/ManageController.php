@@ -27,8 +27,8 @@ class ManageController extends Controller
     $roles = Role::all();
     $permissions = Permission::all();
     $vacancies = Vacancy::all();
-    $applications = Application::all();
-    $posts = Post::all();
+    $applications = Application::latest()->paginate(5);
+    $posts = Post::latest()->paginate(5);
     return view('manage.dashboard')->withUsers($users)->withRoles($roles)->withPermissions($permissions)->withVacancies($vacancies)->withApplications($applications)->withPosts($posts);
   }
 }
