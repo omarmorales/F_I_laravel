@@ -68,5 +68,6 @@ Vue.component('vacancies', require('./components/Vacancies.vue'));
 // const app = new Vue({
 //     el: '#app',
 // });
+
 require('./cms/navbar');
 require('./site/slider');

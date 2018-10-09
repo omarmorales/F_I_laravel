@@ -1,7 +1,7 @@
 <nav class="navbar is-link is-fixed-top">
   <div class="container">
     <div class="navbar-brand">
-      <a class="navbar-item is-hidden-desktop" href="{{ url('/') }}">
+      <a class="navbar-item is-hidden-desktop logo" href="{{ url('/') }}">
         <img src="{{ asset('images/logo.png') }}" alt="Fundacion IDEA logo">
       </a>
       <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">

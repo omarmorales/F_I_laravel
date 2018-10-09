@@ -60088,6 +60088,7 @@ Vue.component('vacancies', __webpack_require__(185));
 // const app = new Vue({
 //     el: '#app',
 // });
+
 __webpack_require__(38);
 __webpack_require__(190);
 
@@ -61547,7 +61548,7 @@ exports = module.exports = __webpack_require__(40)(false);
 
 
 // module
-exports.push([module.i, "\n.post-header-card {\n  min-height:150px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n.post-font-size {\n  font-size: .95em;\n}\n", ""]);
+exports.push([module.i, "\n.post-header-card {\n  min-height:150px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n.post-font-size {\n  font-size: .95em;\n}\n.fix-filters{\n  position: fixed;\n  width: 100%;\n  top: -120px;\n  z-index: 10;\n}\n.posts-with-filters{\n  margin-top: 250px;\n}\n", ""]);
 
 // exports
 
@@ -61591,6 +61592,16 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -61761,6 +61772,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   }
 });
 
+var filters = document.getElementsByClassName("filters");
+var posts = document.getElementsByClassName("posts");
+var logo = document.getElementsByClassName("logo");
+
+window.onscroll = function () {
+  if (document.body.scrollTop >= 150 || document.documentElement.scrollTop > 150) {
+    console.log("si");
+    // filters[0].style.backgroundColor = "red";
+    filters[0].classList.add("fix-filters");
+    posts[0].classList.add("posts-with-filters");
+    logo[0].classList.remove("is-hidden-desktop");
+  } else {
+    console.log("funciona");
+    filters[0].classList.remove("fix-filters");
+    posts[0].classList.remove("posts-with-filters");
+    logo[0].classList.add("is-hidden-desktop");
+  }
+};
+
 /***/ }),
 /* 184 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -61772,13 +61802,13 @@ var render = function() {
   return _c("div", [
     _c(
       "section",
-      { staticClass: "hero blue-gradient is-bold is-hidden-touch" },
+      { staticClass: "hero blue-gradient is-bold is-hidden-touch filters" },
       [
         _c(
           "div",
           {
             staticClass: "hero-body js-section",
-            staticStyle: { "margin-top": "2em", "margin-bottom": "1em" }
+            staticStyle: { "margin-top": "2em" }
           },
           [
             _c("div", { staticClass: "container" }, [
@@ -61851,7 +61881,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "container min-fullheight" },
+      { staticClass: "container min-fullheight posts" },
       [
         _c("h2", { staticClass: "subtitle m-t-20" }, [
           _vm._v("Nuestras publicaciones")

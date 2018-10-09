@@ -12,12 +12,22 @@
   .post-font-size {
     font-size: .95em;
   }
+  .fix-filters{
+    position: fixed;
+    width: 100%;
+    top: -120px;
+    z-index: 10;
+  }
+
+  .posts-with-filters{
+    margin-top: 250px;
+  }
 </style>
 
 <template>
   <div>
-    <section class="hero blue-gradient is-bold is-hidden-touch">
-      <div class="hero-body js-section" style="margin-top:2em; margin-bottom:1em;">
+    <section class="hero blue-gradient is-bold is-hidden-touch filters">
+      <div class="hero-body js-section" style="margin-top:2em;">
         <div class="container">
           <div class="columns is-mobile">
             <div class="column is-8">
@@ -53,7 +63,7 @@
         </div>
       </div>
     </section>
-    <div class="container min-fullheight">
+    <div class="container min-fullheight posts">
       <h2 class="subtitle m-t-20">Nuestras publicaciones</h2>
       <transition-group tag="div" :css="false" name="fadeIn" @before-enter="beforeEnter" @enter="enter" @leave="leave" class="columns is-mobile is-multiline m-b-30 m-t-10">
         <div class="column is-12-mobile is-half-tablet is-one-third-desktop" v-for="(post,index) in filteredPosts" :data-index="index" :key="post.id">
@@ -160,4 +170,26 @@ export default {
     }
   }
 }
+
+
+var filters = document.getElementsByClassName("filters");
+var posts = document.getElementsByClassName("posts");
+var logo = document.getElementsByClassName("logo");
+
+window.onscroll = function() {
+  if (document.body.scrollTop >= 150 || document.documentElement.scrollTop > 150) {
+    console.log("si");
+    // filters[0].style.backgroundColor = "red";
+    filters[0].classList.add("fix-filters");
+    posts[0].classList.add("posts-with-filters");
+    logo[0].classList.remove("is-hidden-desktop");
+
+  } else {
+    console.log("funciona");
+    filters[0].classList.remove("fix-filters");
+    posts[0].classList.remove("posts-with-filters");
+    logo[0].classList.add("is-hidden-desktop");
+  }
+};
+
 </script>
