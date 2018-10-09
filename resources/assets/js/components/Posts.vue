@@ -22,6 +22,13 @@
   .posts-with-filters{
     margin-top: 250px;
   }
+
+  .year-tag {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    z-index: 5;
+  }
 </style>
 
 <template>
@@ -76,6 +83,7 @@
                 <br>
                 <a :href="'posts/'+ post.id" class=" has-text-white post-font-size has-text-weight-semibold">{{ post.title_es | first-characters }}</a>
               </p>
+              <span class="tag is-white is-medium year-tag">{{ post.publication_date | myYear }}</span>
             </header>
             <div class="card-image">
               <a :href="'posts/'+ post.id">

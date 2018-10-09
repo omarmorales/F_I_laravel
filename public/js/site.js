@@ -60081,6 +60081,10 @@ Vue.filter('myTime', function (created) {
   return __WEBPACK_IMPORTED_MODULE_0_moment___default()(created).lang("es").format('h:mm a');
 });
 
+Vue.filter('myYear', function (date) {
+  return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).lang("es").format('YYYY');
+});
+
 Vue.component('example-component', __webpack_require__(176));
 Vue.component('posts', __webpack_require__(179));
 Vue.component('vacancies', __webpack_require__(185));
@@ -61548,7 +61552,7 @@ exports = module.exports = __webpack_require__(40)(false);
 
 
 // module
-exports.push([module.i, "\n.post-header-card {\n  min-height:150px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n.post-font-size {\n  font-size: .95em;\n}\n.fix-filters{\n  position: fixed;\n  width: 100%;\n  top: -120px;\n  z-index: 10;\n}\n.posts-with-filters{\n  margin-top: 250px;\n}\n", ""]);
+exports.push([module.i, "\n.post-header-card {\n  min-height:150px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n.post-font-size {\n  font-size: .95em;\n}\n.fix-filters{\n  position: fixed;\n  width: 100%;\n  top: -120px;\n  z-index: 10;\n}\n.posts-with-filters{\n  margin-top: 250px;\n}\n.year-tag {\n  position: absolute;\n  right: 5px;\n  bottom: 5px;\n  z-index: 5;\n}\n", ""]);
 
 // exports
 
@@ -61592,6 +61596,14 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -61967,6 +61979,16 @@ var render = function() {
                           )
                         ],
                         2
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "tag is-white is-medium year-tag" },
+                        [
+                          _vm._v(
+                            _vm._s(_vm._f("myYear")(post.publication_date))
+                          )
+                        ]
                       )
                     ]
                   ),

@@ -59,7 +59,9 @@ Vue.filter('myTime', function(created){
   return moment(created).lang("es").format('h:mm a');
 });
 
-
+Vue.filter('myYear', function(date){
+  return moment(date).lang("es").format('YYYY');
+});
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('posts', require('./components/Posts.vue'));
