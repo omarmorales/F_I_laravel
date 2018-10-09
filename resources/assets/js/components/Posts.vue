@@ -70,9 +70,8 @@
           <div class="card">
             <header class="card-header has-background-link post-header-card">
               <p style="margin:1em;">
-                <a v-for="tag in post.tags" :key="tag.id">
-                  <b-tag @click="setNewValue(tag.name)" class="m-b-10 is-uppercase is-size-7 m-r-5" type="is-success">{{ tag.name }}
-                  </b-tag>
+                <a @click="setNewValue(tag.name)" v-for="tag in post.tags" :key="tag.id">
+                  <b-tag class="m-b-10 is-uppercase is-size-7 m-r-5" type="is-success">{{ tag.name }}</b-tag>
                 </a>
                 <br>
                 <a :href="'posts/'+ post.id" class=" has-text-white post-font-size has-text-weight-semibold">{{ post.title_es | first-characters }}</a>
