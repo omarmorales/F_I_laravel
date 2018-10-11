@@ -61552,7 +61552,7 @@ exports = module.exports = __webpack_require__(40)(false);
 
 
 // module
-exports.push([module.i, "\n.post-header-card {\n  min-height:150px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n.post-font-size {\n  font-size: .95em;\n}\n.fix-filters{\n  position: fixed;\n  width: 100%;\n  top: -120px;\n  z-index: 10;\n}\n.posts-with-filters{\n  margin-top: 250px;\n}\n.year-tag {\n  position: absolute;\n  right: 5px;\n  bottom: 5px;\n  z-index: 5;\n}\n", ""]);
+exports.push([module.i, "\n.post-header-card {\n  min-height:150px;\n}\n.min-fullheight {\n  min-height: 50vh;\n}\n.tags-font-size {\n  font-size: .9em;\n}\n.post-font-size {\n  font-size: .95em;\n}\n.fix-filters{\n  position: fixed;\n  width: 100%;\n  top: -120px;\n  z-index: 10;\n}\n.posts-with-filters{\n  margin-top: 250px;\n}\n.year-tag {\n  position: absolute;\n  right: 5px;\n  bottom: 5px;\n  z-index: 5;\n}\n.sidenav-trigger {\n  position: fixed;\n  left: 10px;\n  top: 100px;\n  z-index: 10;\n}\n.filters-sidenav{\n  height: 100%;\n  width: 0;\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding-top: 10px;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  -webkit-transition: 0.5s;\n  transition: 0.5s;\n  z-index: 200;\n  background-color: white;\n}\n.filters-sidenav-active{\n  width:250px;\n}\n.sidenav-logo{\n  height: 50px;\n}\n.sidenav-close-btn{\n  position: absolute;\n  right: 10px;\n  top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -61697,12 +61697,68 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       tag_selected: '',
       isActive: false,
+      sidenavOpen: false,
       posts: [],
       tags: [],
       search: ''
@@ -61711,6 +61767,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
   methods: {
+    openSidenav: function openSidenav() {
+      this.sidenavOpen = !this.sidenavOpen;
+    },
     loadPosts: function loadPosts() {
       var _this = this;
 
@@ -61738,6 +61797,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.tags = tags;
     },
     setNewValue: function setNewValue(value) {
+      this.sidenavOpen = false;
       this.tag_selected = value;
       console.log(this.tag_selected);
     },
@@ -61815,6 +61875,66 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c(
+      "div",
+      {
+        staticClass: "filters-sidenav has-background-link",
+        class: { "filters-sidenav-active": _vm.sidenavOpen }
+      },
+      [
+        _c(
+          "aside",
+          { staticClass: "menu has-background-link m-l-10" },
+          [
+            _c("button", {
+              staticClass: "modal-close is-large sidenav-close-btn",
+              attrs: { "aria-label": "close" },
+              on: { click: _vm.openSidenav }
+            }),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c("p", { staticClass: "menu-label has-text-white" }, [
+              _vm._v("\n        Temas\n      ")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.tags, function(tag) {
+              return _c("ul", { staticClass: "menu-list" }, [
+                _c("li", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "has-text-white is-uppercase",
+                      on: {
+                        click: function($event) {
+                          _vm.setNewValue(tag)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(tag))]
+                  )
+                ])
+              ])
+            })
+          ],
+          2
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "a",
+      { staticClass: "button sidenav-trigger", on: { click: _vm.openSidenav } },
+      [
+        _c("span", { staticClass: "icon has-text-info" }, [
+          _c("i", {
+            staticClass: "fas fa-angle-right",
+            class: { "fa-rotate-180": _vm.sidenavOpen }
+          })
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
       "section",
       { staticClass: "hero blue-gradient is-bold is-hidden-touch filters" },
       [
@@ -61826,7 +61946,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "container" }, [
-              _vm._m(0),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "columns" }, [
                 _c("div", { staticClass: "column" }, [
@@ -61854,7 +61974,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm._m(1)
+                      _vm._m(2)
                     ])
                   ])
                 ])
@@ -62017,6 +62137,22 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "menu-label" }, [
+      _c("a", { attrs: { href: "http://67.205.181.253" } }, [
+        _c("img", {
+          staticClass: "sidenav-logo",
+          attrs: {
+            src: "http://67.205.181.253/images/logo.png",
+            alt: "C230 Consultores logo"
+          }
+        })
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

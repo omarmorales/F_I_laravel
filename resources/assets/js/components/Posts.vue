@@ -29,10 +29,65 @@
     bottom: 5px;
     z-index: 5;
   }
+
+  .sidenav-trigger {
+    position: fixed;
+    left: 10px;
+    top: 100px;
+    z-index: 10;
+  }
+  .filters-sidenav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 200;
+    background-color: white;
+  }
+
+  .filters-sidenav-active{
+    width:250px;
+  }
+
+  .sidenav-logo{
+    height: 50px;
+  }
+
+  .sidenav-close-btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
 </style>
 
 <template>
   <div>
+    <div class="filters-sidenav has-background-link" v-bind:class="{ 'filters-sidenav-active' : sidenavOpen }">
+      <aside class="menu has-background-link m-l-10">
+        <button class="modal-close is-large sidenav-close-btn" aria-label="close" @click="openSidenav"></button>
+        <p class="menu-label">
+          <a href="http://67.205.181.253">
+            <img class="sidenav-logo" src="http://67.205.181.253/images/logo.png" alt="C230 Consultores logo">
+          </a>
+        </p>
+        <p class="menu-label has-text-white">
+          Temas
+        </p>
+        <ul class="menu-list" v-for="tag in tags">
+          <li><a class="has-text-white is-uppercase" @click="setNewValue(tag)">{{ tag }}</a></li>
+        </ul>
+      </aside>
+    </div>
+    <a class="button sidenav-trigger" @click="openSidenav">
+      <span class="icon has-text-info">
+        <i class="fas fa-angle-right" v-bind:class="{ 'fa-rotate-180' : sidenavOpen }"></i>
+      </span>
+    </a>
     <section class="hero blue-gradient is-bold is-hidden-touch filters">
       <div class="hero-body js-section" style="margin-top:2em;">
         <div class="container">
@@ -105,6 +160,7 @@ export default {
     return {
       tag_selected: '',
       isActive: false,
+      sidenavOpen: false,
       posts: [],
       tags: [],
       search: '',
@@ -112,6 +168,9 @@ export default {
   },
 
   methods: {
+    openSidenav(){
+      this.sidenavOpen = !this.sidenavOpen;
+    },
     loadPosts(){
       let vm = this;
       axios.get('api/post').then((response) => {
@@ -137,6 +196,7 @@ export default {
       this.tags = tags;
     },
     setNewValue(value){
+      this.sidenavOpen = false;
       this.tag_selected = value;
       console.log(this.tag_selected)
     },
