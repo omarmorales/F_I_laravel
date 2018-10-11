@@ -83,9 +83,9 @@
         </ul>
       </aside>
     </div>
-    <a class="button sidenav-trigger" @click="openSidenav">
+    <a class="button sidenav-trigger is-hidden-desktop" @click="openSidenav">
       <span class="icon has-text-info">
-        <i class="fas fa-angle-right" v-bind:class="{ 'fa-rotate-180' : sidenavOpen }"></i>
+        <i class="fas fa-filter"></i>
       </span>
     </a>
     <section class="hero blue-gradient is-bold is-hidden-touch filters">

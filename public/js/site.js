@@ -61923,15 +61923,11 @@ var render = function() {
     _vm._v(" "),
     _c(
       "a",
-      { staticClass: "button sidenav-trigger", on: { click: _vm.openSidenav } },
-      [
-        _c("span", { staticClass: "icon has-text-info" }, [
-          _c("i", {
-            staticClass: "fas fa-angle-right",
-            class: { "fa-rotate-180": _vm.sidenavOpen }
-          })
-        ])
-      ]
+      {
+        staticClass: "button sidenav-trigger is-hidden-desktop",
+        on: { click: _vm.openSidenav }
+      },
+      [_vm._m(1)]
     ),
     _vm._v(" "),
     _c(
@@ -61946,7 +61942,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "container" }, [
-              _vm._m(1),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "columns" }, [
                 _c("div", { staticClass: "column" }, [
@@ -61974,7 +61970,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm._m(2)
+                      _vm._m(3)
                     ])
                   ])
                 ])
@@ -62151,6 +62147,14 @@ var staticRenderFns = [
           }
         })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon has-text-info" }, [
+      _c("i", { staticClass: "fas fa-filter" })
     ])
   },
   function() {

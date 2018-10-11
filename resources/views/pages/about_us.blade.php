@@ -42,7 +42,7 @@
         <div class="column is-12">
           <div class="columns is-multiline">
             <div class="column is-6">
-              <p>
+              <p class="m-b-5">
                 Fundación IDEA es uno de los primeros think tanks de política pública en México. Somos una organización sin fines de lucro, independiente y apartidista, cuya misión es diseñar y promover políticas públicas innovadoras que generan igualdad de oportunidades para los mexicanos a través del desarrollo económico y la reducción de la pobreza; así como ser una fuente confiable de análisis independiente para funcionarios de gobierno y el público en general.
               </p>
               <p>
@@ -50,9 +50,9 @@
               </p>
             </div>
             <div class="column is-6">
-              <p>En Fundación IDEA identificamos estas barreras y a tráves del análisis riguroso y la investigación impulsamos los cambios necesarios para influir en las decisiones públicas y realizar recomendaciones de políticas adecuadas.</p>
-              <p class="is-uppercase has-text-weight-semibold">Cómo trabajamos</p>
-              <p class="has-text-weight-semibold">Llevamos a cabo investigación y análisis de la más alta calidad para evaluar las políticas públicas vigentes.</p>
+              <p class="m-b-5">En Fundación IDEA identificamos estas barreras y a tráves del análisis riguroso y la investigación impulsamos los cambios necesarios para influir en las decisiones públicas y realizar recomendaciones de políticas adecuadas.</p>
+              <p class="is-uppercase has-text-weight-semibold m-b-5">Cómo trabajamos</p>
+              <p class="has-text-weight-semibold m-b-5">Llevamos a cabo investigación y análisis de la más alta calidad para evaluar las políticas públicas vigentes.</p>
               <p>
                 Ofrecemos propuestas creativas y políticamente factiles para resolver los problemas públicos de México.Utilizamos las mejores prácticas e ideas a nivel internacional. Nuestro análisis es riguroso y nuestras conclusiones se basan en evidencia confiable.
               </p>
