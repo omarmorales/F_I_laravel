@@ -1,5 +1,10 @@
 @extends('layouts.site')
 
+@section('headers')
+  <meta name="description" content="Resultados de búsqueda por palabra clave">
+  <title>Fundación IDEA | Resultados de búsqueda</title>
+@endsection
+
 @section('content')
   <section class="hero blue-gradient is-bold is-hidden-touch">
     <div class="hero-body" style="margin-top:2em; margin-bottom:1em;">

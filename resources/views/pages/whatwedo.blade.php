@@ -1,5 +1,10 @@
 @extends('layouts.site')
 
+@section('headers')
+  <meta name="description" content="¿Qué es lo que hacemos en fundaación IDEA">
+  <title>Fundación IDEA | ¿Qué hacemos?</title>
+@endsection
+
 @section('content')
   <div class="columns" style="margin-right:0; margin-left:0;">
     <div class="column is-narrow is-hidden-touch">

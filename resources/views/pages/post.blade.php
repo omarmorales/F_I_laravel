@@ -1,5 +1,10 @@
 @extends('layouts.site')
 
+@section('headers')
+  <meta name="description" content="Descripción de la publicación">
+  <title>Fundación IDEA | {{ $post->title_es }}</title>
+@endsection
+
 @section('content')
   <section class="hero blue-gradient is-bold is-hidden-touch">
     <div class="hero-body" style="margin:2em;">
@@ -45,7 +50,10 @@
                     <span class="icon is-small">
                       <i class="fas fa-file"></i>
                     </span>
-                    <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
+                    <span>
+                      <a class="is-hidden-desktop" href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ str_limit($post->file, $limit = 25, $end = '...') }}</a>
+                      <a class="is-hidden-touch" href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a>
+                    </span>
                   </p>
                   @foreach ($post->files_psts as $extra_file)
                     <p>
@@ -55,18 +63,28 @@
                         <span class="icon is-small">
                           <i class="fas fa-file"></i>
                         </span>
-                        <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$extra_file->file) }}" target="_blank">{{ $extra_file->file }}</a></span>
+                        <span>
+                          <a class="is-hidden-desktop" href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ str_limit($extra_file->file, $limit = 25, $end = '...') }}</a>
+                          <a class="is-hidden-touch" href="{{ Storage::disk('spaces')->url('IDEA/files/'.$extra_file->file) }}" target="_blank">{{ $extra_file->file }}</a>
+                        </span>
                       </form>
                     </p>
                   @endforeach
                 @else
-                  <h3 class="subtitle">Descargar archivos</h3>
-                  <p>
-                    <span class="icon is-small">
-                      <i class="fas fa-file"></i>
-                    </span>
-                    <span><a href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a></span>
-                  </p>
+                  @if ($post->file != "noimage.jpg")
+                    <h3 class="subtitle">Descargar archivos</h3>
+                    <p>
+                      <span class="icon is-small">
+                        <i class="fas fa-file"></i>
+                      </span>
+                      <span>
+                        <a class="is-hidden-desktop" href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ str_limit($post->file, $limit = 25, $end = '...') }}</a>
+                        <a class="is-hidden-touch" href="{{ Storage::disk('spaces')->url('IDEA/files/'.$post->file) }}" target="_blank">{{ $post->file }}</a>
+                      </span>
+                    </p>
+                  @else
+
+                  @endif
                 @endif
               </article>
             </div>

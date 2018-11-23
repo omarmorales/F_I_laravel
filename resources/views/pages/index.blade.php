@@ -1,5 +1,10 @@
 @extends('layouts.site')
 
+@section('headers')
+  <meta name="description" content="Fundación IDEA es uno de los primeros think tanks de política pública en México.">
+  <title>Fundación IDEA | think tank de política pública</title>
+@endsection
+
 @section('content')
 
   <posts></posts>

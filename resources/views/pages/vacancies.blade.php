@@ -1,5 +1,10 @@
 @extends('layouts.site')
 
+@section('headers')
+  <meta name="description" content="Vacantes para Fundaciín IDEA">
+  <title>Fundación IDEA | Vacantes</title>
+@endsection
+
 @section('content')
   {{-- header fundacion idea starts --}}
   <section class="hero blue-gradient is-bold is-hidden-touch">

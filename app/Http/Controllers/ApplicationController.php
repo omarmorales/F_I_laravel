@@ -64,7 +64,6 @@ class ApplicationController extends Controller
       'future' => 'required',
       'whyinterested' => 'required',
       'whyhireyou' => 'required',
-      'comments' => 'required',
     ]);
 
     //handle file uopz_overload
@@ -78,7 +77,7 @@ class ApplicationController extends Controller
       //file name to Store
       $fileNameToStore=$filename.'_'.time().'.'.$extension;
       //upload
-      $path = $request->file('motivation_letter')->storeAs('public/motivation_letters', $fileNameToStore);
+      $path = Storage::disk('spaces')->putFileAs('IDEA/applications/ml', $request->file('motivation_letter'), $fileNameToStore, 'public');
     } else {
       $fileNameToStore = 'noimage.jpg';
     }
@@ -94,7 +93,7 @@ class ApplicationController extends Controller
       //file name to Store
       $cvNameToStore=$cvName.'_'.time().'.'.$cvExtension;
       //upload
-      $path = $request->file('cv')->storeAs('public/cvs', $cvNameToStore);
+      $path_two = Storage::disk('spaces')->putFileAs('IDEA/applications/cvs', $request->file('cv'), $cvNameToStore, 'public');
     } else {
       $cvNameToStore = 'noimage.jpg';
     }
@@ -171,11 +170,13 @@ class ApplicationController extends Controller
   {
     if ($application->motivation_letter != 'noimage.jpg') {
       //delete de image
-      Storage::delete( public_path('/motivation_letters/' . $application->motivation_letter));
+      Storage::disk('spaces')->delete('IDEA/applications/ml/'.$application->motivation_letter);
     }
 
+
     if ($application->cv != 'noimage.jpg') {
-      Storage::delete( public_path('/cvs/' . $application->cv));
+      //delete de image
+      Storage::disk('spaces')->delete('IDEA/applications/cvs/'.$application->cv);
     }
 
     $application->delete();

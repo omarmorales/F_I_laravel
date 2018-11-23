@@ -43,11 +43,11 @@
                         <i class="far fa-edit" aria-hidden="true"></i>
                       </span>
                     </a>
-                    <a class="level-item toggle-modal" aria-label="delete" v-on:click="isActive{{ $vacancy->id }} = !isActive{{ $vacancy->id }}">
+                    {{-- <a class="level-item toggle-modal" aria-label="delete" v-on:click="isActive{{ $vacancy->id }} = !isActive{{ $vacancy->id }}">
                       <span class="icon is-small has-text-danger">
                         <i class="fas fa-trash" aria-hidden="true"></i>
                       </span>
-                    </a>
+                    </a> --}}
                   </div>
                   <div class="level-right">
                     @if ($vacancy->public == "true")

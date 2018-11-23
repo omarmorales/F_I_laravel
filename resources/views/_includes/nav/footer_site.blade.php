@@ -17,10 +17,10 @@
         <a href="https://www.facebook.com/FundacionIDEA/" target="_blank">
           <p class="m-b-5 has-text-white"><i class="fab fa-facebook-f m-r-10"></i>Facebook</p>
         </a>
-        <a href="https://www.linkedin.com/company/c230-consultores" target="_blank">
+        <a href="https://www.linkedin.com/company/fundacion-idea/" target="_blank">
           <p class="m-b-5 has-text-white"><i class="fab fa-linkedin-in m-r-10"></i>LinkedIn</p>
         </a>
-        <a href="https://twitter.com/C230Consultores" target="_blank">
+        <a href="https://twitter.com/FundacionIDEAMX" target="_blank">
           <p class="has-text-white"><i class="fab fa-twitter m-r-10"></i>Twitter</p>
         </a>
       </div>

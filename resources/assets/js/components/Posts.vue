@@ -71,8 +71,8 @@
       <aside class="menu has-background-link m-l-10">
         <button class="modal-close is-large sidenav-close-btn" aria-label="close" @click="openSidenav"></button>
         <p class="menu-label">
-          <a href="http://67.205.181.253">
-            <img class="sidenav-logo" src="http://67.205.181.253/images/logo.png" alt="C230 Consultores logo">
+          <a href="http://www.fundacionidea.org.mx/">
+            <img class="sidenav-logo" src="http://www.fundacionidea.org.mx/images/logo.png" alt="C230 Consultores logo">
           </a>
         </p>
         <p class="menu-label has-text-white">
@@ -89,12 +89,12 @@
       </span>
     </a>
     <section class="hero blue-gradient is-bold is-hidden-touch filters">
-      <div class="hero-body js-section" style="margin-top:2em;">
+      <div class="hero-body js-section" style="margin-top:2em;padding-bottom: 25px;">
         <div class="container">
           <div class="columns is-mobile">
             <div class="column is-8">
               <a href="">
-                <img src="http://67.205.181.253/images/logoBig.png" alt="C230 Consultores logo">
+                <img src="http://www.fundacionidea.org.mx/images/logoBig.png" alt="C230 Consultores logo">
               </a>
             </div>
             <div class="column">
@@ -126,7 +126,8 @@
       </div>
     </section>
     <div class="container min-fullheight posts">
-      <h2 class="subtitle m-t-20">Nuestras publicaciones</h2>
+      <h2 class="subtitle m-t-20 is-hidden-touch">Nuestras publicaciones</h2>
+      <h2 class="subtitle m-t-75 is-hidden-desktop">Nuestras publicaciones</h2>
       <transition-group tag="div" :css="false" name="fadeIn" @before-enter="beforeEnter" @enter="enter" @leave="leave" class="columns is-mobile is-multiline m-b-30 m-t-10">
         <div class="column is-12-mobile is-half-tablet is-one-third-desktop" v-for="(post,index) in filteredPosts" :data-index="index" :key="post.id">
           <div class="card">
@@ -143,7 +144,7 @@
             <div class="card-image">
               <a :href="'posts/'+ post.id">
                 <figure class="image is-4by3">
-                  <img :src="'http://67.205.181.253/storage/thumbnails/'+ post.thumbnail">
+                  <img :src="'/storage/thumbnails/'+ post.thumbnail">
                 </figure>
               </a>
             </div>
@@ -231,7 +232,7 @@ export default {
       if (this.tag_selected == "") {
         return _.orderBy(this.posts, ['publication_date'],['desc']).filter(post => {return post.title_es.match(reg) || post.title.match(reg)});
       } else {
-        return this.posts.filter(post => {
+        return _.orderBy(this.posts, ['publication_date'],['desc']).filter(post => {
           for (var i = 0; i < post.tags.length; i++) {
             return post.tags[i].name.match(this.tag_selected || this.posts.filter(post => {return post.title_es.match(reg) || post.title.match(reg)}))
           }
@@ -242,20 +243,18 @@ export default {
 }
 
 
-var filters = document.getElementsByClassName("filters");
-var posts = document.getElementsByClassName("posts");
-var logo = document.getElementsByClassName("logo");
+let filters = document.getElementsByClassName("filters");
+let posts = document.getElementsByClassName("posts");
+let logo = document.getElementsByClassName("logo");
 
 window.onscroll = function() {
   if (document.body.scrollTop >= 150 || document.documentElement.scrollTop > 150) {
-    console.log("si");
     // filters[0].style.backgroundColor = "red";
     filters[0].classList.add("fix-filters");
     posts[0].classList.add("posts-with-filters");
     logo[0].classList.remove("is-hidden-desktop");
 
   } else {
-    console.log("funciona");
     filters[0].classList.remove("fix-filters");
     posts[0].classList.remove("posts-with-filters");
     logo[0].classList.add("is-hidden-desktop");

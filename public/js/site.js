@@ -61752,6 +61752,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -61834,7 +61835,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           return post.title_es.match(reg) || post.title.match(reg);
         });
       } else {
-        return this.posts.filter(function (post) {
+        return _.orderBy(this.posts, ['publication_date'], ['desc']).filter(function (post) {
           for (var i = 0; i < post.tags.length; i++) {
             return post.tags[i].name.match(_this2.tag_selected || _this2.posts.filter(function (post) {
               return post.title_es.match(reg) || post.title.match(reg);
@@ -61852,13 +61853,11 @@ var logo = document.getElementsByClassName("logo");
 
 window.onscroll = function () {
   if (document.body.scrollTop >= 150 || document.documentElement.scrollTop > 150) {
-    console.log("si");
     // filters[0].style.backgroundColor = "red";
     filters[0].classList.add("fix-filters");
     posts[0].classList.add("posts-with-filters");
     logo[0].classList.remove("is-hidden-desktop");
   } else {
-    console.log("funciona");
     filters[0].classList.remove("fix-filters");
     posts[0].classList.remove("posts-with-filters");
     logo[0].classList.add("is-hidden-desktop");
@@ -61938,7 +61937,7 @@ var render = function() {
           "div",
           {
             staticClass: "hero-body js-section",
-            staticStyle: { "margin-top": "2em" }
+            staticStyle: { "margin-top": "2em", "padding-bottom": "25px" }
           },
           [
             _c("div", { staticClass: "container" }, [
@@ -62013,7 +62012,11 @@ var render = function() {
       "div",
       { staticClass: "container min-fullheight posts" },
       [
-        _c("h2", { staticClass: "subtitle m-t-20" }, [
+        _c("h2", { staticClass: "subtitle m-t-20 is-hidden-touch" }, [
+          _vm._v("Nuestras publicaciones")
+        ]),
+        _vm._v(" "),
+        _c("h2", { staticClass: "subtitle m-t-75 is-hidden-desktop" }, [
           _vm._v("Nuestras publicaciones")
         ]),
         _vm._v(" "),
@@ -62114,9 +62117,7 @@ var render = function() {
                       _c("figure", { staticClass: "image is-4by3" }, [
                         _c("img", {
                           attrs: {
-                            src:
-                              "http://67.205.181.253/storage/thumbnails/" +
-                              post.thumbnail
+                            src: "/storage/thumbnails/" + post.thumbnail
                           }
                         })
                       ])
@@ -62138,11 +62139,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "menu-label" }, [
-      _c("a", { attrs: { href: "http://67.205.181.253" } }, [
+      _c("a", { attrs: { href: "http://www.fundacionidea.org.mx/" } }, [
         _c("img", {
           staticClass: "sidenav-logo",
           attrs: {
-            src: "http://67.205.181.253/images/logo.png",
+            src: "http://www.fundacionidea.org.mx/images/logo.png",
             alt: "C230 Consultores logo"
           }
         })
@@ -62166,7 +62167,7 @@ var staticRenderFns = [
         _c("a", { attrs: { href: "" } }, [
           _c("img", {
             attrs: {
-              src: "http://67.205.181.253/images/logoBig.png",
+              src: "http://www.fundacionidea.org.mx/images/logoBig.png",
               alt: "C230 Consultores logo"
             }
           })
@@ -62438,7 +62439,7 @@ var render = function() {
                     staticClass: "column is-3",
                     staticStyle: {
                       "background-image":
-                        "url('http://67.205.181.253/images/vacancy_thumbnail.png')",
+                        "url('/images/vacancy_thumbnail.png')",
                       height: "250px",
                       "background-size": "cover",
                       "background-repeat": "no-repeat",
@@ -62489,7 +62490,7 @@ var render = function() {
                           "a",
                           {
                             staticClass: "has-text-link",
-                            attrs: { href: "#" }
+                            attrs: { href: "vacancies/" + vacancy.id }
                           },
                           [
                             _vm._v(
@@ -62523,7 +62524,7 @@ var staticRenderFns = [
         [
           _c("ul", [
             _c("li", [
-              _c("a", { attrs: { href: "http://67.205.181.253" } }, [
+              _c("a", { attrs: { href: "http://www.fundacionidea.org.mx" } }, [
                 _vm._v("Inicio")
               ])
             ]),

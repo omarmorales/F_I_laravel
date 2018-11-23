@@ -1,5 +1,10 @@
 @extends('layouts.site')
 
+@section('headers')
+  <meta name="description" content="Descripción de una vacante de Fundación IDEA">
+  <title>Fundación IDEA | Vacante</title>
+@endsection
+
 @section('content')
   <div class="container">
     <div class="columns">
@@ -32,7 +37,7 @@
                   <div class="card-content">
                     <div class="content">
                       <p class="is-size-4-desktop is-uppercase has-text-weight-normal m-b-10 has-text-link">Requisitos de la vacante</p>
-                      <span class="is-size-5-desktop is-uppercase">
+                      <span class="is-size-5-desktop">
                         @if (App::isLocale('en'))
                           {!! $vacancy->requirements !!}
                         @else
@@ -55,7 +60,7 @@
                       <figure class="image is-hidden-touch" style="width:300px; height:150px;">
                         <img src="{{ asset('images/iuvenia.png') }}" alt="team">
                       </figure>
-                      C230 Consultores y Fundación IDEA cuentan con el distintivo IUVENIA para Empresas Amigas de los Jóvenes, por ser una organización líder en políticas de Recursos Humanos, que atrae al mejor talento, invierte en él y desarrolla a su gente.
+                      Fundación IDEA cuentan con el distintivo IUVENIA para Empresas Amigas de los Jóvenes, por ser una organización líder en políticas de Recursos Humanos, que atrae al mejor talento, invierte en él y desarrolla a su gente.
                     </div>
                   </div>
                 </div>

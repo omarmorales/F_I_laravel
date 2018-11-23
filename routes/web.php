@@ -19,6 +19,10 @@ Route::get('/posts/{post}', 'PostController@showSite')->name('post.show');
 Route::resource('/applications', 'ApplicationController', ['only' => ['store']]);
 Route::get('/search', 'PagesController@search')->name('search');
 
+Route::get('/inicio', 'PagesController@index');
+Route::get('/trabajaconnosotros', 'PagesController@vacancies');
+Route::get('/contactanos', 'PagesController@index');
+
 Auth::routes();
 
 Route::prefix('manage')->middleware('role:superadministrator|administrator|user|admintalento')->group(function(){

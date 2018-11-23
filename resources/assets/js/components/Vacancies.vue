@@ -9,7 +9,7 @@
     <div class="column is-12 m-t-10">
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-          <li><a href="http://67.205.181.253">Inicio</a></li>
+          <li><a href="http://www.fundacionidea.org.mx">Inicio</a></li>
           <li class="is-active"><a href="#" aria-current="page">Vacantes</a></li>
         </ul>
       </nav>
@@ -24,7 +24,7 @@
       <div class="column is-12" v-for="(vacancy,index) in vacancies" :data-index="index" :key="vacancy.id">
         <div class="box">
           <div class="columns">
-            <div class="column is-3" style="background-image: url('http://67.205.181.253/images/vacancy_thumbnail.png'); height: 250px; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+            <div class="column is-3" style="background-image: url('/images/vacancy_thumbnail.png'); height: 250px; background-size: cover; background-repeat: no-repeat; background-position: center center;">
             </div>
             <div class="column is-9">
               <article class="media">
@@ -38,7 +38,7 @@
                     {{ vacancy.name_es }}
                   </p>
                   <p v-html="$options.filters.vacancyRequirements(vacancy.requirements)"></p>
-                  <a href="#" class="has-text-link">
+                  <a :href="'vacancies/'+ vacancy.id" class="has-text-link">
                     Leer más
                     <i class="fas fa-angle-right m-l-5"></i>
                   </a>
