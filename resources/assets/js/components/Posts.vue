@@ -63,6 +63,12 @@
     right: 10px;
     top: 10px;
   }
+
+  .separator-posts{
+    border: 1px solid #3fa9f5;
+    width: 20%;
+    margin-top: 0;
+  }
 </style>
 
 <template>
@@ -103,14 +109,24 @@
           </div>
           <div class="columns">
             <div class="column">
-              <div class="field m-t-20">
+              <div class="field has-addons m-t-20">
+                <div class="control" style="width:100%;">
+                  <input class="input" type="text" placeholder="Palabra clave" @keyup.enter="searchit" v-model="search1">
+                </div>
+                <div class="control">
+                  <a class="button is-info" @click="searchit">
+                    <i class="fas fa-search"></i>
+                  </a>
+                </div>
+              </div>
+              <!-- <div class="field m-t-20">
                 <p class="control has-icons-right">
                   <input class="input" type="email" placeholder="Palabra clave" v-model="search">
                   <span class="icon is-small is-right">
                     <i class="fas fa-search"></i>
                   </span>
                 </p>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="columns">
@@ -125,32 +141,68 @@
         </div>
       </div>
     </section>
-    <div class="container min-fullheight posts">
-      <h2 class="subtitle m-t-20 is-hidden-touch">Nuestras publicaciones</h2>
-      <h2 class="subtitle m-t-75 is-hidden-desktop">Nuestras publicaciones</h2>
-      <transition-group tag="div" :css="false" name="fadeIn" @before-enter="beforeEnter" @enter="enter" @leave="leave" class="columns is-mobile is-multiline m-b-30 m-t-10">
-        <div class="column is-12-mobile is-half-tablet is-one-third-desktop" v-for="(post,index) in filteredPosts" :data-index="index" :key="post.id">
-          <div class="card">
-            <header class="card-header has-background-link post-header-card">
-              <p style="margin:1em;">
-                <a @click="setNewValue(tag.name)" v-for="tag in post.tags" :key="tag.id">
-                  <b-tag class="m-b-10 is-uppercase is-size-7 m-r-5" type="is-success">{{ tag.name }}</b-tag>
-                </a>
-                <br>
-                <a :href="'posts/'+ post.id" class=" has-text-white post-font-size has-text-weight-semibold">{{ post.title_es | first-characters }}</a>
-              </p>
-              <span class="tag is-white is-medium year-tag">{{ post.publication_date | myYear }}</span>
-            </header>
-            <div class="card-image">
-              <a :href="'posts/'+ post.id">
-                <figure class="image is-4by3">
-                  <img :src="'/storage/thumbnails/'+ post.thumbnail">
-                </figure>
-              </a>
+    <div class="container min-fullheight posts" v-if="posts.length >= 1">
+      <div class="columns is-multiline">
+        <div class="column is-12-mobile is-12-tablet is-8-desktop is-hidden-touch">
+          <h2 class="subtitle m-t-20 is-hidden-touch has-text-link m-b-5">Publicaciones</h2>
+          <h2 class="subtitle m-t-75 is-hidden-desktop has-text-link m-b-5">Publicaciones</h2>
+          <hr class="separator-posts">
+          <transition-group tag="div" :css="false" name="fadeIn" @before-enter="beforeEnter" @enter="enter" @leave="leave" class="columns is-mobile is-multiline m-b-30 m-t-10">
+            <div class="column is-12-mobile is-half-tablet is-half-desktop" v-for="(post,index) in generalPosts" :data-index="index" :key="post.id">
+              <div class="card">
+                <header class="card-header has-background-link post-header-card">
+                  <p style="margin:1em;">
+                    <a @click="setNewValue(tag.name)" v-for="tag in post.tags" :key="tag.id">
+                      <b-tag class="m-b-10 is-uppercase is-size-7 m-r-5" type="is-success">{{ tag.name }}</b-tag>
+                    </a>
+                    <br>
+                    <a :href="'posts/'+ post.id" class=" has-text-white post-font-size has-text-weight-semibold">{{ post.title_es | first-characters }}</a>
+                  </p>
+                  <span class="tag is-white is-medium year-tag">{{ post.publication_date | myYear }}</span>
+                </header>
+                <div class="card-image">
+                  <a :href="'posts/'+ post.id">
+                    <figure class="image is-4by3">
+                      <img :src="'/storage/thumbnails/'+ post.thumbnail">
+                    </figure>
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
+          </transition-group>
         </div>
-      </transition-group>
+        <div class="column is-12-mobile is-12-tablet is-4-desktop is-hidden-touch">
+          <h2 class="subtitle m-t-20 is-hidden-touch has-text-link m-b-5">Prensa</h2>
+          <h2 class="subtitle m-t-75 is-hidden-desktop has-text-link m-b-5">Prensa</h2>
+          <hr class="separator-posts">
+          <transition-group tag="div" :css="false" name="fadeIn" @before-enter="beforeEnter" @enter="enter" @leave="leave" class="columns is-mobile is-multiline m-b-30 m-t-10">
+            <div class="column is-12-mobile is-12-tablet is-12-desktop" v-for="(post,index) in pressPosts" :data-index="index" :key="post.id">
+              <div class="card">
+                <header class="card-header has-background-white post-header-card">
+                  <p style="margin:1em;">
+                    <a @click="setNewValue(tag.name)" v-for="tag in post.tags" :key="tag.id">
+                      <b-tag class="m-b-10 is-uppercase is-size-7 m-r-5" type="is-success">{{ tag.name }}</b-tag>
+                    </a>
+                    <br>
+                    <a :href="'posts/'+ post.id" class=" has-text-link post-font-size has-text-weight-semibold">{{ post.title_es | first-characters }}</a>
+                  </p>
+                  <span class="tag is-white is-medium year-tag">{{ post.publication_date | myYear }}</span>
+                </header>
+                <div class="card-image">
+                  <a :href="'posts/'+ post.id">
+                    <figure class="image is-4by3">
+                      <img :src="'/storage/thumbnails/'+ post.thumbnail">
+                    </figure>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </transition-group>
+        </div>
+      </div>
+    </div>
+    <div class="container min-fullheight posts" v-else>
+      <h2 class="subtitle m-t-20 has-text-link">No se han encontrado resultados.</h2>
     </div>
   </div>
 </template>
@@ -162,13 +214,18 @@ export default {
       tag_selected: '',
       isActive: false,
       sidenavOpen: false,
-      posts: [],
+      pressPosts: {},
+      generalPosts: {},
+      posts: {},
       tags: [],
-      search: '',
+      search1: ''
     }
   },
 
   methods: {
+    searchit(){
+      Fire.$emit('searching');
+    },
     openSidenav(){
       this.sidenavOpen = !this.sidenavOpen;
     },
@@ -176,9 +233,10 @@ export default {
       let vm = this;
       axios.get('api/post').then((response) => {
         this.posts = response.data;
-        console.log(response.data);
         vm.getTags(response.data);
-      })
+      });
+      axios.get('api/pressPosts').then((response) => {this.pressPosts = response.data});
+      axios.get('api/generalPosts').then((response) => {this.generalPosts = response.data});
     },
     getTags(data){
       let vm = this;
@@ -198,8 +256,9 @@ export default {
     },
     setNewValue(value){
       this.sidenavOpen = false;
+      this.search1 = ""
       this.tag_selected = value;
-      console.log(this.tag_selected)
+      Fire.$emit('load_filtered_data');
     },
     beforeEnter(el){
       el.style.opacity = 0;
@@ -223,23 +282,48 @@ export default {
 
 
   created() {
+    console.log(this.$router);
+    Fire.$on('searching', () => {
+      let query = this.search1;
+      this.tag_selected = "";
+      axios.get('api/findPost?q=' + query).then((data) => {
+        this.posts = data.data
+      }).catch(() => {
+
+      })
+      axios.get('api/findPressPost?q=' + query).then((data) => {
+        this.pressPosts = data.data
+      }).catch(() => {
+
+      })
+
+      axios.get('api/findGeneralPost?q=' + query).then((data) => {
+        this.generalPosts = data.data
+      }).catch(() => {
+
+      })
+    });
+    Fire.$on('load_filtered_data', () => {
+      axios.get('api/findPostbyTag?q=' + this.tag_selected).then((data) => {
+        this.posts = data.data
+      }).catch(() => {
+
+      })
+
+      axios.get('api/findGeneralPostbyTag?q=' + this.tag_selected).then((data) => {
+        this.generalPosts = data.data
+      }).catch(() => {
+
+      })
+
+      axios.get('api/findPressPostbyTag?q=' + this.tag_selected).then((data) => {
+        this.pressPosts = data.data
+      }).catch(() => {
+
+      })
+    })
     this.loadPosts();
   },
-
-  computed: {
-    filteredPosts() {
-      let reg = new RegExp(this.search, "i");
-      if (this.tag_selected == "") {
-        return _.orderBy(this.posts, ['publication_date'],['desc']).filter(post => {return post.title_es.match(reg) || post.title.match(reg)});
-      } else {
-        return _.orderBy(this.posts, ['publication_date'],['desc']).filter(post => {
-          for (var i = 0; i < post.tags.length; i++) {
-            return post.tags[i].name.match(this.tag_selected || this.posts.filter(post => {return post.title_es.match(reg) || post.title.match(reg)}))
-          }
-        });
-      }
-    }
-  }
 }
 
 

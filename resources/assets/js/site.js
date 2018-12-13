@@ -26,6 +26,8 @@ Vue.use(Buefy, {
 Vue.use(Buefy);
 // buefy ends
 
+window.Fire = new Vue();
+
 // filters
 Vue.filter('first-characters', function(value){
   if (value.length >= 100) {

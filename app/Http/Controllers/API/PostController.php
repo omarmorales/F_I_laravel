@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-      $posts = Post::with('tags')->latest()->get();
+      $posts = Post::with('tags')->orderBy('publication_date', 'DESC')->get();
       return $posts;
     }
 
@@ -62,5 +62,107 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search()
+    {
+      if ($search = \Request::get('q')) {
+        $posts = Post::with('tags')->where(function($query) use ($search){
+          $query->where('title_es','LIKE',"%$search%")
+          ->orWhere('title','LIKE',"%$search%");
+        })->latest()->get();
+      }else{
+        $posts = User::with('tags')->latest()->get();
+      }
+      return $posts;
+    }
+
+    public function searchpress()
+    {
+      if ($search = \Request::get('q')) {
+        $posts = Post::with('tags')->whereHas('tags',function($query){
+          $query->where('name', '=', 'prensa');
+        })->where(function($query) use ($search){
+          $query->where('title_es','LIKE',"%$search%")
+          ->orWhere('title','LIKE',"%$search%");
+        })->latest()->get();
+      }else{
+        $posts = User::with('tags')->latest()->get();
+      }
+      return $posts;
+    }
+
+    public function searchgeneral()
+    {
+      if ($search = \Request::get('q')) {
+        $posts = Post::with('tags')->whereDoesntHave('tags',function($query){
+          $query->where('name', '=', 'prensa');
+        })->where(function($query) use ($search){
+          $query->where('title_es','LIKE',"%$search%")
+          ->orWhere('title','LIKE',"%$search%");
+        })->latest()->get();
+      }else{
+        $posts = User::with('tags')->latest()->get();
+      }
+      return $posts;
+    }
+
+    public function general()
+    {
+      $posts = Post::with('tags')->whereDoesntHave('tags',function($query){
+        $query->where('name', '=', 'prensa');
+      })->orderBy('publication_date', 'DESC')->get();
+      return $posts;
+    }
+
+    public function press()
+    {
+      $posts = Post::with('tags')->whereHas('tags',function($query){
+        $query->where('name', '=', 'prensa');
+      })->orderBy('publication_date', 'DESC')->get();
+      return $posts;
+    }
+
+    public function postbytag()
+    {
+      if ($search = \Request::get('q')) {
+        $posts = Post::with('tags')->whereHas('tags', function($query) use ($search){
+          $query->where('name','=',"$search");
+        })->latest()->get();
+      }else{
+        $posts = User::with('tags')->latest()->get();
+      }
+      return $posts;
+    }
+
+    public function generalpostbytag()
+    {
+      if ($search = \Request::get('q')) {
+        $posts = Post::with('tags')->whereDoesntHave('tags',function($query){
+          $query->where('name', '=', 'prensa');
+        })->whereHas('tags', function($query) use ($search){
+          $query->where('title_es','LIKE',"%$search%")
+          ->orWhere('title','=',"%$search%");
+        })->latest()->get();
+      }else{
+        $posts = User::with('tags')->latest()->get();
+      }
+      return $posts;
+    }
+
+    public function presspostbytag()
+    {
+      if ($search = \Request::get('q')) {
+        $posts = Post::with('tags')->whereHas('tags',function($query){
+          $query->where('name', '=', 'prensa')
+          ->andWhere('name','=',"%$search%");;
+        })->whereHas('tags', function($query) use ($search){
+          $query->where('name','=',"%$search%")
+          ->orWhere('title','=',"%$search%");
+        })->latest()->get();
+      }else{
+        $posts = User::with('tags')->latest()->get();
+      }
+      return $posts;
     }
 }

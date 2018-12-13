@@ -31,6 +31,7 @@
       </div>
 
       <div class="navbar-end">
+        <a class="navbar-item is-hidden-desktop" href="{{ url('/') }}">{{ __('Inicio') }}</a>
         <a class="navbar-item" href="{{ route('aboutus') }}">{{ __('Acerca') }}</a>
         <a class="navbar-item" href="{{ route('sitevacancies') }}">{{ __('Vacantes') }}</a>
         {{-- <a class="navbar-item" href="{{ route('login') }}">{{ __('Contacto') }}</a> --}}

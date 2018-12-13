@@ -10,6 +10,7 @@ use Session;
 use Hash;
 use Input;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -49,9 +50,9 @@ class PostController extends Controller
   public function store(Request $request)
   {
     $this->validateWith([
-      'title' => 'required|max:255',
+      'title' => 'sometimes',
       'description' => 'sometimes',
-      'title_es' => 'required|max:255',
+      'title_es' => 'required',
       'description_es' => 'sometimes',
       'publication_date' => 'sometimes',
       'thumbnail' => 'sometimes'

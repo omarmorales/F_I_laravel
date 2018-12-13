@@ -43,3 +43,5 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|user|
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('lang/{lang}', 'LanguageController@switchLang')->name('lang.switch');
+
+Route::get('{path}',"PagesController@index")->where( 'path', '([A-z\d-\/_.]+)?' );

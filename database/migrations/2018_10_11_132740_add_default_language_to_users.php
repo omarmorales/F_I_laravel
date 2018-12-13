@@ -26,7 +26,7 @@ class AddDefaultLanguageToUsers extends Migration
     public function down()
     {
       Schema::table('users', function(Blueprint $table) {
-        $table->date('default_language');
+        $table->dropColumn('default_language');
       });
     }
 }
