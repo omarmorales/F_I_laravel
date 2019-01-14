@@ -141,8 +141,7 @@ class PostController extends Controller
         $posts = Post::with('tags')->whereDoesntHave('tags',function($query){
           $query->where('name', '=', 'prensa');
         })->whereHas('tags', function($query) use ($search){
-          $query->where('title_es','LIKE',"%$search%")
-          ->orWhere('title','=',"%$search%");
+          $query->where('name','LIKE',"%$search%");
         })->latest()->get();
       }else{
         $posts = User::with('tags')->latest()->get();
@@ -154,11 +153,9 @@ class PostController extends Controller
     {
       if ($search = \Request::get('q')) {
         $posts = Post::with('tags')->whereHas('tags',function($query){
-          $query->where('name', '=', 'prensa')
-          ->andWhere('name','=',"%$search%");;
+          $query->where('name', '=', 'prensa');
         })->whereHas('tags', function($query) use ($search){
-          $query->where('name','=',"%$search%")
-          ->orWhere('title','=',"%$search%");
+          $query->where('name','LIKE',"%$search%");
         })->latest()->get();
       }else{
         $posts = User::with('tags')->latest()->get();

@@ -61752,61 +61752,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -61821,7 +61766,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       search1: ''
     };
   },
-
 
   methods: {
     searchit: function searchit() {
@@ -61884,7 +61828,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       el.style.transform = "scale(0)";
     }
   },
-
   created: function created() {
     var _this2 = this;
 
@@ -61898,7 +61841,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get('api/findPressPost?q=' + query).then(function (data) {
         _this2.pressPosts = data.data;
       }).catch(function () {});
-
       axios.get('api/findGeneralPost?q=' + query).then(function (data) {
         _this2.generalPosts = data.data;
       }).catch(function () {});
@@ -61907,11 +61849,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get('api/findPostbyTag?q=' + _this2.tag_selected).then(function (data) {
         _this2.posts = data.data;
       }).catch(function () {});
-
       axios.get('api/findGeneralPostbyTag?q=' + _this2.tag_selected).then(function (data) {
         _this2.generalPosts = data.data;
       }).catch(function () {});
-
       axios.get('api/findPressPostbyTag?q=' + _this2.tag_selected).then(function (data) {
         _this2.pressPosts = data.data;
       }).catch(function () {});
@@ -62119,18 +62059,9 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "column is-12-mobile is-12-tablet is-8-desktop is-hidden-touch"
+                  "column is-12-mobile is-12-tablet is-8-desktop is-hidden-desktop"
               },
               [
-                _c(
-                  "h2",
-                  {
-                    staticClass:
-                      "subtitle m-t-20 is-hidden-touch has-text-link m-b-5"
-                  },
-                  [_vm._v("Publicaciones")]
-                ),
-                _vm._v(" "),
                 _c(
                   "h2",
                   {
@@ -62153,7 +62084,7 @@ var render = function() {
                       leave: _vm.leave
                     }
                   },
-                  _vm._l(_vm.generalPosts, function(post, index) {
+                  _vm._l(_vm.posts, function(post, index) {
                     return _c(
                       "div",
                       {
@@ -62260,150 +62191,335 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "column is-12-mobile is-12-tablet is-4-desktop is-hidden-touch"
-              },
-              [
-                _c(
-                  "h2",
+            _vm.generalPosts.length >= 1
+              ? _c(
+                  "div",
                   {
                     staticClass:
-                      "subtitle m-t-20 is-hidden-touch has-text-link m-b-5"
+                      "column is-12-mobile is-12-tablet is-8-desktop is-hidden-touch",
+                    class:
+                      _vm.generalPosts.length >= 1 && _vm.pressPosts.length == 0
+                        ? "is-12-desktop"
+                        : "is-8-desktop"
                   },
-                  [_vm._v("Prensa")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "h2",
-                  {
-                    staticClass:
-                      "subtitle m-t-75 is-hidden-desktop has-text-link m-b-5"
-                  },
-                  [_vm._v("Prensa")]
-                ),
-                _vm._v(" "),
-                _c("hr", { staticClass: "separator-posts" }),
-                _vm._v(" "),
-                _c(
-                  "transition-group",
-                  {
-                    staticClass: "columns is-mobile is-multiline m-b-30 m-t-10",
-                    attrs: { tag: "div", css: false, name: "fadeIn" },
-                    on: {
-                      "before-enter": _vm.beforeEnter,
-                      enter: _vm.enter,
-                      leave: _vm.leave
-                    }
-                  },
-                  _vm._l(_vm.pressPosts, function(post, index) {
-                    return _c(
-                      "div",
+                  [
+                    _c(
+                      "h2",
                       {
-                        key: post.id,
                         staticClass:
-                          "column is-12-mobile is-12-tablet is-12-desktop",
-                        attrs: { "data-index": index }
+                          "subtitle m-t-20 is-hidden-touch has-text-link m-b-5"
                       },
-                      [
-                        _c("div", { staticClass: "card" }, [
-                          _c(
-                            "header",
-                            {
-                              staticClass:
-                                "card-header has-background-white post-header-card"
-                            },
-                            [
+                      [_vm._v("Publicaciones")]
+                    ),
+                    _vm._v(" "),
+                    _c("hr", { staticClass: "separator-posts" }),
+                    _vm._v(" "),
+                    _c(
+                      "transition-group",
+                      {
+                        staticClass:
+                          "columns is-mobile is-multiline m-b-30 m-t-10",
+                        attrs: { tag: "div", css: false, name: "fadeIn" },
+                        on: {
+                          "before-enter": _vm.beforeEnter,
+                          enter: _vm.enter,
+                          leave: _vm.leave
+                        }
+                      },
+                      _vm._l(_vm.generalPosts, function(post, index) {
+                        return _c(
+                          "div",
+                          {
+                            key: post.id,
+                            staticClass:
+                              "column is-12-mobile is-half-tablet is-half-desktop",
+                            class:
+                              _vm.generalPosts.length >= 1 &&
+                              _vm.pressPosts.length == 0
+                                ? "is-4-desktop"
+                                : "is-half-desktop",
+                            attrs: { "data-index": index }
+                          },
+                          [
+                            _c("div", { staticClass: "card" }, [
                               _c(
-                                "p",
-                                { staticStyle: { margin: "1em" } },
+                                "header",
+                                {
+                                  staticClass:
+                                    "card-header has-background-link post-header-card"
+                                },
                                 [
-                                  _vm._l(post.tags, function(tag) {
-                                    return _c(
-                                      "a",
-                                      {
-                                        key: tag.id,
-                                        on: {
-                                          click: function($event) {
-                                            _vm.setNewValue(tag.name)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "b-tag",
+                                  _c(
+                                    "p",
+                                    { staticStyle: { margin: "1em" } },
+                                    [
+                                      _vm._l(post.tags, function(tag) {
+                                        return _c(
+                                          "a",
                                           {
-                                            staticClass:
-                                              "m-b-10 is-uppercase is-size-7 m-r-5",
-                                            attrs: { type: "is-success" }
+                                            key: tag.id,
+                                            on: {
+                                              click: function($event) {
+                                                _vm.setNewValue(tag.name)
+                                              }
+                                            }
                                           },
-                                          [_vm._v(_vm._s(tag.name))]
+                                          [
+                                            _c(
+                                              "b-tag",
+                                              {
+                                                staticClass:
+                                                  "m-b-10 is-uppercase is-size-7 m-r-5",
+                                                attrs: { type: "is-success" }
+                                              },
+                                              [_vm._v(_vm._s(tag.name))]
+                                            )
+                                          ],
+                                          1
                                         )
-                                      ],
-                                      1
-                                    )
-                                  }),
-                                  _vm._v(" "),
-                                  _c("br"),
+                                      }),
+                                      _vm._v(" "),
+                                      _c("br"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            " has-text-white post-font-size has-text-weight-semibold",
+                                          attrs: { href: "posts/" + post.id }
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("first-characters")(
+                                                post.title_es
+                                              )
+                                            )
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    2
+                                  ),
                                   _vm._v(" "),
                                   _c(
-                                    "a",
+                                    "span",
                                     {
                                       staticClass:
-                                        " has-text-link post-font-size has-text-weight-semibold",
-                                      attrs: { href: "posts/" + post.id }
+                                        "tag is-white is-medium year-tag"
                                     },
                                     [
                                       _vm._v(
                                         _vm._s(
-                                          _vm._f("first-characters")(
-                                            post.title_es
+                                          _vm._f("myYear")(
+                                            post.publication_date
                                           )
                                         )
                                       )
                                     ]
                                   )
-                                ],
-                                2
+                                ]
                               ),
                               _vm._v(" "),
-                              _c(
-                                "span",
-                                {
-                                  staticClass: "tag is-white is-medium year-tag"
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      _vm._f("myYear")(post.publication_date)
+                              _c("div", { staticClass: "card-image" }, [
+                                _c(
+                                  "a",
+                                  { attrs: { href: "posts/" + post.id } },
+                                  [
+                                    _c(
+                                      "figure",
+                                      { staticClass: "image is-4by3" },
+                                      [
+                                        _c("img", {
+                                          attrs: {
+                                            src:
+                                              "/storage/thumbnails/" +
+                                              post.thumbnail
+                                          }
+                                        })
+                                      ]
                                     )
-                                  )
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "card-image" }, [
-                            _c("a", { attrs: { href: "posts/" + post.id } }, [
-                              _c("figure", { staticClass: "image is-4by3" }, [
-                                _c("img", {
-                                  attrs: {
-                                    src: "/storage/thumbnails/" + post.thumbnail
-                                  }
-                                })
+                                  ]
+                                )
                               ])
                             ])
-                          ])
-                        ])
-                      ]
+                          ]
+                        )
+                      })
                     )
-                  })
+                  ],
+                  1
                 )
-              ],
-              1
-            )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.pressPosts.length >= 1
+              ? _c(
+                  "div",
+                  {
+                    staticClass:
+                      "column is-12-mobile is-12-tablet is-hidden-touch",
+                    class:
+                      _vm.pressPosts.length >= 1 && _vm.generalPosts.length == 0
+                        ? "is-12-desktop"
+                        : "is-4-desktop"
+                  },
+                  [
+                    _c(
+                      "h2",
+                      {
+                        staticClass:
+                          "subtitle m-t-20 is-hidden-touch has-text-link m-b-5"
+                      },
+                      [_vm._v("Prensa")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass:
+                          "subtitle m-t-75 is-hidden-desktop has-text-link m-b-5"
+                      },
+                      [_vm._v("Prensa")]
+                    ),
+                    _vm._v(" "),
+                    _c("hr", { staticClass: "separator-posts" }),
+                    _vm._v(" "),
+                    _c(
+                      "transition-group",
+                      {
+                        staticClass:
+                          "columns is-mobile is-multiline m-b-30 m-t-10",
+                        attrs: { tag: "div", css: false, name: "fadeIn" },
+                        on: {
+                          "before-enter": _vm.beforeEnter,
+                          enter: _vm.enter,
+                          leave: _vm.leave
+                        }
+                      },
+                      _vm._l(_vm.pressPosts, function(post, index) {
+                        return _c(
+                          "div",
+                          {
+                            key: post.id,
+                            staticClass: "column is-12-mobile is-12-tablet",
+                            class:
+                              _vm.pressPosts.length >= 1 &&
+                              _vm.generalPosts == 0
+                                ? "is-4-desktop"
+                                : "is-12-desktop",
+                            attrs: { "data-index": index }
+                          },
+                          [
+                            _c("div", { staticClass: "card" }, [
+                              _c(
+                                "header",
+                                {
+                                  staticClass:
+                                    "card-header has-background-white post-header-card"
+                                },
+                                [
+                                  _c(
+                                    "p",
+                                    { staticStyle: { margin: "1em" } },
+                                    [
+                                      _vm._l(post.tags, function(tag) {
+                                        return _c(
+                                          "a",
+                                          {
+                                            key: tag.id,
+                                            on: {
+                                              click: function($event) {
+                                                _vm.setNewValue(tag.name)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "b-tag",
+                                              {
+                                                staticClass:
+                                                  "m-b-10 is-uppercase is-size-7 m-r-5",
+                                                attrs: { type: "is-success" }
+                                              },
+                                              [_vm._v(_vm._s(tag.name))]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      }),
+                                      _vm._v(" "),
+                                      _c("br"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            " has-text-link post-font-size has-text-weight-semibold",
+                                          attrs: { href: "posts/" + post.id }
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm._f("first-characters")(
+                                                post.title_es
+                                              )
+                                            )
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    2
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass:
+                                        "tag is-white is-medium year-tag"
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm._f("myYear")(
+                                            post.publication_date
+                                          )
+                                        )
+                                      )
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "card-image" }, [
+                                _c(
+                                  "a",
+                                  { attrs: { href: "posts/" + post.id } },
+                                  [
+                                    _c(
+                                      "figure",
+                                      { staticClass: "image is-4by3" },
+                                      [
+                                        _c("img", {
+                                          attrs: {
+                                            src:
+                                              "/storage/thumbnails/" +
+                                              post.thumbnail
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            ])
+                          ]
+                        )
+                      })
+                    )
+                  ],
+                  1
+                )
+              : _vm._e()
           ])
         ])
       : _c("div", { staticClass: "container min-fullheight posts" }, [
